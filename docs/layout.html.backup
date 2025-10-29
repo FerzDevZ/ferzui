@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ferzui Layout</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ferzui@latest/dist/ferzui.min.css">
+  <link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+  <script src="./assets/docs.js"></script>
+  <section class="docs-main container">
+    <h1 id="layout">Layout</h1>
+    <p class="lead">Sistem grid responsif dan container untuk membangun layout yang konsisten.</p>
+
+    <h2 id="container">Container</h2>
+    <p>Container memberikan lebar maksimum dan centering untuk konten Anda.</p>
+    
+    <div class="docs-example">
+      <div class="preview">
+        <div class="container" style="background: var(--fz-c-primary-100); padding: 1rem; border-radius: var(--fz-radius-md);">
+          <div class="text-center">Container dengan lebar maksimum dan centering</div>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="grid">Grid System</h2>
+    <p>Sistem grid 12 kolom yang responsif dengan breakpoints.</p>
+
+    <div class="docs-example">
+      <div class="preview">
+        <div class="row gap-3">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body text-center">col-12 (100%)</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card">
+              <div class="card-body text-center">col-6 (50%)</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card">
+              <div class="card-body text-center">col-6 (50%)</div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <div class="card-body text-center">col-4 (33%)</div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <div class="card-body text-center">col-4 (33%)</div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <div class="card-body text-center">col-4 (33%)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="responsive">Responsive Grid</h2>
+    <p>Gunakan breakpoint prefixes untuk kontrol responsif.</p>
+
+    <div class="docs-example">
+      <div class="preview">
+        <div class="row gap-3">
+          <div class="col-12 md:col-6 lg:col-4">
+            <div class="card">
+              <div class="card-body text-center">col-12 md:col-6 lg:col-4</div>
+            </div>
+          </div>
+          <div class="col-12 md:col-6 lg:col-4">
+            <div class="card">
+              <div class="card-body text-center">col-12 md:col-6 lg:col-4</div>
+            </div>
+          </div>
+          <div class="col-12 md:col-6 lg:col-4">
+            <div class="card">
+              <div class="card-body text-center">col-12 md:col-6 lg:col-4</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="flexbox">Flexbox Utilities</h2>
+    <p>Utilitas flexbox untuk alignment dan distribution.</p>
+
+    <div class="docs-example">
+      <div class="preview">
+        <div class="d-flex justify-between items-center p-3" style="background: var(--fz-c-muted); border-radius: var(--fz-radius-md);">
+          <div>Left</div>
+          <div>Center</div>
+          <div>Right</div>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="spacing">Spacing</h2>
+    <p>Sistem spacing yang konsisten dengan skala 0.25rem.</p>
+
+    <div class="docs-example">
+      <div class="preview">
+        <div class="d-flex gap-4">
+          <div class="p-2" style="background: var(--fz-c-primary-100); border-radius: var(--fz-radius-sm);">p-2</div>
+          <div class="p-3" style="background: var(--fz-c-primary-100); border-radius: var(--fz-radius-sm);">p-3</div>
+          <div class="p-4" style="background: var(--fz-c-primary-100); border-radius: var(--fz-radius-sm);">p-4</div>
+          <div class="p-5" style="background: var(--fz-c-primary-100); border-radius: var(--fz-radius-sm);">p-5</div>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="rtl-example">RTL Support</h2>
+    <p>ferzui mendukung RTL (Right-to-Left) untuk bahasa seperti Arabic dan Hebrew.</p>
+
+    <div class="docs-example">
+      <div class="preview">
+        <div dir="rtl" class="d-flex gap-3">
+          <div class="card">
+            <div class="card-body">محتوى باللغة العربية</div>
+          </div>
+          <div class="card">
+            <div class="card-body">עברית</div>
+          </div>
+        </div>
+        <div class="mt-3">
+          <button class="btn btn-outline" onclick="toggleRTL()">Toggle RTL</button>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="next-steps">Langkah Selanjutnya</h2>
+    <div class="d-flex gap-3 flex-wrap">
+      <a href="components.html" class="btn btn-primary">Lihat Komponen</a>
+      <a href="utilities.html" class="btn btn-outline">Lihat Utilities</a>
+      <a href="playground.html" class="btn btn-outline">Coba Playground</a>
+    </div>
+  </section>
+
+  <script>
+    function toggleRTL() {
+      const html = document.documentElement;
+      html.setAttribute('dir', html.getAttribute('dir') === 'rtl' ? 'ltr' : 'rtl');
+    }
+  </script>
+</body>
+</html>

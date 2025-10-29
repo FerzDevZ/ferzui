@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Migrate to ferzui</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ferzui@latest/dist/ferzui.min.css">
+  <link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+  <script src="./assets/docs.js"></script>
+  <section class="docs-main container">
+    <h1 id="migrate">Migrate ke ferzui</h1>
+    <p class="lead">Panduan migrasi dari Bootstrap / Tailwind ke ferzui. Berikut mapping umum class-name dan pola penggunaan.</p>
+
+    <h2 id="bootstrap">Dari Bootstrap</h2>
+    <div class="docs-example">
+      <div class="preview">
+        <div class="table-responsive">
+          <table class="table-advanced table-compact">
+            <thead>
+              <tr>
+                <th>Bootstrap</th>
+                <th>ferzui</th>
+                <th>Keterangan</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>.container</code></td>
+                <td><code>.container</code></td>
+                <td>Ukuran dan breakpoint sepadan</td>
+              </tr>
+              <tr>
+                <td><code>.row</code>, <code>.col-*</code></td>
+                <td><code>.row</code>, <code>.col-*</code></td>
+                <td>Grid flex 12 kolom kompatibel</td>
+              </tr>
+              <tr>
+                <td><code>.btn .btn-primary</code></td>
+                <td><code>.btn .btn-primary</code></td>
+                <td>API mirip; varian success/danger/warning/info ada</td>
+              </tr>
+              <tr>
+                <td><code>.alert .alert-primary</code></td>
+                <td><code>.alert .alert-primary</code></td>
+                <td>Alert dengan tone modern</td>
+              </tr>
+              <tr>
+                <td><code>.form-control</code></td>
+                <td><code>.form-control</code></td>
+                <td>Fokus ring dan states</td>
+              </tr>
+              <tr>
+                <td><code>.d-flex .justify-content-between</code></td>
+                <td><code>.d-flex .justify-between</code></td>
+                <td>Penamaan utilitas dipersingkat</td>
+              </tr>
+              <tr>
+                <td><code>.text-center</code></td>
+                <td><code>.text-center</code></td>
+                <td>Sejalan</td>
+              </tr>
+              <tr>
+                <td><code>.shadow .rounded</code></td>
+                <td><code>.shadow .rounded</code></td>
+                <td>Skala shadow/radius lebih modern</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="tailwind">Dari Tailwind</h2>
+    <p>Tailwind bersifat utility-first. ferzui menyediakan utilitas umum + komponen siap pakai. Contoh mapping:</p>
+    <div class="docs-example">
+      <div class="preview">
+        <div class="table-responsive">
+          <table class="table-advanced table-compact">
+            <thead>
+              <tr>
+                <th>Tailwind</th>
+                <th>ferzui</th>
+                <th>Keterangan</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>px-4 py-2</code></td>
+                <td><code>.px-4 .py-2</code></td>
+                <td>Skala spacing serupa</td>
+              </tr>
+              <tr>
+                <td><code>flex justify-between items-center</code></td>
+                <td><code>.d-flex .justify-between .items-center</code></td>
+                <td>Utilitas semantik</td>
+              </tr>
+              <tr>
+                <td><code>rounded-lg shadow</code></td>
+                <td><code>.rounded-lg .shadow</code></td>
+                <td>Skala radius/shadow sesuai tokens</td>
+              </tr>
+              <tr>
+                <td><code>text-center text-gray-600</code></td>
+                <td><code>.text-center .text-muted</code></td>
+                <td>Muting via token teks</td>
+              </tr>
+              <tr>
+                <td><code>bg-blue-500 text-white</code></td>
+                <td><code>.bg-primary .text-white</code></td>
+                <td>Varian semantic color</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="tips">Tips Migrasi</h2>
+    <ul>
+      <li>Mulai dari layout & spacing (container, row/col, p/m).</li>
+      <li>Ganti komponen dasar: .btn, .card, .form-control, .alert.</li>
+      <li>Map utilitas yang sering digunakan (display, flex, justify, items, text, bg, border, shadow, rounded).</li>
+      <li>Sesuaikan warna di Theme Editor agar brand match.</li>
+      <li>Uji aksesibilitas (focus ring, kontras) dan responsif.</li>
+    </ul>
+  </section>
+</body>
+</html>
