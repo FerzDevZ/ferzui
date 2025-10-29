@@ -12,6 +12,7 @@
 
 // Layouts
 @import 'layouts/grid';
+@import 'layouts/advanced-layout';
 
 // Components
 @import 'components/advanced-tabs';
@@ -19,9 +20,15 @@
 @import 'components/toast-queue';
 @import 'components/smart-tooltip-popover';
 @import 'components/extended-components';
+@import 'components/varied-components';
+@import 'components/communication-components';
+@import 'components/entertainment-components';
+@import 'components/business-components';
 
 // Utilities
 @import 'utilities/advanced-utilities';
+@import 'utilities/extended-colors';
+@import 'utilities/extended-typography';
 
 // =============================================================================
 // COMPONENT IMPORTS (EXISTING)

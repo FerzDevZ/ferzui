@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Components - ferzui</title>
+  <meta name="description" content="Dashboard, analytics, CRM, e-commerce, finance, dan project management components untuk ferzui framework">
+  <link rel="stylesheet" href="../dist/ferzui.css">
+  <link rel="stylesheet" href="assets/docs.css">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+<body>
+  <div id="docs-container">
+    <div class="docs-navbar">
+      <div class="container">
+        <a class="docs-brand" href="../index.html"><span class="dot"></span> ferzui</a>
+        <nav class="d-none d-lg-flex gap-4">
+          <a class="nav-link" href="index.html">Docs</a>
+          <a class="nav-link" href="../demo/index.html">Demo</a>
+          <a class="nav-link" href="theme.html">Theme</a>
+          <a class="nav-link" href="migrate.html">Migrate</a>
+          <a class="nav-link" href="templates/dashboard.html">Templates</a>
+          <a class="nav-link" href="playground.html">Playground</a>
+        </nav>
+        <div class="docs-actions">
+          <button class="btn btn-outline" id="theme-light">Light</button>
+          <button class="btn btn-outline" id="theme-dark">Dark</button>
+          <button class="btn btn-outline" id="theme-contrast">HC</button>
+          <button class="btn btn-outline" id="toggle-high-contrast">High Contrast</button>
+          <button class="btn btn-outline" id="toggle-rtl">RTL</button>
+          <button class="btn btn-outline" id="mobile-menu-toggle">☰</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="docs-layout">
+      <div class="docs-sidebar" id="sidebar">
+        <div class="docs-sidebar-content">
+          <div class="docs-search">
+            <input type="text" id="search-input" placeholder="Search components..." class="form-control">
+            <div id="search-results" class="search-results"></div>
+          </div>
+          <nav id="sidebarNav" class="docs-nav">
+            <!-- Navigation will be injected by JavaScript -->
+          </nav>
+        </div>
+      </div>
+
+      <main class="docs-main">
+        <div class="docs-content">
+          <div class="docs-header">
+            <h1>Business Components</h1>
+            <p class="docs-lead">Komponen untuk dashboard, analytics, CRM, e-commerce, finance, dan project management yang profesional.</p>
+          </div>
+
+          <div class="docs-section">
+            <h2 id="dashboard-layout">Dashboard Layout</h2>
+            <p>Layout dashboard yang lengkap dengan sidebar, header, dan main content area.</p>
+            
+            <div class="docs-example">
+              <div class="dashboard">
+                <div class="dashboard-sidebar">
+                  <div class="dashboard-logo">ferzui</div>
+                  <ul class="dashboard-nav">
+                    <li class="dashboard-nav-item">
+                      <a href="#" class="dashboard-nav-link active">
+                        <span class="dashboard-nav-icon">📊</span>
+                        Dashboard
+                      </a>
+                    </li>
+                    <li class="dashboard-nav-item">
+                      <a href="#" class="dashboard-nav-link">
+                        <span class="dashboard-nav-icon">👥</span>
+                        Users
+                      </a>
+                    </li>
+                    <li class="dashboard-nav-item">
+                      <a href="#" class="dashboard-nav-link">
+                        <span class="dashboard-nav-icon">📈</span>
+                        Analytics
+                      </a>
+                    </li>
+                    <li class="dashboard-nav-item">
+                      <a href="#" class="dashboard-nav-link">
+                        <span class="dashboard-nav-icon">⚙️</span>
+                        Settings
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                
+                <div class="dashboard-main">
+                  <div class="dashboard-header">
+                    <h1 class="dashboard-title">Dashboard</h1>
+                    <div class="dashboard-actions">
+                      <div class="dashboard-search">
+                        <input type="text" class="dashboard-search-input" placeholder="Search...">
+                        <span class="dashboard-search-icon">🔍</span>
+                      </div>
+                      <div class="dashboard-user">
+                        <div class="dashboard-user-avatar">JD</div>
+                        <span>John Doe</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-code">
+              <pre><code>&lt;div class="dashboard"&gt;
+  &lt;div class="dashboard-sidebar"&gt;
+    &lt;div class="dashboard-logo"&gt;ferzui&lt;/div&gt;
+    &lt;ul class="dashboard-nav"&gt;
+      &lt;li class="dashboard-nav-item"&gt;
+        &lt;a href="#" class="dashboard-nav-link active"&gt;
+          &lt;span class="dashboard-nav-icon"&gt;📊&lt;/span&gt;
+          Dashboard
+        &lt;/a&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="dashboard-main"&gt;
+    &lt;div class="dashboard-header"&gt;
+      &lt;h1 class="dashboard-title"&gt;Dashboard&lt;/h1&gt;
+      &lt;div class="dashboard-actions"&gt;
+        &lt;div class="dashboard-search"&gt;
+          &lt;input type="text" class="dashboard-search-input" placeholder="Search..."&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+
+          <div class="docs-section">
+            <h2 id="analytics-cards">Analytics Cards</h2>
+            <p>Kartu analytics dengan statistik dan perubahan persentase.</p>
+            
+            <div class="docs-example">
+              <div class="analytics-grid">
+                <div class="analytics-card">
+                  <div class="analytics-card-header">
+                    <h4 class="analytics-card-title">Total Revenue</h4>
+                    <div class="analytics-card-icon primary">💰</div>
+                  </div>
+                  <h2 class="analytics-card-value">$45,678</h2>
+                  <div class="analytics-card-change positive">
+                    <span class="analytics-card-change-icon">↗</span>
+                    <span>+12.5% from last month</span>
+                  </div>
+                </div>
+                
+                <div class="analytics-card success">
+                  <div class="analytics-card-header">
+                    <h4 class="analytics-card-title">New Users</h4>
+                    <div class="analytics-card-icon success">👥</div>
+                  </div>
+                  <h2 class="analytics-card-value">1,234</h2>
+                  <div class="analytics-card-change positive">
+                    <span class="analytics-card-change-icon">↗</span>
+                    <span>+8.2% from last month</span>
+                  </div>
+                </div>
+                
+                <div class="analytics-card warning">
+                  <div class="analytics-card-header">
+                    <h4 class="analytics-card-title">Conversion Rate</h4>
+                    <div class="analytics-card-icon warning">📊</div>
+                  </div>
+                  <h2 class="analytics-card-value">3.24%</h2>
+                  <div class="analytics-card-change negative">
+                    <span class="analytics-card-change-icon">↘</span>
+                    <span>-2.1% from last month</span>
+                  </div>
+                </div>
+                
+                <div class="analytics-card danger">
+                  <div class="analytics-card-header">
+                    <h4 class="analytics-card-title">Bounce Rate</h4>
+                    <div class="analytics-card-icon danger">📉</div>
+                  </div>
+                  <h2 class="analytics-card-value">42.1%</h2>
+                  <div class="analytics-card-change negative">
+                    <span class="analytics-card-change-icon">↘</span>
+                    <span>+1.5% from last month</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-code">
+              <pre><code>&lt;div class="analytics-grid"&gt;
+  &lt;div class="analytics-card"&gt;
+    &lt;div class="analytics-card-header"&gt;
+      &lt;h4 class="analytics-card-title"&gt;Total Revenue&lt;/h4&gt;
+      &lt;div class="analytics-card-icon primary"&gt;💰&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;h2 class="analytics-card-value"&gt;$45,678&lt;/h2&gt;
+    &lt;div class="analytics-card-change positive"&gt;
+      &lt;span class="analytics-card-change-icon"&gt;↗&lt;/span&gt;
+      &lt;span&gt;+12.5% from last month&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+
+          <div class="docs-section">
+            <h2 id="charts">Charts</h2>
+            <p>Container untuk chart dengan controls dan title.</p>
+            
+            <div class="docs-example">
+              <div class="chart-container">
+                <div class="chart-header">
+                  <h3 class="chart-title">Revenue Analytics</h3>
+                  <div class="chart-controls">
+                    <button class="chart-control-btn active">7D</button>
+                    <button class="chart-control-btn">30D</button>
+                    <button class="chart-control-btn">90D</button>
+                    <button class="chart-control-btn">1Y</button>
+                  </div>
+                </div>
+                <div class="chart-content">
+                  <div class="chart-placeholder">
+                    📊 Chart will be rendered here
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-code">
+              <pre><code>&lt;div class="chart-container"&gt;
+  &lt;div class="chart-header"&gt;
+    &lt;h3 class="chart-title"&gt;Revenue Analytics&lt;/h3&gt;
+    &lt;div class="chart-controls"&gt;
+      &lt;button class="chart-control-btn active"&gt;7D&lt;/button&gt;
+      &lt;button class="chart-control-btn"&gt;30D&lt;/button&gt;
+      &lt;button class="chart-control-btn"&gt;90D&lt;/button&gt;
+      &lt;button class="chart-control-btn"&gt;1Y&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="chart-content"&gt;
+    &lt;!-- Chart will be rendered here --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+
+          <div class="docs-section">
+            <h2 id="data-table">Data Table</h2>
+            <p>Tabel data dengan search, actions, dan responsive design.</p>
+            
+            <div class="docs-example">
+              <div class="data-table-container">
+                <div class="data-table-header">
+                  <h3 class="data-table-title">Users</h3>
+                  <div class="data-table-actions">
+                    <div class="data-table-search">
+                      <input type="text" class="data-table-search-input" placeholder="Search users...">
+                      <span class="data-table-search-icon">🔍</span>
+                    </div>
+                    <button class="btn btn-primary">Add User</button>
+                  </div>
+                </div>
+                
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Role</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>John Doe</td>
+                      <td>john@example.com</td>
+                      <td>Admin</td>
+                      <td><span class="badge badge-success">Active</span></td>
+                      <td>
+                        <div class="data-table-actions-cell">
+                          <button class="data-table-action-btn primary">Edit</button>
+                          <button class="data-table-action-btn danger">Delete</button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Jane Smith</td>
+                      <td>jane@example.com</td>
+                      <td>User</td>
+                      <td><span class="badge badge-warning">Pending</span></td>
+                      <td>
+                        <div class="data-table-actions-cell">
+                          <button class="data-table-action-btn primary">Edit</button>
+                          <button class="data-table-action-btn danger">Delete</button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Bob Johnson</td>
+                      <td>bob@example.com</td>
+                      <td>User</td>
+                      <td><span class="badge badge-success">Active</span></td>
+                      <td>
+                        <div class="data-table-actions-cell">
+                          <button class="data-table-action-btn primary">Edit</button>
+                          <button class="data-table-action-btn danger">Delete</button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="docs-code">
+              <pre><code>&lt;div class="data-table-container"&gt;
+  &lt;div class="data-table-header"&gt;
+    &lt;h3 class="data-table-title"&gt;Users&lt;/h3&gt;
+    &lt;div class="data-table-actions"&gt;
+      &lt;div class="data-table-search"&gt;
+        &lt;input type="text" class="data-table-search-input" placeholder="Search users..."&gt;
+      &lt;/div&gt;
+      &lt;button class="btn btn-primary"&gt;Add User&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;table class="data-table"&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th&gt;Name&lt;/th&gt;
+        &lt;th&gt;Email&lt;/th&gt;
+        &lt;th&gt;Role&lt;/th&gt;
+        &lt;th&gt;Status&lt;/th&gt;
+        &lt;th&gt;Actions&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;John Doe&lt;/td&gt;
+        &lt;td&gt;john@example.com&lt;/td&gt;
+        &lt;td&gt;Admin&lt;/td&gt;
+        &lt;td&gt;&lt;span class="badge badge-success"&gt;Active&lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;
+          &lt;div class="data-table-actions-cell"&gt;
+            &lt;button class="data-table-action-btn primary"&gt;Edit&lt;/button&gt;
+            &lt;button class="data-table-action-btn danger"&gt;Delete&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+
+          <div class="docs-section">
+            <h2 id="crm-contacts">CRM Contacts</h2>
+            <p>Kartu kontak CRM dengan status dan actions.</p>
+            
+            <div class="docs-example">
+              <div class="crm-contact-card">
+                <div class="crm-contact-header">
+                  <div class="crm-contact-avatar">JD</div>
+                  <div class="crm-contact-info">
+                    <h4>John Doe</h4>
+                    <p>john.doe@company.com</p>
+                  </div>
+                </div>
+                
+                <div class="crm-contact-status customer">Customer</div>
+                
+                <div class="crm-contact-details">
+                  <div class="crm-contact-detail">
+                    <span>📞</span>
+                    <span>+1 (555) 123-4567</span>
+                  </div>
+                  <div class="crm-contact-detail">
+                    <span>🏢</span>
+                    <span>Acme Corp</span>
+                  </div>
+                  <div class="crm-contact-detail">
+                    <span>📍</span>
+                    <span>New York, NY</span>
+                  </div>
+                  <div class="crm-contact-detail">
+                    <span>💰</span>
+                    <span>$5,000 LTV</span>
+                  </div>
+                </div>
+                
+                <div class="crm-contact-actions">
+                  <button class="crm-contact-action-btn">Message</button>
+                  <button class="crm-contact-action-btn primary">Call</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-code">
+              <pre><code>&lt;div class="crm-contact-card"&gt;
+  &lt;div class="crm-contact-header"&gt;
+    &lt;div class="crm-contact-avatar"&gt;JD&lt;/div&gt;
+    &lt;div class="crm-contact-info"&gt;
+      &lt;h4&gt;John Doe&lt;/h4&gt;
+      &lt;p&gt;john.doe@company.com&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="crm-contact-status customer"&gt;Customer&lt;/div&gt;
+  
+  &lt;div class="crm-contact-details"&gt;
+    &lt;div class="crm-contact-detail"&gt;
+      &lt;span&gt;📞&lt;/span&gt;
+      &lt;span&gt;+1 (555) 123-4567&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="crm-contact-actions"&gt;
+    &lt;button class="crm-contact-action-btn"&gt;Message&lt;/button&gt;
+    &lt;button class="crm-contact-action-btn primary"&gt;Call&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+
+          <div class="docs-section">
+            <h2 id="e-commerce">E-commerce Products</h2>
+            <p>Kartu produk e-commerce dengan rating, harga, dan actions.</p>
+            
+            <div class="docs-example">
+              <div class="product-grid">
+                <div class="product-card">
+                  <div class="product-image">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmOWZmIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzMzMzMzMyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkF3ZXNvbWUgUHJvZHVjdDwvdGV4dD48L3N2Zz4=" alt="Product">
+                    <div class="product-badge sale">Sale</div>
+                    <button class="product-wishlist">❤️</button>
+                  </div>
+                  <div class="product-info">
+                    <div class="product-category">Electronics</div>
+                    <h4 class="product-title">Amazing Wireless Headphones</h4>
+                    <div class="product-rating">
+                      <div class="product-stars">
+                        <span class="product-star filled">★</span>
+                        <span class="product-star filled">★</span>
+                        <span class="product-star filled">★</span>
+                        <span class="product-star filled">★</span>
+                        <span class="product-star">★</span>
+                      </div>
+                      <span class="product-rating-text">(4.2)</span>
+                    </div>
+                    <div class="product-price">
+                      <span class="product-price-current">$99.99</span>
+                      <span class="product-price-original">$129.99</span>
+                      <span class="product-price-discount">-23%</span>
+                    </div>
+                    <div class="product-actions">
+                      <button class="product-action-btn">Add to Cart</button>
+                      <button class="product-action-btn primary">Buy Now</button>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="product-card">
+                  <div class="product-image">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmOWZmIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzMzMzMzMyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkNvb2wgRGV2aWNlPC90ZXh0Pjwvc3ZnPg==" alt="Product">
+                    <div class="product-badge new">New</div>
+                    <button class="product-wishlist active">❤️</button>
+                  </div>
+                  <div class="product-info">
+                    <div class="product-category">Gadgets</div>
+                    <h4 class="product-title">Cool Smart Watch</h4>
+                    <div class="product-rating">
+                      <div class="product-stars">
+                        <span class="product-star filled">★</span>
+                        <span class="product-star filled">★</span>
+                        <span class="product-star filled">★</span>
+                        <span class="product-star filled">★</span>
+                        <span class="product-star filled">★</span>
+                      </div>
+                      <span class="product-rating-text">(4.8)</span>
+                    </div>
+                    <div class="product-price">
+                      <span class="product-price-current">$199.99</span>
+                    </div>
+                    <div class="product-actions">
+                      <button class="product-action-btn">Add to Cart</button>
+                      <button class="product-action-btn primary">Buy Now</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-code">
+              <pre><code>&lt;div class="product-grid"&gt;
+  &lt;div class="product-card"&gt;
+    &lt;div class="product-image"&gt;
+      &lt;img src="product.jpg" alt="Product"&gt;
+      &lt;div class="product-badge sale"&gt;Sale&lt;/div&gt;
+      &lt;button class="product-wishlist"&gt;❤️&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="product-info"&gt;
+      &lt;div class="product-category"&gt;Electronics&lt;/div&gt;
+      &lt;h4 class="product-title"&gt;Amazing Wireless Headphones&lt;/h4&gt;
+      &lt;div class="product-rating"&gt;
+        &lt;div class="product-stars"&gt;
+          &lt;span class="product-star filled"&gt;★&lt;/span&gt;
+          &lt;span class="product-star filled"&gt;★&lt;/span&gt;
+          &lt;span class="product-star filled"&gt;★&lt;/span&gt;
+          &lt;span class="product-star filled"&gt;★&lt;/span&gt;
+          &lt;span class="product-star"&gt;★&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;span class="product-rating-text"&gt;(4.2)&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class="product-price"&gt;
+        &lt;span class="product-price-current"&gt;$99.99&lt;/span&gt;
+        &lt;span class="product-price-original"&gt;$129.99&lt;/span&gt;
+        &lt;span class="product-price-discount"&gt;-23%&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class="product-actions"&gt;
+        &lt;button class="product-action-btn"&gt;Add to Cart&lt;/button&gt;
+        &lt;button class="product-action-btn primary"&gt;Buy Now&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+
+          <div class="docs-section">
+            <h2 id="finance-summary">Finance Summary</h2>
+            <p>Ringkasan keuangan dengan income, expense, dan balance.</p>
+            
+            <div class="docs-example">
+              <div class="finance-summary">
+                <div class="finance-card">
+                  <div class="finance-card-icon income">💰</div>
+                  <h2 class="finance-card-value">$12,450</h2>
+                  <p class="finance-card-label">Total Income</p>
+                </div>
+                
+                <div class="finance-card">
+                  <div class="finance-card-icon expense">💸</div>
+                  <h2 class="finance-card-value">$8,230</h2>
+                  <p class="finance-card-label">Total Expenses</p>
+                </div>
+                
+                <div class="finance-card">
+                  <div class="finance-card-icon balance">📊</div>
+                  <h2 class="finance-card-value">$4,220</h2>
+                  <p class="finance-card-label">Net Balance</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-code">
+              <pre><code>&lt;div class="finance-summary"&gt;
+  &lt;div class="finance-card"&gt;
+    &lt;div class="finance-card-icon income"&gt;💰&lt;/div&gt;
+    &lt;h2 class="finance-card-value"&gt;$12,450&lt;/h2&gt;
+    &lt;p class="finance-card-label"&gt;Total Income&lt;/p&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="finance-card"&gt;
+    &lt;div class="finance-card-icon expense"&gt;💸&lt;/div&gt;
+    &lt;h2 class="finance-card-value"&gt;$8,230&lt;/h2&gt;
+    &lt;p class="finance-card-label"&gt;Total Expenses&lt;/p&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="finance-card"&gt;
+    &lt;div class="finance-card-icon balance"&gt;📊&lt;/div&gt;
+    &lt;h2 class="finance-card-value"&gt;$4,220&lt;/h2&gt;
+    &lt;p class="finance-card-label"&gt;Net Balance&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+
+          <div class="docs-section">
+            <h2 id="project-management">Project Management</h2>
+            <p>Board project management dengan kolom dan task cards.</p>
+            
+            <div class="docs-example">
+              <div class="project-board">
+                <div class="project-column">
+                  <div class="project-column-header">
+                    <h4 class="project-column-title">To Do</h4>
+                    <div class="project-column-count">3</div>
+                  </div>
+                  
+                  <div class="project-task">
+                    <h5 class="project-task-title">Design new homepage</h5>
+                    <p class="project-task-description">Create wireframes and mockups for the new homepage design</p>
+                    <div class="project-task-meta">
+                      <div class="project-task-assignee">
+                        <div class="project-task-assignee-avatar">JD</div>
+                        <span>John Doe</span>
+                      </div>
+                      <div class="project-task-priority high">High</div>
+                    </div>
+                  </div>
+                  
+                  <div class="project-task">
+                    <h5 class="project-task-title">Update documentation</h5>
+                    <p class="project-task-description">Update API documentation with new endpoints</p>
+                    <div class="project-task-meta">
+                      <div class="project-task-assignee">
+                        <div class="project-task-assignee-avatar">JS</div>
+                        <span>Jane Smith</span>
+                      </div>
+                      <div class="project-task-priority medium">Medium</div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="project-column">
+                  <div class="project-column-header">
+                    <h4 class="project-column-title">In Progress</h4>
+                    <div class="project-column-count">2</div>
+                  </div>
+                  
+                  <div class="project-task">
+                    <h5 class="project-task-title">Implement user authentication</h5>
+                    <p class="project-task-description">Add JWT-based authentication system</p>
+                    <div class="project-task-meta">
+                      <div class="project-task-assignee">
+                        <div class="project-task-assignee-avatar">BJ</div>
+                        <span>Bob Johnson</span>
+                      </div>
+                      <div class="project-task-priority high">High</div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="project-column">
+                  <div class="project-column-header">
+                    <h4 class="project-column-title">Done</h4>
+                    <div class="project-column-count">1</div>
+                  </div>
+                  
+                  <div class="project-task">
+                    <h5 class="project-task-title">Setup CI/CD pipeline</h5>
+                    <p class="project-task-description">Configure automated testing and deployment</p>
+                    <div class="project-task-meta">
+                      <div class="project-task-assignee">
+                        <div class="project-task-assignee-avatar">AL</div>
+                        <span>Alice Lee</span>
+                      </div>
+                      <div class="project-task-priority low">Low</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-code">
+              <pre><code>&lt;div class="project-board"&gt;
+  &lt;div class="project-column"&gt;
+    &lt;div class="project-column-header"&gt;
+      &lt;h4 class="project-column-title"&gt;To Do&lt;/h4&gt;
+      &lt;div class="project-column-count"&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="project-task"&gt;
+      &lt;h5 class="project-task-title"&gt;Design new homepage&lt;/h5&gt;
+      &lt;p class="project-task-description"&gt;Create wireframes and mockups&lt;/p&gt;
+      &lt;div class="project-task-meta"&gt;
+        &lt;div class="project-task-assignee"&gt;
+          &lt;div class="project-task-assignee-avatar"&gt;JD&lt;/div&gt;
+          &lt;span&gt;John Doe&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="project-task-priority high"&gt;High&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../dist/ferzui.js"></script>
+  <script src="assets/docs.js"></script>
+</body>
+</html>

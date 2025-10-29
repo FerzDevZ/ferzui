@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basic Usage - ferzui Documentation</title>
+  <meta name="description" content="Panduan penggunaan dasar ferzui framework - contoh dan best practices">
+  <link rel="stylesheet" href="../dist/ferzui.css">
+  <link rel="stylesheet" href="assets/docs.css">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+<body>
+  <div class="docs-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="docs-sidebar">
+            <div class="sidebar-section">
+              <h3>🚀 Getting Started</h3>
+              <ul>
+                <li><a href="index.html">📖 Introduction</a></li>
+                <li><a href="installation.html">⚙️ Installation</a></li>
+                <li><a href="usage.html" class="active">🎯 Basic Usage</a></li>
+                <li><a href="customize.html">🎨 Customization</a></li>
+                <li><a href="migrate.html">🔄 Migration Guide</a></li>
+              </ul>
+            </div>
+            
+            <div class="sidebar-section">
+              <h3>🧩 Components</h3>
+              <ul>
+                <li><a href="components.html">📋 All Components</a></li>
+                <li><a href="extended.html">🔧 Extended Components</a></li>
+                <li><a href="varied.html">🎮 Varied Components</a></li>
+                <li><a href="communication.html">💬 Communication</a></li>
+                <li><a href="entertainment.html">🎵 Entertainment</a></li>
+                <li><a href="business.html">💼 Business</a></li>
+              </ul>
+            </div>
+            
+            <div class="sidebar-section">
+              <h3>⚡ Utilities</h3>
+              <ul>
+                <li><a href="utilities.html">🛠️ Utility Classes</a></li>
+                <li><a href="layout.html">📐 Layout System</a></li>
+              </ul>
+            </div>
+            
+            <div class="sidebar-section">
+              <h3>🎮 Tools</h3>
+              <ul>
+                <li><a href="playground.html">🎯 Interactive Playground</a></li>
+                <li><a href="theme.html">🎨 Theme Editor</a></li>
+                <li><a href="javascript.html">📜 JavaScript API</a></li>
+                <li><a href="performance.html">⚡ Performance & A11y</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-9">
+          <div class="docs-main">
+            <div class="docs-header">
+              <h1>Basic Usage</h1>
+              <p class="lead">Panduan lengkap untuk menggunakan ferzui framework dengan contoh-contoh praktis.</p>
+            </div>
+            
+            <div class="docs-section">
+              <h2>HTML Structure</h2>
+              <p>ferzui menggunakan struktur HTML yang sederhana dan intuitif. Setiap komponen memiliki class yang jelas dan mudah dipahami.</p>
+              
+              <div class="usage-example">
+                <h3>Basic HTML Template</h3>
+                <div class="code-block">
+                  <div class="code-header">
+                    <span>HTML</span>
+                    <button class="btn btn-sm btn-outline" onclick="copyCode(this)">Copy</button>
+                  </div>
+                  <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;My ferzui App&lt;/title&gt;
+  &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ferzui@latest/dist/ferzui.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="container"&gt;
+    &lt;h1&gt;Welcome to ferzui&lt;/h1&gt;
+    &lt;p&gt;This is a basic page using ferzui framework.&lt;/p&gt;
+  &lt;/div&gt;
+  
+  &lt;script src="https://cdn.jsdelivr.net/npm/ferzui@latest/dist/ferzui.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+              </div>
+            </div>
+            
+            <div class="docs-section">
+              <h2>Layout System</h2>
+              <p>ferzui menggunakan sistem grid yang responsif dan mudah digunakan.</p>
+              
+              <div class="usage-example">
+                <h3>Container</h3>
+                <div class="code-block">
+                  <div class="code-header">
+                    <span>HTML</span>
+                    <button class="btn btn-sm btn-outline" onclick="copyCode(this)">Copy</button>
+                  </div>
+                  <pre><code>&lt;!-- Fixed width container --&gt;
+&lt;div class="container"&gt;
+  &lt;!-- Your content here --&gt;
+&lt;/div&gt;
+
+&lt;!-- Full width container --&gt;
+&lt;div class="container-fluid"&gt;
+  &lt;!-- Your content here --&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+                
+                <div class="preview">
+                  <h4>Preview:</h4>
+                  <div class="container" style="border: 2px dashed var(--fz-c-border); padding: 1rem; margin-bottom: 1rem;">
+                    <p>Fixed width container</p>
+                  </div>
+                  <div class="container-fluid" style="border: 2px dashed var(--fz-c-border); padding: 1rem;">
+                    <p>Full width container</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="usage-example">
+                <h3>Grid System</h3>
+                <div class="code-block">
+                  <div class="code-header">
+                    <span>HTML</span>
+                    <button class="btn btn-sm btn-outline" onclick="copyCode(this)">Copy</button>
+                  </div>
+                  <pre><code>&lt;div class="container"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-md-6"&gt;
+      &lt;div class="card"&gt;
+        &lt;div class="card-body"&gt;
+          &lt;h5&gt;Column 1&lt;/h5&gt;
+          &lt;p&gt;This is the first column.&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="col-md-6"&gt;
+      &lt;div class="card"&gt;
+        &lt;div class="card-body"&gt;
+          &lt;h5&gt;Column 2&lt;/h5&gt;
+          &lt;p&gt;This is the second column.&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+                
+                <div class="preview">
+                  <h4>Preview:</h4>
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="card">
+                          <div class="card-body">
+                            <h5>Column 1</h5>
+                            <p>This is the first column.</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="card">
+                          <div class="card-body">
+                            <h5>Column 2</h5>
+                            <p>This is the second column.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="docs-section">
+              <h2>Basic Components</h2>
+              <p>Berikut adalah komponen-komponen dasar yang paling sering digunakan:</p>
+              
+              <div class="usage-example">
+                <h3>Buttons</h3>
+                <div class="code-block">
+                  <div class="code-header">
+                    <span>HTML</span>
+                    <button class="btn btn-sm btn-outline" onclick="copyCode(this)">Copy</button>
+                  </div>
+                  <pre><code>&lt;!-- Button variants --&gt;
+&lt;button class="btn btn-primary"&gt;Primary&lt;/button&gt;
+&lt;button class="btn btn-secondary"&gt;Secondary&lt;/button&gt;
+&lt;button class="btn btn-success"&gt;Success&lt;/button&gt;
+&lt;button class="btn btn-warning"&gt;Warning&lt;/button&gt;
+&lt;button class="btn btn-danger"&gt;Danger&lt;/button&gt;
+&lt;button class="btn btn-outline"&gt;Outline&lt;/button&gt;
+
+&lt;!-- Button sizes --&gt;
+&lt;button class="btn btn-primary btn-sm"&gt;Small&lt;/button&gt;
+&lt;button class="btn btn-primary"&gt;Default&lt;/button&gt;
+&lt;button class="btn btn-primary btn-lg"&gt;Large&lt;/button&gt;</code></pre>
+                </div>
+                
+                <div class="preview">
+                  <h4>Preview:</h4>
+                  <div class="mb-3">
+                    <button class="btn btn-primary">Primary</button>
+                    <button class="btn btn-secondary">Secondary</button>
+                    <button class="btn btn-success">Success</button>
+                    <button class="btn btn-warning">Warning</button>
+                    <button class="btn btn-danger">Danger</button>
+                    <button class="btn btn-outline">Outline</button>
+                  </div>
+                  <div>
+                    <button class="btn btn-primary btn-sm">Small</button>
+                    <button class="btn btn-primary">Default</button>
+                    <button class="btn btn-primary btn-lg">Large</button>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="usage-example">
+                <h3>Cards</h3>
+                <div class="code-block">
+                  <div class="code-header">
+                    <span>HTML</span>
+                    <button class="btn btn-sm btn-outline" onclick="copyCode(this)">Copy</button>
+                  </div>
+                  <pre><code>&lt;div class="card"&gt;
+  &lt;div class="card-header"&gt;
+    &lt;h5&gt;Card Title&lt;/h5&gt;
+  &lt;/div&gt;
+  &lt;div class="card-body"&gt;
+    &lt;p&gt;This is the card content. You can put any content here.&lt;/p&gt;
+    &lt;button class="btn btn-primary"&gt;Action&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="card-footer"&gt;
+    &lt;small class="text-muted"&gt;Last updated 3 mins ago&lt;/small&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+                
+                <div class="preview">
+                  <h4>Preview:</h4>
+                  <div class="card" style="max-width: 400px;">
+                    <div class="card-header">
+                      <h5>Card Title</h5>
+                    </div>
+                    <div class="card-body">
+                      <p>This is the card content. You can put any content here.</p>
+                      <button class="btn btn-primary">Action</button>
+                    </div>
+                    <div class="card-footer">
+                      <small class="text-muted">Last updated 3 mins ago</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="usage-example">
+                <h3>Forms</h3>
+                <div class="code-block">
+                  <div class="code-header">
+                    <span>HTML</span>
+                    <button class="btn btn-sm btn-outline" onclick="copyCode(this)">Copy</button>
+                  </div>
+                  <pre><code>&lt;form&gt;
+  &lt;div class="mb-3"&gt;
+    &lt;label for="email" class="form-label"&gt;Email address&lt;/label&gt;
+    &lt;input type="email" class="form-control" id="email" placeholder="name@example.com"&gt;
+  &lt;/div&gt;
+  &lt;div class="mb-3"&gt;
+    &lt;label for="password" class="form-label"&gt;Password&lt;/label&gt;
+    &lt;input type="password" class="form-control" id="password"&gt;
+  &lt;/div&gt;
+  &lt;div class="mb-3 form-check"&gt;
+    &lt;input type="checkbox" class="form-check-input" id="remember"&gt;
+    &lt;label class="form-check-label" for="remember"&gt;
+      Remember me
+    &lt;/label&gt;
+  &lt;/div&gt;
+  &lt;button type="submit" class="btn btn-primary"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+                
+                <div class="preview">
+                  <h4>Preview:</h4>
+                  <form style="max-width: 400px;">
+                    <div class="mb-3">
+                      <label for="email" class="form-label">Email address</label>
+                      <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                    </div>
+                    <div class="mb-3">
+                      <label for="password" class="form-label">Password</label>
+                      <input type="password" class="form-control" id="password">
+                    </div>
+                    <div class="mb-3 form-check">
+                      <input type="checkbox" class="form-check-input" id="remember">
+                      <label class="form-check-label" for="remember">
+                        Remember me
+                      </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            
+            <div class="docs-section">
+              <h2>Utility Classes</h2>
+              <p>ferzui menyediakan banyak utility classes untuk styling cepat:</p>
+              
+              <div class="usage-example">
+                <h3>Spacing</h3>
+                <div class="code-block">
+                  <div class="code-header">
+                    <span>HTML</span>
+                    <button class="btn btn-sm btn-outline" onclick="copyCode(this)">Copy</button>
+                  </div>
+                  <pre><code>&lt;!-- Margin --&gt;
+&lt;div class="m-1"&gt;Small margin&lt;/div&gt;
+&lt;div class="m-3"&gt;Medium margin&lt;/div&gt;
+&lt;div class="m-5"&gt;Large margin&lt;/div&gt;
+
+&lt;!-- Padding --&gt;
+&lt;div class="p-1"&gt;Small padding&lt;/div&gt;
+&lt;div class="p-3"&gt;Medium padding&lt;/div&gt;
+&lt;div class="p-5"&gt;Large padding&lt;/div&gt;
+
+&lt;!-- Specific sides --&gt;
+&lt;div class="mt-3 mb-3"&gt;Top and bottom margin&lt;/div&gt;
+&lt;div class="px-3"&gt;Horizontal padding&lt;/div&gt;</code></pre>
+                </div>
+              </div>
+              
+              <div class="usage-example">
+                <h3>Text Utilities</h3>
+                <div class="code-block">
+                  <div class="code-header">
+                    <span>HTML</span>
+                    <button class="btn btn-sm btn-outline" onclick="copyCode(this)">Copy</button>
+                  </div>
+                  <pre><code>&lt;!-- Text alignment --&gt;
+&lt;p class="text-start"&gt;Left aligned text&lt;/p&gt;
+&lt;p class="text-center"&gt;Center aligned text&lt;/p&gt;
+&lt;p class="text-end"&gt;Right aligned text&lt;/p&gt;
+
+&lt;!-- Text colors --&gt;
+&lt;p class="text-primary"&gt;Primary text&lt;/p&gt;
+&lt;p class="text-success"&gt;Success text&lt;/p&gt;
+&lt;p class="text-warning"&gt;Warning text&lt;/p&gt;
+&lt;p class="text-danger"&gt;Danger text&lt;/p&gt;
+
+&lt;!-- Text weight --&gt;
+&lt;p class="fw-bold"&gt;Bold text&lt;/p&gt;
+&lt;p class="fw-normal"&gt;Normal text&lt;/p&gt;
+&lt;p class="fw-light"&gt;Light text&lt;/p&gt;</code></pre>
+                </div>
+                
+                <div class="preview">
+                  <h4>Preview:</h4>
+                  <div class="mb-3">
+                    <p class="text-start">Left aligned text</p>
+                    <p class="text-center">Center aligned text</p>
+                    <p class="text-end">Right aligned text</p>
+                  </div>
+                  <div class="mb-3">
+                    <p class="text-primary">Primary text</p>
+                    <p class="text-success">Success text</p>
+                    <p class="text-warning">Warning text</p>
+                    <p class="text-danger">Danger text</p>
+                  </div>
+                  <div>
+                    <p class="fw-bold">Bold text</p>
+                    <p class="fw-normal">Normal text</p>
+                    <p class="fw-light">Light text</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="docs-section">
+              <h2>JavaScript Components</h2>
+              <p>Beberapa komponen ferzui memerlukan JavaScript untuk interaktivitas:</p>
+              
+              <div class="usage-example">
+                <h3>Modal</h3>
+                <div class="code-block">
+                  <div class="code-header">
+                    <span>HTML</span>
+                    <button class="btn btn-sm btn-outline" onclick="copyCode(this)">Copy</button>
+                  </div>
+                  <pre><code>&lt;!-- Modal trigger --&gt;
+&lt;button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"&gt;
+  Launch Modal
+&lt;/button&gt;
+
+&lt;!-- Modal --&gt;
+&lt;div class="modal fade" id="exampleModal" tabindex="-1"&gt;
+  &lt;div class="modal-dialog"&gt;
+    &lt;div class="modal-content"&gt;
+      &lt;div class="modal-header"&gt;
+        &lt;h5 class="modal-title"&gt;Modal Title&lt;/h5&gt;
+        &lt;button type="button" class="btn-close" data-bs-dismiss="modal"&gt;&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class="modal-body"&gt;
+        &lt;p&gt;Modal body text goes here.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class="modal-footer"&gt;
+        &lt;button type="button" class="btn btn-secondary" data-bs-dismiss="modal"&gt;Close&lt;/button&gt;
+        &lt;button type="button" class="btn btn-primary"&gt;Save changes&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+                
+                <div class="preview">
+                  <h4>Preview:</h4>
+                  <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Launch Modal
+                  </button>
+                  
+                  <div class="modal fade" id="exampleModal" tabindex="-1">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Modal Title</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                          <p>Modal body text goes here.</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="docs-section">
+              <h2>Best Practices</h2>
+              <div class="best-practices">
+                <div class="practice-card">
+                  <h4>🎯 Use Semantic HTML</h4>
+                  <p>Selalu gunakan elemen HTML yang sesuai dengan semantiknya. Gunakan <code>&lt;button&gt;</code> untuk tombol, <code>&lt;form&gt;</code> untuk formulir, dll.</p>
+                </div>
+                
+                <div class="practice-card">
+                  <h4>📱 Mobile First</h4>
+                  <p>Design untuk mobile terlebih dahulu, kemudian gunakan breakpoints untuk desktop. ferzui menggunakan pendekatan mobile-first.</p>
+                </div>
+                
+                <div class="practice-card">
+                  <h4>♿ Accessibility</h4>
+                  <p>Selalu sertakan atribut ARIA yang diperlukan dan pastikan kontras warna memenuhi standar WCAG AA.</p>
+                </div>
+                
+                <div class="practice-card">
+                  <h4>⚡ Performance</h4>
+                  <p>Gunakan utility classes untuk styling yang sering digunakan dan hindari CSS custom yang tidak perlu.</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="docs-section">
+              <h2>Next Steps</h2>
+              <div class="next-steps">
+                <div class="step-card">
+                  <div class="step-number">1</div>
+                  <div class="step-content">
+                    <h4>Explore Components</h4>
+                    <p>Lihat semua komponen yang tersedia di ferzui</p>
+                    <a href="components.html" class="btn btn-outline">Browse Components</a>
+                  </div>
+                </div>
+                
+                <div class="step-card">
+                  <div class="step-number">2</div>
+                  <div class="step-content">
+                    <h4>Try Interactive Demo</h4>
+                    <p>Coba komponen secara interaktif di live demo</p>
+                    <a href="../demo/index.html" class="btn btn-outline">Live Demo</a>
+                  </div>
+                </div>
+                
+                <div class="step-card">
+                  <div class="step-number">3</div>
+                  <div class="step-content">
+                    <h4>Customize Theme</h4>
+                    <p>Sesuaikan tema dan warna sesuai kebutuhan</p>
+                    <a href="customize.html" class="btn btn-outline">Customize</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../dist/ferzui.js"></script>
+  <script src="assets/docs.js"></script>
+  <script>
+    function copyCode(button) {
+      const codeBlock = button.closest('.code-block').querySelector('code');
+      const text = codeBlock.textContent;
+      
+      navigator.clipboard.writeText(text).then(() => {
+        button.textContent = 'Copied!';
+        setTimeout(() => {
+          button.textContent = 'Copy';
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>

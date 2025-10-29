@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Installation - ferzui Documentation</title>
+  <meta name="description" content="Panduan instalasi ferzui framework - CDN, NPM, dan cara download">
+  <link rel="stylesheet" href="../dist/ferzui.css">
+  <link rel="stylesheet" href="assets/docs.css">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+<body>
+  <div class="docs-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="docs-sidebar">
+            <div class="sidebar-section">
+              <h3>🚀 Getting Started</h3>
+              <ul>
+                <li><a href="index.html">📖 Introduction</a></li>
+                <li><a href="installation.html" class="active">⚙️ Installation</a></li>
+                <li><a href="usage.html">🎯 Basic Usage</a></li>
+                <li><a href="customize.html">🎨 Customization</a></li>
+                <li><a href="migrate.html">🔄 Migration Guide</a></li>
+              </ul>
+            </div>
+            
+            <div class="sidebar-section">
+              <h3>🧩 Components</h3>
+              <ul>
+                <li><a href="components.html">📋 All Components</a></li>
+                <li><a href="extended.html">🔧 Extended Components</a></li>
+                <li><a href="varied.html">🎮 Varied Components</a></li>
+                <li><a href="communication.html">💬 Communication</a></li>
+                <li><a href="entertainment.html">🎵 Entertainment</a></li>
+                <li><a href="business.html">💼 Business</a></li>
+              </ul>
+            </div>
+            
+            <div class="sidebar-section">
+              <h3>⚡ Utilities</h3>
+              <ul>
+                <li><a href="utilities.html">🛠️ Utility Classes</a></li>
+                <li><a href="layout.html">📐 Layout System</a></li>
+              </ul>
+            </div>
+            
+            <div class="sidebar-section">
+              <h3>🎮 Tools</h3>
+              <ul>
+                <li><a href="playground.html">🎯 Interactive Playground</a></li>
+                <li><a href="theme.html">🎨 Theme Editor</a></li>
+                <li><a href="javascript.html">📜 JavaScript API</a></li>
+                <li><a href="performance.html">⚡ Performance & A11y</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-9">
+          <div class="docs-main">
+            <div class="docs-header">
+              <h1>Installation</h1>
+              <p class="lead">Panduan lengkap untuk menginstal ferzui framework dengan berbagai metode yang tersedia.</p>
+            </div>
+            
+            <div class="docs-section">
+              <h2>Choose Your Installation Method</h2>
+              <p>ferzui dapat diinstal dengan beberapa cara. Pilih metode yang paling sesuai dengan kebutuhan proyek Anda:</p>
+              
+              <div class="installation-methods">
+                <div class="method-card">
+                  <div class="method-icon">🌐</div>
+                  <h3>CDN</h3>
+                  <p>Perfect untuk prototyping dan proyek kecil</p>
+                  <ul>
+                    <li>✅ Quick setup</li>
+                    <li>✅ No build process</li>
+                    <li>❌ No tree-shaking</li>
+                    <li>❌ No customization</li>
+                  </ul>
+                  <a href="#cdn" class="btn btn-primary">Use CDN</a>
+                </div>
+                
+                <div class="method-card">
+                  <div class="method-icon">📦</div>
+                  <h3>NPM</h3>
+                  <p>Recommended untuk proyek production</p>
+                  <ul>
+                    <li>✅ Tree-shaking</li>
+                    <li>✅ Customizable</li>
+                    <li>✅ Version control</li>
+                    <li>❌ Requires build process</li>
+                  </ul>
+                  <a href="#npm" class="btn btn-primary">Use NPM</a>
+                </div>
+                
+                <div class="method-card">
+                  <div class="method-icon">📁</div>
+                  <h3>Download</h3>
+                  <p>Untuk proyek tanpa package manager</p>
+                  <ul>
+                    <li>✅ No dependencies</li>
+                    <li>✅ Offline usage</li>
+                    <li>❌ Manual updates</li>
+                    <li>❌ No tree-shaking</li>
+                  </ul>
+                  <a href="#download" class="btn btn-primary">Download Files</a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="docs-section" id="cdn">
+              <h2>CDN Installation</h2>
+              <p>CDN adalah cara tercepat untuk memulai dengan ferzui. Cocok untuk prototyping dan proyek kecil.</p>
+              
+              <div class="alert alert-info">
+                <strong>Tip:</strong> Gunakan CDN untuk development dan prototyping. Untuk production, pertimbangkan menggunakan NPM untuk performa yang lebih baik.
+              </div>
+              
+              <h3>Basic HTML Template</h3>
+              <div class="code-block">
+                <div class="code-header">
+                  <span>HTML</span>
+                  <button class="btn btn-sm btn-outline" onclick="copyCode(this)">Copy</button>
+                </div>
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;My ferzui App&lt;/title&gt;
+  &lt;!-- ferzui CSS --&gt;
+  &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ferzui@latest/dist/ferzui.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Your content here --&gt;
+  &lt;div class="container"&gt;
+    &lt;h1&gt;Hello ferzui!&lt;/h1&gt;
+    &lt;button class="btn btn-primary"&gt;Click me&lt;/button&gt;
+  &lt;/div&gt;
+  
+  &lt;!-- ferzui JS --&gt;
+  &lt;script src="https://cdn.jsdelivr.net/npm/ferzui@latest/dist/ferzui.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+              </div>
+              
+              <h3>CDN Links</h3>
+              <div class="code-block">
+                <div class="code-header">
+                  <span>CDN URLs</span>
+                  <button class="btn btn-sm btn-outline" onclick="copyCode(this)">Copy</button>
+                </div>
+                <pre><code>&lt;!-- CSS --&gt;
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ferzui@latest/dist/ferzui.css"&gt;
+
+&lt;!-- JavaScript --&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/ferzui@latest/dist/ferzui.js"&gt;&lt;/script&gt;</code></pre>
+              </div>
+              
+              <h3>Specific Version</h3>
+              <p>Untuk menggunakan versi tertentu, ganti <code>@latest</code> dengan nomor versi:</p>
+              <div class="code-block">
+                <div class="code-header">
+                  <span>Specific Version</span>
+                  <button class="btn btn-sm btn-outline" onclick="copyCode(this)">Copy</button>
+                </div>
+                <pre><code>&lt;!-- CSS v1.0.0 --&gt;
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ferzui@1.0.0/dist/ferzui.css"&gt;
+
+&lt;!-- JavaScript v1.0.0 --&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/ferzui@1.0.0/dist/ferzui.js"&gt;&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+            
+            <div class="docs-section" id="npm">
+              <h2>NPM Installation</h2>
+              <p>NPM adalah cara yang direkomendasikan untuk proyek production. Memberikan kontrol penuh atas customization dan performa.</p>
+              
+              <h3>Install ferzui</h3>
+              <div class="code-block">
+                <div class="code-header">
+                  <span>Terminal</span>
+                  <button class="btn btn-sm btn-outline" onclick="copyCode(this)">Copy</button>
+                </div>
+                <pre><code># Using npm
+npm install ferzui
+
+# Using yarn
+yarn add ferzui
+
+# Using pnpm
+pnpm add ferzui
+
+# Using bun
+bun add ferzui</code></pre>
+              </div>
+              
+              <h3>Import in Your Project</h3>
+              
+              <h4>ES Modules</h4>
+              <div class="code-block">
+                <div class="code-header">
+                  <span>JavaScript</span>
+                  <button class="btn btn-sm btn-outline" onclick="copyCode(this)">Copy</button>
+                </div>
+                <pre><code>// Import CSS
+import 'ferzui/dist/ferzui.css';
+
+// Import JavaScript (optional)
+import 'ferzui/dist/ferzui.js';
+
+// Or import specific components
+import { Modal, Dropdown, Toast } from 'ferzui';</code></pre>
+              </div>
+              
+              <h4>CommonJS</h4>
+              <div class="code-block">
+                <div class="code-header">
+                  <span>JavaScript</span>
+                  <button class="btn btn-sm btn-outline" onclick="copyCode(this)">Copy</button>
+                </div>
+                <pre><code>// Import CSS
+require('ferzui/dist/ferzui.css');
+
+// Import JavaScript
+require('ferzui/dist/ferzui.js');</code></pre>
+              </div>
+              
+              <h4>Webpack Configuration</h4>
+              <div class="code-block">
+                <div class="code-header">
+                  <span>webpack.config.js</span>
+                  <button class="btn btn-sm btn-outline" onclick="copyCode(this)">Copy</button>
+                </div>
+                <pre><code>module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      }
+    ]
+  }
+};</code></pre>
+              </div>
+              
+              <h4>Vite Configuration</h4>
+              <div class="code-block">
+                <div class="code-header">
+                  <span>vite.config.js</span>
+                  <button class="btn btn-sm btn-outline" onclick="copyCode(this)">Copy</button>
+                </div>
+                <pre><code>import { defineConfig } from 'vite';
+
+export default defineConfig({
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "ferzui/src/scss/ferzui.scss";`
+      }
+    }
+  }
+});</code></pre>
+              </div>
+            </div>
+            
+            <div class="docs-section" id="download">
+              <h2>Download Files</h2>
+              <p>Download file CSS dan JavaScript langsung dari GitHub untuk proyek yang tidak menggunakan package manager.</p>
+              
+              <h3>Download Links</h3>
+              <div class="download-links">
+                <div class="download-card">
+                  <h4>CSS File</h4>
+                  <p>Complete CSS bundle with all components</p>
+                  <a href="https://github.com/FerzDevZ/ferzui/releases/latest/download/ferzui.css" class="btn btn-primary" download>Download CSS</a>
+                </div>
+                
+                <div class="download-card">
+                  <h4>JavaScript File</h4>
+                  <p>Complete JavaScript bundle with all interactions</p>
+                  <a href="https://github.com/FerzDevZ/ferzui/releases/latest/download/ferzui.js" class="btn btn-primary" download>Download JS</a>
+                </div>
+                
+                <div class="download-card">
+                  <h4>Source Code</h4>
+                  <p>Complete source code for customization</p>
+                  <a href="https://github.com/FerzDevZ/ferzui/archive/refs/heads/main.zip" class="btn btn-primary" download>Download Source</a>
+                </div>
+              </div>
+              
+              <h3>Clone Repository</h3>
+              <div class="code-block">
+                <div class="code-header">
+                  <span>Terminal</span>
+                  <button class="btn btn-sm btn-outline" onclick="copyCode(this)">Copy</button>
+                </div>
+                <pre><code># Clone the repository
+git clone https://github.com/FerzDevZ/ferzui.git
+
+# Navigate to the directory
+cd ferzui
+
+# Install dependencies (optional)
+npm install
+
+# Build the project (optional)
+npm run build</code></pre>
+              </div>
+              
+              <h3>Manual Setup</h3>
+              <p>Setelah download, include file CSS dan JavaScript di HTML Anda:</p>
+              <div class="code-block">
+                <div class="code-header">
+                  <span>HTML</span>
+                  <button class="btn btn-sm btn-outline" onclick="copyCode(this)">Copy</button>
+                </div>
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;My ferzui App&lt;/title&gt;
+  &lt;!-- Include downloaded CSS --&gt;
+  &lt;link rel="stylesheet" href="path/to/ferzui.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Your content here --&gt;
+  &lt;div class="container"&gt;
+    &lt;h1&gt;Hello ferzui!&lt;/h1&gt;
+    &lt;button class="btn btn-primary"&gt;Click me&lt;/button&gt;
+  &lt;/div&gt;
+  
+  &lt;!-- Include downloaded JavaScript --&gt;
+  &lt;script src="path/to/ferzui.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+              </div>
+            </div>
+            
+            <div class="docs-section">
+              <h2>Verification</h2>
+              <p>Pastikan ferzui berhasil diinstal dengan benar:</p>
+              
+              <div class="verification-steps">
+                <div class="step">
+                  <div class="step-number">1</div>
+                  <div class="step-content">
+                    <h4>Check CSS Loading</h4>
+                    <p>Buka Developer Tools dan periksa apakah CSS ferzui sudah dimuat:</p>
+                    <div class="code-block">
+                      <pre><code>// In browser console
+console.log(document.querySelector('link[href*="ferzui"]'));</code></pre>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="step">
+                  <div class="step-number">2</div>
+                  <div class="step-content">
+                    <h4>Test Components</h4>
+                    <p>Coba buat komponen sederhana:</p>
+                    <div class="code-block">
+                      <pre><code>&lt;button class="btn btn-primary"&gt;Test Button&lt;/button&gt;</code></pre>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="step">
+                  <div class="step-number">3</div>
+                  <div class="step-content">
+                    <h4>Check JavaScript</h4>
+                    <p>Pastikan JavaScript ferzui sudah dimuat:</p>
+                    <div class="code-block">
+                      <pre><code>// In browser console
+console.log(typeof window.ferzui);</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="docs-section">
+              <h2>Next Steps</h2>
+              <div class="next-steps">
+                <div class="step-card">
+                  <div class="step-number">1</div>
+                  <div class="step-content">
+                    <h4>Learn Basic Usage</h4>
+                    <p>Pelajari cara menggunakan komponen dasar ferzui</p>
+                    <a href="usage.html" class="btn btn-outline">Basic Usage</a>
+                  </div>
+                </div>
+                
+                <div class="step-card">
+                  <div class="step-number">2</div>
+                  <div class="step-content">
+                    <h4>Explore Components</h4>
+                    <p>Lihat semua komponen yang tersedia</p>
+                    <a href="components.html" class="btn btn-outline">Browse Components</a>
+                  </div>
+                </div>
+                
+                <div class="step-card">
+                  <div class="step-number">3</div>
+                  <div class="step-content">
+                    <h4>Try Live Demo</h4>
+                    <p>Coba komponen secara interaktif</p>
+                    <a href="../demo/index.html" class="btn btn-outline">Live Demo</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../dist/ferzui.js"></script>
+  <script src="assets/docs.js"></script>
+  <script>
+    function copyCode(button) {
+      const codeBlock = button.closest('.code-block').querySelector('code');
+      const text = codeBlock.textContent;
+      
+      navigator.clipboard.writeText(text).then(() => {
+        button.textContent = 'Copied!';
+        setTimeout(() => {
+          button.textContent = 'Copy';
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>

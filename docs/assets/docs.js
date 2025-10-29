@@ -16,7 +16,10 @@
     { title: 'Playground', url: 'playground.html' },
     { title: 'Performance & Accessibility', url: 'performance.html' },
     { title: 'Extended Components', url: 'extended.html' },
-    { title: 'Varied Components', url: 'varied.html' }
+    { title: 'Varied Components', url: 'varied.html' },
+    { title: 'Communication Components', url: 'communication.html' },
+    { title: 'Entertainment Components', url: 'entertainment.html' },
+    { title: 'Business Components', url: 'business.html' }
   ];
 
   let lunrReady = false;
@@ -39,19 +42,20 @@
         <div class="container">
           <a class="docs-brand" href="../index.html"><span class="dot"></span> ferzui</a>
           <nav class="d-none d-lg-flex gap-4">
-            <a class="nav-link" href="index.html">Docs</a>
-            <a class="nav-link" href="../demo/index.html">Demo</a>
-            <a class="nav-link" href="theme.html">Theme</a>
-            <a class="nav-link" href="migrate.html">Migrate</a>
-            <a class="nav-link" href="templates/dashboard.html">Templates</a>
-            <a class="nav-link" href="playground.html">Playground</a>
+            <a class="nav-link" href="index.html">📚 Documentation</a>
+            <a class="nav-link" href="../demo/index.html">🚀 Live Demo</a>
+            <a class="nav-link" href="components.html">🧩 Components</a>
+            <a class="nav-link" href="utilities.html">⚡ Utilities</a>
+            <a class="nav-link" href="layout.html">📐 Layout</a>
+            <a class="nav-link" href="playground.html">🎮 Playground</a>
+            <a class="nav-link" href="https://github.com/FerzDevZ/ferzui" target="_blank">⭐ GitHub</a>
           </nav>
           <div class="docs-actions">
-            <button class="btn btn-outline" id="theme-light">Light</button>
-            <button class="btn btn-outline" id="theme-dark">Dark</button>
-            <button class="btn btn-outline" id="theme-contrast">HC</button>
-            <button class="btn btn-outline" id="toggle-high-contrast">High Contrast</button>
-            <button class="btn btn-outline" id="toggle-rtl">RTL</button>
+            <button class="btn btn-sm btn-outline" id="theme-light" title="Light Mode">☀️</button>
+            <button class="btn btn-sm btn-outline" id="theme-dark" title="Dark Mode">🌙</button>
+            <button class="btn btn-sm btn-outline" id="toggle-high-contrast" title="High Contrast">♿</button>
+            <button class="btn btn-sm btn-outline" id="toggle-rtl" title="Toggle RTL">⇄</button>
+            <a href="../demo/index.html" class="btn btn-sm btn-primary">Try Demo</a>
           </div>
         </div>
       </div>
@@ -132,6 +136,9 @@
         <a class="docs-link" href="performance.html">Performance & A11y</a>
         <a class="docs-link" href="extended.html">Extended Components</a>
         <a class="docs-link" href="varied.html">Varied Components</a>
+        <a class="docs-link" href="communication.html">Communication</a>
+        <a class="docs-link" href="entertainment.html">Entertainment</a>
+        <a class="docs-link" href="business.html">Business</a>
       </div>
     `;
     nav.innerHTML = html;

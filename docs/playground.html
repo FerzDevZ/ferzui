@@ -3,304 +3,1164 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ferzui Playground</title>
+  <title>Interactive Playground - ferzui</title>
+  <meta name="description" content="Interactive playground untuk mencoba semua komponen ferzui secara real-time">
   <link rel="stylesheet" href="../dist/ferzui.css">
-  <link rel="stylesheet" href="assets/docs.css">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
   <style>
-    .playground {
-      display: grid;
-      grid-template-columns: 300px 1fr;
-      gap: 1rem;
-      height: calc(100vh - 120px);
+    :root {
+      --fz-c-primary-500: #3b82f6;
+      --fz-c-primary-600: #2563eb;
+      --fz-c-primary-700: #1d4ed8;
+      --fz-c-primary-100: #dbeafe;
+      --fz-c-primary-50: #eff6ff;
     }
-    
-    .playground-panel {
-      background: var(--fz-c-surface);
-      border: 1px solid var(--fz-c-border);
-      border-radius: var(--fz-radius-md);
-      padding: 1rem;
-      overflow-y: auto;
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: var(--fz-c-text);
+      background: var(--fz-c-bg);
+      margin: 0;
+      padding: 0;
     }
-    
-    .playground-preview {
+
+    .playground-navbar {
       background: var(--fz-c-surface);
-      border: 1px solid var(--fz-c-border);
-      border-radius: var(--fz-radius-md);
-      padding: 2rem;
+      border-bottom: 1px solid var(--fz-c-border);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+
+    .playground-navbar-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      overflow-y: auto;
     }
-    
-    .playground-code {
+
+    .playground-brand {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--fz-c-primary-600);
+      text-decoration: none;
+    }
+
+    .playground-nav {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .playground-nav a {
+      color: var(--fz-c-text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .playground-nav a:hover {
+      color: var(--fz-c-primary-600);
+    }
+
+    .playground-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .playground-hero {
+      background: linear-gradient(135deg, var(--fz-c-primary-500) 0%, var(--fz-c-primary-700) 100%);
+      color: white;
+      padding: 3rem 0;
+      text-align: center;
+    }
+
+    .playground-hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .playground-hero h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .playground-hero p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .playground-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .playground-layout {
+      display: grid;
+      grid-template-columns: 300px 1fr 400px;
+      gap: 2rem;
+      height: calc(100vh - 200px);
+    }
+
+    .playground-sidebar {
       background: var(--fz-c-surface);
       border: 1px solid var(--fz-c-border);
-      border-radius: var(--fz-radius-md);
-      padding: 1rem;
-      margin-top: 1rem;
-      font-family: monospace;
-      font-size: 0.875rem;
-      white-space: pre-wrap;
-      overflow-x: auto;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      overflow-y: auto;
     }
-    
-    .prop-group {
+
+    .playground-main {
+      background: var(--fz-c-surface);
+      border: 1px solid var(--fz-c-border);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    .playground-controls {
+      background: var(--fz-c-surface);
+      border: 1px solid var(--fz-c-border);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      overflow-y: auto;
+    }
+
+    .playground-section {
+      margin-bottom: 2rem;
+    }
+
+    .playground-section h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--fz-c-text);
+      border-bottom: 2px solid var(--fz-c-primary-500);
+      padding-bottom: 0.5rem;
+    }
+
+    .component-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .component-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    .component-list a {
+      display: block;
+      padding: 0.75rem 1rem;
+      background: var(--fz-c-gray-50);
+      border: 1px solid var(--fz-c-border);
+      border-radius: 0.5rem;
+      color: var(--fz-c-text);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .component-list a:hover {
+      background: var(--fz-c-primary-50);
+      border-color: var(--fz-c-primary-500);
+      color: var(--fz-c-primary-700);
+    }
+
+    .component-list a.active {
+      background: var(--fz-c-primary-500);
+      border-color: var(--fz-c-primary-500);
+      color: white;
+    }
+
+    .playground-preview {
+      background: var(--fz-c-gray-50);
+      border-radius: 0.5rem;
+      padding: 2rem;
+      min-height: 400px;
+      margin-bottom: 1rem;
+      border: 2px dashed var(--fz-c-border);
+    }
+
+    .playground-code {
+      background: var(--fz-c-gray-900);
+      color: var(--fz-c-gray-100);
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      overflow-x: auto;
+      margin-bottom: 1rem;
+    }
+
+    .playground-code pre {
+      margin: 0;
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+
+    .control-group {
       margin-bottom: 1.5rem;
     }
-    
-    .prop-group h4 {
-      margin: 0 0 0.5rem 0;
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: var(--fz-c-text-muted);
-    }
-    
-    .prop-control {
-      margin-bottom: 0.75rem;
-    }
-    
-    .prop-control label {
+
+    .control-group label {
       display: block;
-      font-size: 0.75rem;
-      margin-bottom: 0.25rem;
-      color: var(--fz-c-text-muted);
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: var(--fz-c-text);
     }
-    
-    .prop-control select,
-    .prop-control input {
+
+    .control-group select,
+    .control-group input {
       width: 100%;
-      padding: 0.375rem 0.5rem;
+      padding: 0.5rem;
       border: 1px solid var(--fz-c-border);
-      border-radius: var(--fz-radius-sm);
+      border-radius: 0.5rem;
       background: var(--fz-c-bg);
       color: var(--fz-c-text);
+    }
+
+    .control-group .btn {
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .color-picker {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .color-option {
+      width: 40px;
+      height: 40px;
+      border-radius: 0.5rem;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .color-option:hover {
+      transform: scale(1.1);
+    }
+
+    .color-option.active {
+      border-color: var(--fz-c-primary-500);
+    }
+
+    .playground-tabs {
+      margin-bottom: 1rem;
+    }
+
+    .playground-tab-nav {
+      display: flex;
+      border-bottom: 1px solid var(--fz-c-border);
+      margin-bottom: 1rem;
+    }
+
+    .playground-tab-btn {
+      padding: 0.75rem 1.5rem;
+      background: none;
+      border: none;
+      color: var(--fz-c-text-muted);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    .playground-tab-btn.active {
+      color: var(--fz-c-primary-600);
+      border-bottom-color: var(--fz-c-primary-500);
+    }
+
+    .playground-tab-content {
+      display: none;
+    }
+
+    .playground-tab-content.active {
+      display: block;
+    }
+
+    .playground-footer {
+      background: var(--fz-c-gray-900);
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .playground-footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .playground-footer h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .playground-footer p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      opacity: 0.8;
+    }
+
+    .playground-footer-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .playground-footer .btn {
+      margin-bottom: 0.5rem;
+    }
+
+    .responsive-indicator {
+      position: fixed;
+      top: 100px;
+      right: 20px;
+      background: var(--fz-c-primary-500);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
       font-size: 0.875rem;
+      z-index: 1000;
     }
-    
-    .copy-btn {
-      position: absolute;
-      top: 0.5rem;
-      right: 0.5rem;
-      padding: 0.25rem 0.5rem;
-      font-size: 0.75rem;
+
+    @media (max-width: 1200px) {
+      .playground-layout {
+        grid-template-columns: 250px 1fr 350px;
+      }
     }
-    
-    .code-container {
-      position: relative;
+
+    @media (max-width: 992px) {
+      .playground-layout {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+      
+      .playground-sidebar,
+      .playground-controls {
+        height: 300px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .playground-navbar-content {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .playground-nav {
+        gap: 1rem;
+      }
+      
+      .playground-hero {
+        padding: 2rem 0;
+      }
+      
+      .playground-container {
+        padding: 1rem;
+      }
+      
+      .playground-footer-actions {
+        flex-direction: column;
+        align-items: center;
+      }
     }
   </style>
 </head>
 <body>
-  <script src="assets/docs.js"></script>
-  <section class="docs-main container">
-    <h1 id="playground">Playground</h1>
-    <p class="lead">Ubah properti komponen secara live dan lihat hasilnya. Kode HTML akan diupdate otomatis.</p>
-
-    <div class="playground">
-      <div class="playground-panel">
-        <div class="prop-group">
-          <h4>Komponen</h4>
-          <div class="prop-control">
-            <label>Pilih Komponen</label>
-            <select id="componentSelect">
-              <option value="button">Button</option>
-              <option value="card">Card</option>
-              <option value="alert">Alert</option>
-              <option value="badge">Badge</option>
-              <option value="input">Input</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="prop-group" id="buttonProps" style="display: none;">
-          <h4>Button Properties</h4>
-          <div class="prop-control">
-            <label>Variant</label>
-            <select id="btnVariant">
-              <option value="primary">Primary</option>
-              <option value="secondary">Secondary</option>
-              <option value="success">Success</option>
-              <option value="danger">Danger</option>
-              <option value="warning">Warning</option>
-              <option value="info">Info</option>
-              <option value="outline">Outline</option>
-              <option value="ghost">Ghost</option>
-            </select>
-          </div>
-          <div class="prop-control">
-            <label>Size</label>
-            <select id="btnSize">
-              <option value="sm">Small</option>
-              <option value="">Default</option>
-              <option value="lg">Large</option>
-            </select>
-          </div>
-          <div class="prop-control">
-            <label>Text</label>
-            <input type="text" id="btnText" value="Click me">
-          </div>
-          <div class="prop-control">
-            <label>
-              <input type="checkbox" id="btnDisabled"> Disabled
-            </label>
-          </div>
-        </div>
-
-        <div class="prop-group" id="cardProps" style="display: none;">
-          <h4>Card Properties</h4>
-          <div class="prop-control">
-            <label>Title</label>
-            <input type="text" id="cardTitle" value="Card Title">
-          </div>
-          <div class="prop-control">
-            <label>Content</label>
-            <input type="text" id="cardContent" value="This is card content">
-          </div>
-          <div class="prop-control">
-            <label>
-              <input type="checkbox" id="cardHeader"> Show Header
-            </label>
-          </div>
-          <div class="prop-control">
-            <label>
-              <input type="checkbox" id="cardFooter"> Show Footer
-            </label>
-          </div>
-        </div>
-
-        <div class="prop-group" id="alertProps" style="display: none;">
-          <h4>Alert Properties</h4>
-          <div class="prop-control">
-            <label>Variant</label>
-            <select id="alertVariant">
-              <option value="primary">Primary</option>
-              <option value="success">Success</option>
-              <option value="danger">Danger</option>
-              <option value="warning">Warning</option>
-              <option value="info">Info</option>
-            </select>
-          </div>
-          <div class="prop-control">
-            <label>Message</label>
-            <input type="text" id="alertMessage" value="This is an alert message">
-          </div>
-          <div class="prop-control">
-            <label>
-              <input type="checkbox" id="alertDismissible"> Dismissible
-            </label>
-          </div>
-        </div>
-      </div>
-
-      <div class="playground-preview" id="preview">
-        <button class="btn btn-primary">Click me</button>
+  <!-- Navigation -->
+  <nav class="playground-navbar">
+    <div class="playground-navbar-content">
+      <a href="../index.html" class="playground-brand">ferzui</a>
+      <ul class="playground-nav">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="index.html">Live Demo</a></li>
+        <li><a href="../docs/index.html">Documentation</a></li>
+        <li><a href="index.html" class="active">Interactive Playground</a></li>
+        <li><a href="https://github.com/FerzDevZ/ferzui" target="_blank">GitHub</a></li>
+      </ul>
+      <div class="playground-actions">
+        <button class="btn btn-sm btn-outline" onclick="toggleTheme()" title="Toggle Dark Mode">🌙</button>
+        <button class="btn btn-sm btn-outline" onclick="resetPlayground()" title="Reset Playground">🔄</button>
+        <a href="../docs/index.html" class="btn btn-sm btn-primary">Documentation</a>
       </div>
     </div>
+  </nav>
 
-    <div class="code-container">
-      <button class="btn btn-outline copy-btn" onclick="copyCode()">Copy</button>
-      <div class="playground-code" id="codeOutput">&lt;button class="btn btn-primary"&gt;Click me&lt;/button&gt;</div>
+  <!-- Hero Section -->
+  <section class="playground-hero">
+    <div class="playground-hero-content">
+      <h1>Interactive Playground</h1>
+      <p>Coba semua komponen ferzui secara interaktif. Ubah properti, lihat preview, dan copy kode yang dihasilkan.</p>
     </div>
   </section>
 
+  <!-- Main Content -->
+  <div class="playground-container">
+    <div class="playground-layout">
+      <!-- Sidebar -->
+      <div class="playground-sidebar">
+        <div class="playground-section">
+          <h3>🧩 Components</h3>
+          <ul class="component-list">
+            <li><a href="#" onclick="loadComponent('button')" class="active">Buttons</a></li>
+            <li><a href="#" onclick="loadComponent('card')">Cards</a></li>
+            <li><a href="#" onclick="loadComponent('form')">Forms</a></li>
+            <li><a href="#" onclick="loadComponent('alert')">Alerts</a></li>
+            <li><a href="#" onclick="loadComponent('badge')">Badges</a></li>
+            <li><a href="#" onclick="loadComponent('progress')">Progress</a></li>
+            <li><a href="#" onclick="loadComponent('modal')">Modal</a></li>
+            <li><a href="#" onclick="loadComponent('dropdown')">Dropdown</a></li>
+            <li><a href="#" onclick="loadComponent('tabs')">Tabs</a></li>
+            <li><a href="#" onclick="loadComponent('accordion')">Accordion</a></li>
+            <li><a href="#" onclick="loadComponent('carousel')">Carousel</a></li>
+            <li><a href="#" onclick="loadComponent('navbar')">Navbar</a></li>
+            <li><a href="#" onclick="loadComponent('breadcrumb')">Breadcrumb</a></li>
+            <li><a href="#" onclick="loadComponent('pagination')">Pagination</a></li>
+            <li><a href="#" onclick="loadComponent('table')">Table</a></li>
+            <li><a href="#" onclick="loadComponent('list')">List Group</a></li>
+            <li><a href="#" onclick="loadComponent('spinner')">Spinner</a></li>
+            <li><a href="#" onclick="loadComponent('tooltip')">Tooltip</a></li>
+            <li><a href="#" onclick="loadComponent('popover')">Popover</a></li>
+            <li><a href="#" onclick="loadComponent('toast')">Toast</a></li>
+            <li><a href="#" onclick="loadComponent('offcanvas')">Offcanvas</a></li>
+            <li><a href="#" onclick="loadComponent('avatar')">Avatar</a></li>
+            <li><a href="#" onclick="loadComponent('skeleton')">Skeleton</a></li>
+            <li><a href="#" onclick="loadComponent('timeline')">Timeline</a></li>
+            <li><a href="#" onclick="loadComponent('calendar')">Calendar</a></li>
+            <li><a href="#" onclick="loadComponent('chart')">Charts</a></li>
+            <li><a href="#" onclick="loadComponent('music-player')">Music Player</a></li>
+            <li><a href="#" onclick="loadComponent('video-player')">Video Player</a></li>
+            <li><a href="#" onclick="loadComponent('chat')">Chat Interface</a></li>
+            <li><a href="#" onclick="loadComponent('kanban')">Kanban Board</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Main Preview Area -->
+      <div class="playground-main">
+        <div class="playground-tabs">
+          <div class="playground-tab-nav">
+            <button class="playground-tab-btn active" onclick="showTab('preview')">Preview</button>
+            <button class="playground-tab-btn" onclick="showTab('code')">Code</button>
+            <button class="playground-tab-btn" onclick="showTab('responsive')">Responsive</button>
+          </div>
+          
+          <div id="preview" class="playground-tab-content active">
+            <div class="playground-preview" id="component-preview">
+              <div class="text-center">
+                <h4>Select a component to start</h4>
+                <p>Choose a component from the sidebar to see it in action</p>
+              </div>
+            </div>
+          </div>
+          
+          <div id="code" class="playground-tab-content">
+            <div class="playground-code">
+              <pre id="generated-code"><code>Select a component to see the generated code</code></pre>
+            </div>
+            <button class="btn btn-primary" onclick="copyCode()">Copy Code</button>
+          </div>
+          
+          <div id="responsive" class="playground-tab-content">
+            <div class="responsive-indicator" id="responsive-indicator">
+              Desktop (1200px+)
+            </div>
+            <div class="playground-preview" id="responsive-preview">
+              <div class="text-center">
+                <h4>Responsive Preview</h4>
+                <p>Resize your browser window to see responsive behavior</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls Panel -->
+      <div class="playground-controls">
+        <div class="playground-section">
+          <h3>🎛️ Controls</h3>
+          
+          <div class="control-group">
+            <label>Component Variant</label>
+            <select id="variant-select" onchange="updateComponent()">
+              <option value="primary">Primary</option>
+              <option value="secondary">Secondary</option>
+              <option value="success">Success</option>
+              <option value="warning">Warning</option>
+              <option value="danger">Danger</option>
+              <option value="info">Info</option>
+              <option value="outline">Outline</option>
+            </select>
+          </div>
+
+          <div class="control-group">
+            <label>Size</label>
+            <select id="size-select" onchange="updateComponent()">
+              <option value="sm">Small</option>
+              <option value="" selected>Default</option>
+              <option value="lg">Large</option>
+              <option value="xl">Extra Large</option>
+            </select>
+          </div>
+
+          <div class="control-group">
+            <label>Color Theme</label>
+            <div class="color-picker">
+              <div class="color-option active" style="background: #3b82f6;" onclick="setColor('#3b82f6')"></div>
+              <div class="color-option" style="background: #10b981;" onclick="setColor('#10b981')"></div>
+              <div class="color-option" style="background: #f59e0b;" onclick="setColor('#f59e0b')"></div>
+              <div class="color-option" style="background: #ef4444;" onclick="setColor('#ef4444')"></div>
+              <div class="color-option" style="background: #8b5cf6;" onclick="setColor('#8b5cf6')"></div>
+              <div class="color-option" style="background: #06b6d4;" onclick="setColor('#06b6d4')"></div>
+              <div class="color-option" style="background: #84cc16;" onclick="setColor('#84cc16')"></div>
+              <div class="color-option" style="background: #f97316;" onclick="setColor('#f97316')"></div>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label>Text Content</label>
+            <input type="text" id="text-input" value="Click me" onchange="updateComponent()">
+          </div>
+
+          <div class="control-group">
+            <label>Additional Classes</label>
+            <input type="text" id="classes-input" placeholder="e.g., rounded-pill" onchange="updateComponent()">
+          </div>
+
+          <div class="control-group">
+            <label>Quick Actions</label>
+            <button class="btn btn-sm btn-outline" onclick="randomizeComponent()">🎲 Randomize</button>
+            <button class="btn btn-sm btn-outline" onclick="resetComponent()">🔄 Reset</button>
+            <button class="btn btn-sm btn-outline" onclick="exportComponent()">📤 Export</button>
+          </div>
+        </div>
+
+        <div class="playground-section">
+          <h3>📊 Properties</h3>
+          <div id="component-properties">
+            <p class="text-muted">Select a component to see its properties</p>
+          </div>
+        </div>
+
+        <div class="playground-section">
+          <h3>🎨 Theme</h3>
+          <div class="control-group">
+            <label>Theme Mode</label>
+            <select id="theme-select" onchange="changeTheme()">
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+              <option value="auto">Auto</option>
+            </select>
+          </div>
+          
+          <div class="control-group">
+            <label>RTL Mode</label>
+            <button class="btn btn-sm btn-outline" onclick="toggleRTL()">Toggle RTL</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="playground-footer">
+    <div class="playground-footer-content">
+      <h3>Ready to use ferzui?</h3>
+      <p>Start building your next project with ferzui framework today.</p>
+      <div class="playground-footer-actions">
+        <a href="../docs/index.html" class="btn btn-primary">Get Started</a>
+        <a href="https://github.com/FerzDevZ/ferzui" class="btn btn-outline" target="_blank">GitHub</a>
+        <a href="../docs/playground.html" class="btn btn-success">Documentation</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../dist/ferzui.js"></script>
   <script>
     let currentComponent = 'button';
-    
-    function updatePreview() {
-      const preview = document.getElementById('preview');
-      const codeOutput = document.getElementById('codeOutput');
-      let html = '';
-      
-      switch(currentComponent) {
-        case 'button':
-          const variant = document.getElementById('btnVariant').value;
-          const size = document.getElementById('btnSize').value;
-          const text = document.getElementById('btnText').value;
-          const disabled = document.getElementById('btnDisabled').checked;
-          
-          const btnClasses = ['btn'];
-          if (variant !== 'primary') btnClasses.push(`btn-${variant}`);
-          if (size) btnClasses.push(`btn-${size}`);
-          
-          html = `<button class="${btnClasses.join(' ')}"${disabled ? ' disabled' : ''}>${text}</button>`;
-          break;
-          
-        case 'card':
-          const title = document.getElementById('cardTitle').value;
-          const content = document.getElementById('cardContent').value;
-          const showHeader = document.getElementById('cardHeader').checked;
-          const showFooter = document.getElementById('cardFooter').checked;
-          
-          html = '<div class="card">';
-          if (showHeader) html += `<div class="card-header">${title}</div>`;
-          html += `<div class="card-body">${content}</div>`;
-          if (showFooter) html += '<div class="card-footer">Footer</div>';
-          html += '</div>';
-          break;
-          
-        case 'alert':
-          const alertVariant = document.getElementById('alertVariant').value;
-          const message = document.getElementById('alertMessage').value;
-          const dismissible = document.getElementById('alertDismissible').checked;
-          
-          html = `<div class="alert alert-${alertVariant}" role="alert">`;
-          if (dismissible) html += '<button type="button" class="btn-close" aria-label="Close"></button>';
-          html += message;
-          html += '</div>';
-          break;
+    let currentTheme = 'light';
+    let currentColor = '#3b82f6';
+
+    // Component templates
+    const componentTemplates = {
+      button: {
+        template: (props) => `<button class="btn btn-${props.variant} ${props.size ? 'btn-' + props.size : ''} ${props.classes || ''}" style="background-color: ${props.color}; border-color: ${props.color};">${props.text}</button>`,
+        properties: ['variant', 'size', 'text', 'color', 'classes']
+      },
+      card: {
+        template: (props) => `<div class="card ${props.classes || ''}">
+          <div class="card-header">
+            <h5>${props.text || 'Card Title'}</h5>
+          </div>
+          <div class="card-body">
+            <p>This is a ${props.variant} card with ${props.size} size.</p>
+            <button class="btn btn-${props.variant}">Action</button>
+          </div>
+        </div>`,
+        properties: ['variant', 'size', 'text', 'classes']
+      },
+      form: {
+        template: (props) => `<form class="${props.classes || ''}">
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control ${props.size ? 'form-control-' + props.size : ''}" id="email" placeholder="name@example.com">
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control ${props.size ? 'form-control-' + props.size : ''}" id="password">
+          </div>
+          <button type="submit" class="btn btn-${props.variant} ${props.size ? 'btn-' + props.size : ''}">${props.text || 'Submit'}</button>
+        </form>`,
+        properties: ['variant', 'size', 'text', 'classes']
+      },
+      alert: {
+        template: (props) => `<div class="alert alert-${props.variant} ${props.classes || ''}" role="alert">
+          <strong>${props.variant.charAt(0).toUpperCase() + props.variant.slice(1)}!</strong> ${props.text || 'This is an alert message.'}
+        </div>`,
+        properties: ['variant', 'text', 'classes']
+      },
+      badge: {
+        template: (props) => `<span class="badge badge-${props.variant} ${props.size ? 'badge-' + props.size : ''} ${props.classes || ''}">${props.text || 'Badge'}</span>`,
+        properties: ['variant', 'size', 'text', 'classes']
+      },
+      progress: {
+        template: (props) => `<div class="progress ${props.classes || ''}">
+          <div class="progress-bar bg-${props.variant}" role="progressbar" style="width: ${props.size || '50'}%" aria-valuenow="${props.size || '50'}" aria-valuemin="0" aria-valuemax="100">${props.size || '50'}%</div>
+        </div>`,
+        properties: ['variant', 'size', 'classes']
+      },
+      modal: {
+        template: (props) => `<div class="modal fade" id="exampleModal" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">${props.text || 'Modal Title'}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body">
+                <p>This is a ${props.variant} modal.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-${props.variant}">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>`,
+        properties: ['variant', 'text', 'classes']
+      },
+      dropdown: {
+        template: (props) => `<div class="dropdown ${props.classes || ''}">
+          <button class="btn btn-${props.variant} dropdown-toggle" type="button" data-bs-toggle="dropdown">
+            ${props.text || 'Dropdown'}
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div>`,
+        properties: ['variant', 'text', 'classes']
+      },
+      tabs: {
+        template: (props) => `<ul class="nav nav-tabs ${props.classes || ''}" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab1">Tab 1</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab2">Tab 2</button>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane fade show active" id="tab1">
+            <p>This is tab 1 content.</p>
+          </div>
+          <div class="tab-pane fade" id="tab2">
+            <p>This is tab 2 content.</p>
+          </div>
+        </div>`,
+        properties: ['variant', 'classes']
+      },
+      accordion: {
+        template: (props) => `<div class="accordion ${props.classes || ''}" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                ${props.text || 'Accordion Item #1'}
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                This is the first item's accordion body.
+              </div>
+            </div>
+          </div>
+        </div>`,
+        properties: ['text', 'classes']
+      },
+      carousel: {
+        template: (props) => `<div id="carouselExample" class="carousel slide ${props.classes || ''}" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div style="height: 200px; background: var(--fz-c-primary-100); display: flex; align-items: center; justify-content: center;">Slide 1</div>
+            </div>
+            <div class="carousel-item">
+              <div style="height: 200px; background: var(--fz-c-success-100); display: flex; align-items: center; justify-content: center;">Slide 2</div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </button>
+        </div>`,
+        properties: ['classes']
+      },
+      navbar: {
+        template: (props) => `<nav class="navbar navbar-expand-lg navbar-${props.variant} ${props.classes || ''}">
+          <div class="container">
+            <a class="navbar-brand" href="#">${props.text || 'Brand'}</a>
+            <div class="navbar-nav">
+              <a class="nav-link active" href="#">Home</a>
+              <a class="nav-link" href="#">Features</a>
+              <a class="nav-link" href="#">Pricing</a>
+            </div>
+          </div>
+        </nav>`,
+        properties: ['variant', 'text', 'classes']
+      },
+      breadcrumb: {
+        template: (props) => `<nav aria-label="breadcrumb">
+          <ol class="breadcrumb ${props.classes || ''}">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Library</a></li>
+            <li class="breadcrumb-item active" aria-current="page">${props.text || 'Data'}</li>
+          </ol>
+        </nav>`,
+        properties: ['text', 'classes']
+      },
+      pagination: {
+        template: (props) => `<nav aria-label="Page navigation">
+          <ul class="pagination ${props.classes || ''}">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item active">
+              <a class="page-link" href="#">2</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">Next</a>
+            </li>
+          </ul>
+        </nav>`,
+        properties: ['classes']
+      },
+      table: {
+        template: (props) => `<table class="table table-${props.variant} ${props.classes || ''}">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">First</th>
+              <th scope="col">Last</th>
+              <th scope="col">Handle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+          </tbody>
+        </table>`,
+        properties: ['variant', 'classes']
+      },
+      list: {
+        template: (props) => `<ul class="list-group ${props.classes || ''}">
+          <li class="list-group-item list-group-item-${props.variant}">${props.text || 'Cras justo odio'}</li>
+          <li class="list-group-item">Dapibus ac facilisis in</li>
+          <li class="list-group-item">Morbi leo risus</li>
+        </ul>`,
+        properties: ['variant', 'text', 'classes']
+      },
+      spinner: {
+        template: (props) => `<div class="d-flex justify-content-center">
+          <div class="spinner-border text-${props.variant} ${props.size ? 'spinner-border-' + props.size : ''} ${props.classes || ''}" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>`,
+        properties: ['variant', 'size', 'classes']
+      },
+      tooltip: {
+        template: (props) => `<button type="button" class="btn btn-${props.variant} ${props.classes || ''}" data-bs-toggle="tooltip" data-bs-placement="top" title="${props.text || 'Tooltip on top'}">
+          ${props.text || 'Hover me'}
+        </button>`,
+        properties: ['variant', 'text', 'classes']
+      },
+      popover: {
+        template: (props) => `<button type="button" class="btn btn-${props.variant} ${props.classes || ''}" data-bs-toggle="popover" data-bs-content="${props.text || 'Popover content'}" data-bs-original-title="Popover title">
+          ${props.text || 'Click to toggle popover'}
+        </button>`,
+        properties: ['variant', 'text', 'classes']
+      },
+      toast: {
+        template: (props) => `<div class="toast ${props.classes || ''}" role="alert">
+          <div class="toast-header">
+            <strong class="me-auto">${props.text || 'Toast'}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+          </div>
+          <div class="toast-body">
+            This is a ${props.variant} toast message.
+          </div>
+        </div>`,
+        properties: ['variant', 'text', 'classes']
+      },
+      offcanvas: {
+        template: (props) => `<div class="offcanvas offcanvas-start ${props.classes || ''}" tabindex="-1" id="offcanvasExample">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title">${props.text || 'Offcanvas'}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+          </div>
+          <div class="offcanvas-body">
+            <p>This is offcanvas content.</p>
+          </div>
+        </div>`,
+        properties: ['text', 'classes']
+      },
+      avatar: {
+        template: (props) => `<div class="avatar avatar-${props.size || 'md'} ${props.classes || ''}" style="background-color: ${props.color || currentColor};">
+          <span>${props.text || 'A'}</span>
+        </div>`,
+        properties: ['size', 'text', 'color', 'classes']
+      },
+      skeleton: {
+        template: (props) => `<div class="skeleton ${props.classes || ''}">
+          <div class="skeleton-line"></div>
+          <div class="skeleton-line"></div>
+          <div class="skeleton-line"></div>
+        </div>`,
+        properties: ['classes']
+      },
+      timeline: {
+        template: (props) => `<div class="timeline ${props.classes || ''}">
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h5>${props.text || 'Timeline Item'}</h5>
+              <p>This is timeline content.</p>
+            </div>
+          </div>
+        </div>`,
+        properties: ['text', 'classes']
+      },
+      calendar: {
+        template: (props) => `<div class="calendar ${props.classes || ''}">
+          <div class="calendar-header">
+            <h5>${props.text || 'January 2025'}</h5>
+          </div>
+          <div class="calendar-grid">
+            <div class="calendar-day">1</div>
+            <div class="calendar-day">2</div>
+            <div class="calendar-day">3</div>
+            <div class="calendar-day">4</div>
+            <div class="calendar-day">5</div>
+            <div class="calendar-day">6</div>
+            <div class="calendar-day">7</div>
+          </div>
+        </div>`,
+        properties: ['text', 'classes']
+      },
+      chart: {
+        template: (props) => `<div class="chart ${props.classes || ''}">
+          <canvas id="chartCanvas" width="400" height="200"></canvas>
+        </div>`,
+        properties: ['classes']
+      },
+      'music-player': {
+        template: (props) => `<div class="music-player ${props.classes || ''}">
+          <div class="music-player-header">
+            <h5>${props.text || 'Now Playing'}</h5>
+          </div>
+          <div class="music-player-controls">
+            <button class="btn btn-primary">▶️</button>
+            <button class="btn btn-outline">⏸️</button>
+            <button class="btn btn-outline">⏹️</button>
+          </div>
+        </div>`,
+        properties: ['text', 'classes']
+      },
+      'video-player': {
+        template: (props) => `<div class="video-player ${props.classes || ''}">
+          <div class="video-player-screen">
+            <div class="video-placeholder">${props.text || 'Video Player'}</div>
+          </div>
+          <div class="video-player-controls">
+            <button class="btn btn-primary">▶️</button>
+            <button class="btn btn-outline">⏸️</button>
+            <button class="btn btn-outline">⏹️</button>
+          </div>
+        </div>`,
+        properties: ['text', 'classes']
+      },
+      chat: {
+        template: (props) => `<div class="chat-interface ${props.classes || ''}">
+          <div class="chat-header">
+            <h5>${props.text || 'Chat'}</h5>
+          </div>
+          <div class="chat-messages">
+            <div class="chat-message">Hello!</div>
+            <div class="chat-message">How are you?</div>
+          </div>
+          <div class="chat-input">
+            <input type="text" class="form-control" placeholder="Type a message...">
+            <button class="btn btn-primary">Send</button>
+          </div>
+        </div>`,
+        properties: ['text', 'classes']
+      },
+      kanban: {
+        template: (props) => `<div class="kanban-board ${props.classes || ''}">
+          <div class="kanban-column">
+            <h5>${props.text || 'To Do'}</h5>
+            <div class="kanban-card">Task 1</div>
+            <div class="kanban-card">Task 2</div>
+          </div>
+          <div class="kanban-column">
+            <h5>In Progress</h5>
+            <div class="kanban-card">Task 3</div>
+          </div>
+          <div class="kanban-column">
+            <h5>Done</h5>
+            <div class="kanban-card">Task 4</div>
+          </div>
+        </div>`,
+        properties: ['text', 'classes']
       }
+    };
+
+    function loadComponent(componentName) {
+      currentComponent = componentName;
       
-      preview.innerHTML = html;
-      codeOutput.textContent = html;
+      // Update active link
+      document.querySelectorAll('.component-list a').forEach(link => {
+        link.classList.remove('active');
+      });
+      event.target.classList.add('active');
+      
+      // Update component properties
+      updateComponentProperties();
+      
+      // Generate component
+      updateComponent();
     }
-    
-    function showProps(component) {
-      // Hide all prop groups
-      document.querySelectorAll('.prop-group').forEach(group => {
-        if (group.id.endsWith('Props')) group.style.display = 'none';
+
+    function updateComponent() {
+      const variant = document.getElementById('variant-select').value;
+      const size = document.getElementById('size-select').value;
+      const text = document.getElementById('text-input').value;
+      const classes = document.getElementById('classes-input').value;
+      
+      const props = {
+        variant,
+        size,
+        text,
+        classes,
+        color: currentColor
+      };
+      
+      const template = componentTemplates[currentComponent];
+      if (template) {
+        const html = template.template(props);
+        document.getElementById('component-preview').innerHTML = html;
+        document.getElementById('responsive-preview').innerHTML = html;
+        document.getElementById('generated-code').textContent = html;
+        
+        // Initialize JavaScript components
+        initializeComponents();
+      }
+    }
+
+    function updateComponentProperties() {
+      const template = componentTemplates[currentComponent];
+      if (template) {
+        const propertiesDiv = document.getElementById('component-properties');
+        propertiesDiv.innerHTML = '<h5>Available Properties:</h5><ul>';
+        template.properties.forEach(prop => {
+          propertiesDiv.innerHTML += `<li><code>${prop}</code></li>`;
+        });
+        propertiesDiv.innerHTML += '</ul>';
+      }
+    }
+
+    function showTab(tabName) {
+      document.querySelectorAll('.playground-tab-content').forEach(content => {
+        content.classList.remove('active');
+      });
+      document.querySelectorAll('.playground-tab-btn').forEach(btn => {
+        btn.classList.remove('active');
       });
       
-      // Show relevant props
-      document.getElementById(`${component}Props`).style.display = 'block';
+      document.getElementById(tabName).classList.add('active');
+      event.target.classList.add('active');
     }
-    
+
+    function setColor(color) {
+      currentColor = color;
+      document.querySelectorAll('.color-option').forEach(option => {
+        option.classList.remove('active');
+      });
+      event.target.classList.add('active');
+      updateComponent();
+    }
+
+    function randomizeComponent() {
+      const variants = ['primary', 'secondary', 'success', 'warning', 'danger', 'info', 'outline'];
+      const sizes = ['sm', '', 'lg', 'xl'];
+      const texts = ['Click me', 'Submit', 'Cancel', 'Save', 'Delete', 'Edit', 'View'];
+      
+      document.getElementById('variant-select').value = variants[Math.floor(Math.random() * variants.length)];
+      document.getElementById('size-select').value = sizes[Math.floor(Math.random() * sizes.length)];
+      document.getElementById('text-input').value = texts[Math.floor(Math.random() * texts.length)];
+      
+      updateComponent();
+    }
+
+    function resetComponent() {
+      document.getElementById('variant-select').value = 'primary';
+      document.getElementById('size-select').value = '';
+      document.getElementById('text-input').value = 'Click me';
+      document.getElementById('classes-input').value = '';
+      
+      updateComponent();
+    }
+
+    function resetPlayground() {
+      loadComponent('button');
+      resetComponent();
+      showTab('preview');
+    }
+
     function copyCode() {
-      const code = document.getElementById('codeOutput').textContent;
+      const code = document.getElementById('generated-code').textContent;
       navigator.clipboard.writeText(code).then(() => {
-        const btn = document.querySelector('.copy-btn');
-        const originalText = btn.textContent;
+        const btn = event.target;
         btn.textContent = 'Copied!';
-        setTimeout(() => btn.textContent = originalText, 1000);
+        setTimeout(() => {
+          btn.textContent = 'Copy Code';
+        }, 2000);
       });
     }
-    
-    // Event listeners
-    document.getElementById('componentSelect').addEventListener('change', (e) => {
-      currentComponent = e.target.value;
-      showProps(currentComponent);
-      updatePreview();
-    });
-    
-    // Button props
-    document.getElementById('btnVariant').addEventListener('change', updatePreview);
-    document.getElementById('btnSize').addEventListener('change', updatePreview);
-    document.getElementById('btnText').addEventListener('input', updatePreview);
-    document.getElementById('btnDisabled').addEventListener('change', updatePreview);
-    
-    // Card props
-    document.getElementById('cardTitle').addEventListener('input', updatePreview);
-    document.getElementById('cardContent').addEventListener('input', updatePreview);
-    document.getElementById('cardHeader').addEventListener('change', updatePreview);
-    document.getElementById('cardFooter').addEventListener('change', updatePreview);
-    
-    // Alert props
-    document.getElementById('alertVariant').addEventListener('change', updatePreview);
-    document.getElementById('alertMessage').addEventListener('input', updatePreview);
-    document.getElementById('alertDismissible').addEventListener('change', updatePreview);
-    
+
+    function exportComponent() {
+      const code = document.getElementById('generated-code').textContent;
+      const blob = new Blob([code], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${currentComponent}-component.html`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function changeTheme() {
+      const theme = document.getElementById('theme-select').value;
+      currentTheme = theme;
+      
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else if (theme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+      }
+    }
+
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme');
+      if (current === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'light');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    }
+
+    function toggleRTL() {
+      document.documentElement.setAttribute('dir', 
+        document.documentElement.getAttribute('dir') === 'rtl' ? 'ltr' : 'rtl'
+      );
+    }
+
+    function initializeComponents() {
+      // Initialize tooltips
+      const tooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+      tooltips.forEach(tooltip => {
+        new bootstrap.Tooltip(tooltip);
+      });
+      
+      // Initialize popovers
+      const popovers = document.querySelectorAll('[data-bs-toggle="popover"]');
+      popovers.forEach(popover => {
+        new bootstrap.Popover(popover);
+      });
+    }
+
+    // Responsive indicator
+    function updateResponsiveIndicator() {
+      const width = window.innerWidth;
+      const indicator = document.getElementById('responsive-indicator');
+      
+      if (width >= 1200) {
+        indicator.textContent = 'Desktop (1200px+)';
+      } else if (width >= 992) {
+        indicator.textContent = 'Tablet (992px+)';
+      } else if (width >= 768) {
+        indicator.textContent = 'Mobile Large (768px+)';
+      } else {
+        indicator.textContent = 'Mobile (768px-)';
+      }
+    }
+
     // Initialize
-    showProps('button');
+    document.addEventListener('DOMContentLoaded', function() {
+      loadComponent('button');
+      updateResponsiveIndicator();
+      
+      window.addEventListener('resize', updateResponsiveIndicator);
+    });
+
+    // Initialize theme detection
+    if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
   </script>
 </body>
 </html>

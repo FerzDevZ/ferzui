@@ -1,0 +1,48 @@
+# Source files (keep only SCSS)
+src/js/
+src/scss/core/
+src/scss/layouts/
+src/scss/components/
+src/scss/utilities/
+
+# Development files
+docs/
+demo/
+build.sh
+*.log
+*.tmp
+
+# Git files
+.git/
+.gitignore
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test files
+test/
+tests/
+__tests__/
+
+# Build artifacts
+node_modules/
+dist/*.map
+dist/*.min.css
+dist/*.min.js
+
+# Documentation build
+docs/_site/
+docs/.vuepress/
+docs/.vitepress/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/

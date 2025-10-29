@@ -1,23 +1,40 @@
 {
   "name": "ferzui",
-  "version": "1.0.0",
-  "description": "Modern UI framework yang lebih baik dari Bootstrap dengan 80+ komponen, dark mode, dan performa tinggi",
-  "main": "dist/ferzui.css",
+  "version": "1.0.1",
+  "description": "Modern UI framework yang lebih baik dari Bootstrap dengan 120+ komponen, dark mode, dan performa tinggi untuk aplikasi web masa depan",
+  "main": "dist/ferzui.js",
   "module": "dist/ferzui.esm.js",
   "style": "dist/ferzui.css",
+  "types": "dist/ferzui.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/ferzui.esm.js",
+      "require": "./dist/ferzui.js",
+      "style": "./dist/ferzui.css"
+    },
+    "./css": "./dist/ferzui.css",
+    "./js": "./dist/ferzui.js",
+    "./scss": "./src/scss/ferzui.scss"
+  },
   "files": [
     "dist/",
-    "src/",
-    "docs/",
-    "demo/",
+    "src/scss/",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "CHANGELOG.md"
   ],
   "scripts": {
-    "build": "./build.sh",
+    "build": "npm run build:css && npm run build:js",
+    "build:css": "cat src/scss/ferzui.scss > dist/ferzui.css",
+    "build:js": "cat src/js/*.js > dist/ferzui.js",
+    "build:min": "npm run build && npm run minify",
+    "minify": "echo 'CSS minification would go here'",
+    "prepublishOnly": "npm run build",
     "dev": "python3 -m http.server 3000 --directory .",
     "docs": "python3 -m http.server 8080 --directory docs",
-    "demo": "python3 -m http.server 3000 --directory ."
+    "demo": "python3 -m http.server 3000 --directory .",
+    "test": "echo 'Tests would go here'",
+    "lint": "echo 'Linting would go here'"
   },
   "keywords": [
     "css",

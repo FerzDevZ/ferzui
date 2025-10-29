@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entertainment Components - ferzui</title>
+  <meta name="description" content="Music player, video gallery, games, streaming, dan social media components untuk ferzui framework">
+  <link rel="stylesheet" href="../dist/ferzui.css">
+  <link rel="stylesheet" href="assets/docs.css">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+<body>
+  <div id="docs-container">
+    <div class="docs-navbar">
+      <div class="container">
+        <a class="docs-brand" href="../index.html"><span class="dot"></span> ferzui</a>
+        <nav class="d-none d-lg-flex gap-4">
+          <a class="nav-link" href="index.html">Docs</a>
+          <a class="nav-link" href="../demo/index.html">Demo</a>
+          <a class="nav-link" href="theme.html">Theme</a>
+          <a class="nav-link" href="migrate.html">Migrate</a>
+          <a class="nav-link" href="templates/dashboard.html">Templates</a>
+          <a class="nav-link" href="playground.html">Playground</a>
+        </nav>
+        <div class="docs-actions">
+          <button class="btn btn-outline" id="theme-light">Light</button>
+          <button class="btn btn-outline" id="theme-dark">Dark</button>
+          <button class="btn btn-outline" id="theme-contrast">HC</button>
+          <button class="btn btn-outline" id="toggle-high-contrast">High Contrast</button>
+          <button class="btn btn-outline" id="toggle-rtl">RTL</button>
+          <button class="btn btn-outline" id="mobile-menu-toggle">☰</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="docs-layout">
+      <div class="docs-sidebar" id="sidebar">
+        <div class="docs-sidebar-content">
+          <div class="docs-search">
+            <input type="text" id="search-input" placeholder="Search components..." class="form-control">
+            <div id="search-results" class="search-results"></div>
+          </div>
+          <nav id="sidebarNav" class="docs-nav">
+            <!-- Navigation will be injected by JavaScript -->
+          </nav>
+        </div>
+      </div>
+
+      <main class="docs-main">
+        <div class="docs-content">
+          <div class="docs-header">
+            <h1>Entertainment Components</h1>
+            <p class="docs-lead">Komponen untuk music player, video gallery, games, streaming, dan social media yang menarik.</p>
+          </div>
+
+          <div class="docs-section">
+            <h2 id="music-player">Music Player</h2>
+            <p>Music player yang lengkap dengan controls, playlist, dan visual feedback.</p>
+            
+            <div class="docs-example">
+              <div class="music-player">
+                <div class="music-player-header">
+                  <div class="music-cover">🎵</div>
+                  <div class="music-info">
+                    <h4>Amazing Song</h4>
+                    <p class="music-artist">Amazing Artist</p>
+                  </div>
+                </div>
+                
+                <div class="music-player-body">
+                  <div class="music-progress">
+                    <div class="music-progress-bar">
+                      <div class="music-progress-fill" style="width: 60%;"></div>
+                    </div>
+                    <div class="music-time">
+                      <span>2:30</span>
+                      <span>4:15</span>
+                    </div>
+                  </div>
+                  
+                  <div class="music-controls">
+                    <button class="music-control-btn">⏮</button>
+                    <button class="music-control-btn primary">▶</button>
+                    <button class="music-control-btn">⏭</button>
+                  </div>
+                  
+                  <div class="music-volume">
+                    <span>🔊</span>
+                    <input type="range" class="music-volume-slider" min="0" max="100" value="70">
+                  </div>
+                  
+                  <div class="music-playlist">
+                    <div class="music-playlist-item active">
+                      <div class="music-playlist-cover">🎵</div>
+                      <div class="music-playlist-info">
+                        <h6>Amazing Song</h6>
+                        <p>Amazing Artist</p>
+                      </div>
+                      <div class="music-playlist-duration">4:15</div>
+                    </div>
+                    
+                    <div class="music-playlist-item">
+                      <div class="music-playlist-cover">🎶</div>
+                      <div class="music-playlist-info">
+                        <h6>Beautiful Melody</h6>
+                        <p>Beautiful Singer</p>
+                      </div>
+                      <div class="music-playlist-duration">3:45</div>
+                    </div>
+                    
+                    <div class="music-playlist-item">
+                      <div class="music-playlist-cover">🎼</div>
+                      <div class="music-playlist-info">
+                        <h6>Epic Symphony</h6>
+                        <p>Epic Orchestra</p>
+                      </div>
+                      <div class="music-playlist-duration">5:20</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-code">
+              <pre><code>&lt;div class="music-player"&gt;
+  &lt;div class="music-player-header"&gt;
+    &lt;div class="music-cover"&gt;🎵&lt;/div&gt;
+    &lt;div class="music-info"&gt;
+      &lt;h4&gt;Amazing Song&lt;/h4&gt;
+      &lt;p class="music-artist"&gt;Amazing Artist&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="music-player-body"&gt;
+    &lt;div class="music-progress"&gt;
+      &lt;div class="music-progress-bar"&gt;
+        &lt;div class="music-progress-fill" style="width: 60%;"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="music-time"&gt;
+        &lt;span&gt;2:30&lt;/span&gt;
+        &lt;span&gt;4:15&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="music-controls"&gt;
+      &lt;button class="music-control-btn"&gt;⏮&lt;/button&gt;
+      &lt;button class="music-control-btn primary"&gt;▶&lt;/button&gt;
+      &lt;button class="music-control-btn"&gt;⏭&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+
+          <div class="docs-section">
+            <h2 id="video-gallery">Video Gallery</h2>
+            <p>Gallery video dengan thumbnail, play button, dan metadata.</p>
+            
+            <div class="docs-example">
+              <div class="video-gallery">
+                <div class="video-card">
+                  <div class="video-thumbnail">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmOWZmIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzMzMzMzMyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkF3ZXNvbWUgVmlkZW88L3RleHQ+PC9zdmc+" alt="Video thumbnail">
+                    <div class="video-play-btn">▶</div>
+                    <div class="video-duration">5:30</div>
+                  </div>
+                  <div class="video-info">
+                    <h4 class="video-title">Amazing Video Tutorial</h4>
+                    <div class="video-meta">
+                      <div class="video-channel">
+                        <div class="video-channel-avatar">JD</div>
+                        <span>John Doe</span>
+                      </div>
+                      <div class="video-stats">
+                        <span class="video-views">1.2K views</span>
+                        <span class="video-likes">45 likes</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="video-card">
+                  <div class="video-thumbnail">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmOWZmIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzMzMzMzMyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkNvb2wgVmlkZW88L3RleHQ+PC9zdmc+" alt="Video thumbnail">
+                    <div class="video-play-btn">▶</div>
+                    <div class="video-duration">3:15</div>
+                  </div>
+                  <div class="video-info">
+                    <h4 class="video-title">Cool Video Content</h4>
+                    <div class="video-meta">
+                      <div class="video-channel">
+                        <div class="video-channel-avatar">JS</div>
+                        <span>Jane Smith</span>
+                      </div>
+                      <div class="video-stats">
+                        <span class="video-views">856 views</span>
+                        <span class="video-likes">32 likes</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-code">
+              <pre><code>&lt;div class="video-gallery"&gt;
+  &lt;div class="video-card"&gt;
+    &lt;div class="video-thumbnail"&gt;
+      &lt;img src="thumbnail.jpg" alt="Video thumbnail"&gt;
+      &lt;div class="video-play-btn"&gt;▶&lt;/div&gt;
+      &lt;div class="video-duration"&gt;5:30&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="video-info"&gt;
+      &lt;h4 class="video-title"&gt;Amazing Video Tutorial&lt;/h4&gt;
+      &lt;div class="video-meta"&gt;
+        &lt;div class="video-channel"&gt;
+          &lt;div class="video-channel-avatar"&gt;JD&lt;/div&gt;
+          &lt;span&gt;John Doe&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="video-stats"&gt;
+          &lt;span class="video-views"&gt;1.2K views&lt;/span&gt;
+          &lt;span class="video-likes"&gt;45 likes&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+
+          <div class="docs-section">
+            <h2 id="games">Game Components</h2>
+            <p>Komponen untuk berbagai jenis game yang interaktif.</p>
+            
+            <div class="docs-example">
+              <div class="game-container">
+                <h3 class="game-title">Tic Tac Toe</h3>
+                <div class="game-board">
+                  <div class="game-cell x">X</div>
+                  <div class="game-cell o">O</div>
+                  <div class="game-cell"></div>
+                  <div class="game-cell o">O</div>
+                  <div class="game-cell x">X</div>
+                  <div class="game-cell"></div>
+                  <div class="game-cell"></div>
+                  <div class="game-cell"></div>
+                  <div class="game-cell"></div>
+                </div>
+                <div class="game-status">Player X's turn</div>
+                <div class="game-controls">
+                  <button class="game-btn primary">New Game</button>
+                  <button class="game-btn secondary">Reset</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-code">
+              <pre><code>&lt;div class="game-container"&gt;
+  &lt;h3 class="game-title"&gt;Tic Tac Toe&lt;/h3&gt;
+  &lt;div class="game-board"&gt;
+    &lt;div class="game-cell x"&gt;X&lt;/div&gt;
+    &lt;div class="game-cell o"&gt;O&lt;/div&gt;
+    &lt;div class="game-cell"&gt;&lt;/div&gt;
+    &lt;!-- More cells --&gt;
+  &lt;/div&gt;
+  &lt;div class="game-status"&gt;Player X's turn&lt;/div&gt;
+  &lt;div class="game-controls"&gt;
+    &lt;button class="game-btn primary"&gt;New Game&lt;/button&gt;
+    &lt;button class="game-btn secondary"&gt;Reset&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+
+          <div class="docs-section">
+            <h2 id="memory-game">Memory Game</h2>
+            <p>Game memori dengan kartu yang dapat dibalik.</p>
+            
+            <div class="docs-example">
+              <div class="memory-game">
+                <div class="memory-card flipped">
+                  <div class="memory-card-front">🎵</div>
+                  <div class="memory-card-back"></div>
+                </div>
+                <div class="memory-card">
+                  <div class="memory-card-front">🎶</div>
+                  <div class="memory-card-back"></div>
+                </div>
+                <div class="memory-card matched">
+                  <div class="memory-card-front">🎼</div>
+                  <div class="memory-card-back"></div>
+                </div>
+                <div class="memory-card matched">
+                  <div class="memory-card-front">🎼</div>
+                  <div class="memory-card-back"></div>
+                </div>
+                <div class="memory-card">
+                  <div class="memory-card-front">🎵</div>
+                  <div class="memory-card-back"></div>
+                </div>
+                <div class="memory-card">
+                  <div class="memory-card-front">🎶</div>
+                  <div class="memory-card-back"></div>
+                </div>
+                <div class="memory-card">
+                  <div class="memory-card-front">🎤</div>
+                  <div class="memory-card-back"></div>
+                </div>
+                <div class="memory-card">
+                  <div class="memory-card-front">🎤</div>
+                  <div class="memory-card-back"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-code">
+              <pre><code>&lt;div class="memory-game"&gt;
+  &lt;div class="memory-card flipped"&gt;
+    &lt;div class="memory-card-front"&gt;🎵&lt;/div&gt;
+    &lt;div class="memory-card-back"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="memory-card matched"&gt;
+    &lt;div class="memory-card-front"&gt;🎼&lt;/div&gt;
+    &lt;div class="memory-card-back"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;!-- More cards --&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+
+          <div class="docs-section">
+            <h2 id="snake-game">Snake Game</h2>
+            <p>Game snake klasik dengan score tracking.</p>
+            
+            <div class="docs-example">
+              <div class="snake-game">
+                <div class="snake-board">
+                  <div class="snake-segment" style="top: 20px; left: 20px;"></div>
+                  <div class="snake-segment" style="top: 20px; left: 40px;"></div>
+                  <div class="snake-segment" style="top: 20px; left: 60px;"></div>
+                  <div class="snake-food" style="top: 100px; left: 200px;"></div>
+                </div>
+                <div class="snake-score">Score: 150</div>
+              </div>
+            </div>
+
+            <div class="docs-code">
+              <pre><code>&lt;div class="snake-game"&gt;
+  &lt;div class="snake-board"&gt;
+    &lt;div class="snake-segment" style="top: 20px; left: 20px;"&gt;&lt;/div&gt;
+    &lt;div class="snake-segment" style="top: 20px; left: 40px;"&gt;&lt;/div&gt;
+    &lt;div class="snake-food" style="top: 100px; left: 200px;"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="snake-score"&gt;Score: 150&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+
+          <div class="docs-section">
+            <h2 id="social-media">Social Media Components</h2>
+            <p>Komponen untuk social media posts dengan interactions.</p>
+            
+            <div class="docs-example">
+              <div class="social-post">
+                <div class="social-post-header">
+                  <div class="social-avatar">JD</div>
+                  <div class="social-user-info">
+                    <h5>John Doe</h5>
+                    <p>2 hours ago</p>
+                  </div>
+                </div>
+                
+                <div class="social-post-content">
+                  Just finished building an amazing UI framework! 🚀 The new components look incredible and the user experience is top-notch. Can't wait to share it with the community!
+                </div>
+                
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmOWZmIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNiIgZmlsbD0iIzMzMzMzMyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkZyYW1ld29yayBTY3JlZW5zaG90PC90ZXh0Pjwvc3ZnPg==" class="social-post-image" alt="Framework screenshot">
+                
+                <div class="social-post-actions">
+                  <button class="social-action liked">
+                    <span class="social-action-icon">❤️</span>
+                    <span>42</span>
+                  </button>
+                  <button class="social-action">
+                    <span class="social-action-icon">💬</span>
+                    <span>8</span>
+                  </button>
+                  <button class="social-action">
+                    <span class="social-action-icon">🔄</span>
+                    <span>3</span>
+                  </button>
+                  <button class="social-action">
+                    <span class="social-action-icon">📤</span>
+                    <span>Share</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-code">
+              <pre><code>&lt;div class="social-post"&gt;
+  &lt;div class="social-post-header"&gt;
+    &lt;div class="social-avatar"&gt;JD&lt;/div&gt;
+    &lt;div class="social-user-info"&gt;
+      &lt;h5&gt;John Doe&lt;/h5&gt;
+      &lt;p&gt;2 hours ago&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="social-post-content"&gt;
+    Just finished building an amazing UI framework! 🚀
+  &lt;/div&gt;
+  
+  &lt;img src="image.jpg" class="social-post-image" alt="Post image"&gt;
+  
+  &lt;div class="social-post-actions"&gt;
+    &lt;button class="social-action liked"&gt;
+      &lt;span class="social-action-icon"&gt;❤️&lt;/span&gt;
+      &lt;span&gt;42&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;button class="social-action"&gt;
+      &lt;span class="social-action-icon"&gt;💬&lt;/span&gt;
+      &lt;span&gt;8&lt;/span&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+
+          <div class="docs-section">
+            <h2 id="streaming">Streaming Components</h2>
+            <p>Komponen untuk live streaming dengan chat dan viewer count.</p>
+            
+            <div class="docs-example">
+              <div class="stream-player">
+                <video class="stream-video" autoplay muted>
+                  <source src="data:video/mp4;base64," type="video/mp4">
+                </video>
+                
+                <div class="stream-overlay">
+                  <div class="stream-info">
+                    <h3 class="stream-title">Live Coding Session</h3>
+                    <div class="stream-viewer-count">1,234 viewers</div>
+                  </div>
+                </div>
+                
+                <div class="stream-chat">
+                  <div class="stream-chat-message">
+                    <span class="stream-chat-username">User123:</span>
+                    <span>Amazing work! 👏</span>
+                  </div>
+                  <div class="stream-chat-message">
+                    <span class="stream-chat-username">DevMaster:</span>
+                    <span>Can you explain the CSS Grid part?</span>
+                  </div>
+                  <div class="stream-chat-message">
+                    <span class="stream-chat-username">CoderGirl:</span>
+                    <span>This is so helpful! Thank you! 🙏</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-code">
+              <pre><code>&lt;div class="stream-player"&gt;
+  &lt;video class="stream-video" autoplay muted&gt;&lt;/video&gt;
+  
+  &lt;div class="stream-overlay"&gt;
+    &lt;div class="stream-info"&gt;
+      &lt;h3 class="stream-title"&gt;Live Coding Session&lt;/h3&gt;
+      &lt;div class="stream-viewer-count"&gt;1,234 viewers&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="stream-chat"&gt;
+    &lt;div class="stream-chat-message"&gt;
+      &lt;span class="stream-chat-username"&gt;User123:&lt;/span&gt;
+      &lt;span&gt;Amazing work! 👏&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../dist/ferzui.js"></script>
+  <script src="assets/docs.js"></script>
+</body>
+</html>

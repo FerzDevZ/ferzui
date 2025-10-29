@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Communication Components - ferzui</title>
+  <meta name="description" content="Chat, messaging, notifications, video call, dan voice chat components untuk ferzui framework">
+  <link rel="stylesheet" href="../dist/ferzui.css">
+  <link rel="stylesheet" href="assets/docs.css">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+<body>
+  <div id="docs-container">
+    <div class="docs-navbar">
+      <div class="container">
+        <a class="docs-brand" href="../index.html"><span class="dot"></span> ferzui</a>
+        <nav class="d-none d-lg-flex gap-4">
+          <a class="nav-link" href="index.html">Docs</a>
+          <a class="nav-link" href="../demo/index.html">Demo</a>
+          <a class="nav-link" href="theme.html">Theme</a>
+          <a class="nav-link" href="migrate.html">Migrate</a>
+          <a class="nav-link" href="templates/dashboard.html">Templates</a>
+          <a class="nav-link" href="playground.html">Playground</a>
+        </nav>
+        <div class="docs-actions">
+          <button class="btn btn-outline" id="theme-light">Light</button>
+          <button class="btn btn-outline" id="theme-dark">Dark</button>
+          <button class="btn btn-outline" id="theme-contrast">HC</button>
+          <button class="btn btn-outline" id="toggle-high-contrast">High Contrast</button>
+          <button class="btn btn-outline" id="toggle-rtl">RTL</button>
+          <button class="btn btn-outline" id="mobile-menu-toggle">☰</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="docs-layout">
+      <div class="docs-sidebar" id="sidebar">
+        <div class="docs-sidebar-content">
+          <div class="docs-search">
+            <input type="text" id="search-input" placeholder="Search components..." class="form-control">
+            <div id="search-results" class="search-results"></div>
+          </div>
+          <nav id="sidebarNav" class="docs-nav">
+            <!-- Navigation will be injected by JavaScript -->
+          </nav>
+        </div>
+      </div>
+
+      <main class="docs-main">
+        <div class="docs-content">
+          <div class="docs-header">
+            <h1>Communication Components</h1>
+            <p class="docs-lead">Komponen untuk chat, messaging, notifications, video call, dan voice chat yang siap pakai.</p>
+          </div>
+
+          <div class="docs-section">
+            <h2 id="chat-interface">Chat Interface</h2>
+            <p>Komponen chat yang lengkap dengan header, messages, dan input field.</p>
+            
+            <div class="docs-example">
+              <div class="chat-container">
+                <div class="chat-header">
+                  <div class="chat-avatar">JD</div>
+                  <div class="chat-info">
+                    <h4>John Doe</h4>
+                    <div class="chat-status online">Online</div>
+                  </div>
+                </div>
+                
+                <div class="chat-messages">
+                  <div class="chat-message">
+                    <div class="chat-message-avatar">JD</div>
+                    <div class="chat-message-content">
+                      <p class="chat-message-text">Halo! Bagaimana kabar Anda hari ini?</p>
+                      <div class="chat-message-time">10:30 AM</div>
+                    </div>
+                  </div>
+                  
+                  <div class="chat-message own">
+                    <div class="chat-message-avatar">ME</div>
+                    <div class="chat-message-content">
+                      <p class="chat-message-text">Baik sekali! Terima kasih sudah bertanya. Bagaimana dengan Anda?</p>
+                      <div class="chat-message-time">10:32 AM</div>
+                      <div class="message-status">
+                        <div class="message-status-icon read"></div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="chat-message">
+                    <div class="chat-message-avatar">JD</div>
+                    <div class="chat-message-content">
+                      <p class="chat-message-text">Saya juga baik. Ada yang bisa saya bantu?</p>
+                      <div class="chat-message-time">10:35 AM</div>
+                    </div>
+                  </div>
+                  
+                  <div class="chat-typing">
+                    <div class="chat-typing-dots">
+                      <div class="chat-typing-dot"></div>
+                      <div class="chat-typing-dot"></div>
+                      <div class="chat-typing-dot"></div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="chat-input">
+                  <textarea class="chat-input-field" placeholder="Ketik pesan..."></textarea>
+                  <button class="chat-send-btn">📤</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-code">
+              <pre><code>&lt;div class="chat-container"&gt;
+  &lt;div class="chat-header"&gt;
+    &lt;div class="chat-avatar"&gt;JD&lt;/div&gt;
+    &lt;div class="chat-info"&gt;
+      &lt;h4&gt;John Doe&lt;/h4&gt;
+      &lt;div class="chat-status online"&gt;Online&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="chat-messages"&gt;
+    &lt;div class="chat-message"&gt;
+      &lt;div class="chat-message-avatar"&gt;JD&lt;/div&gt;
+      &lt;div class="chat-message-content"&gt;
+        &lt;p class="chat-message-text"&gt;Halo! Bagaimana kabar Anda hari ini?&lt;/p&gt;
+        &lt;div class="chat-message-time"&gt;10:30 AM&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="chat-message own"&gt;
+      &lt;div class="chat-message-avatar"&gt;ME&lt;/div&gt;
+      &lt;div class="chat-message-content"&gt;
+        &lt;p class="chat-message-text"&gt;Baik sekali! Terima kasih sudah bertanya.&lt;/p&gt;
+        &lt;div class="chat-message-time"&gt;10:32 AM&lt;/div&gt;
+        &lt;div class="message-status"&gt;
+          &lt;div class="message-status-icon read"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="chat-input"&gt;
+    &lt;textarea class="chat-input-field" placeholder="Ketik pesan..."&gt;&lt;/textarea&gt;
+    &lt;button class="chat-send-btn"&gt;📤&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+
+          <div class="docs-section">
+            <h2 id="video-call">Video Call Interface</h2>
+            <p>Komponen untuk video call dengan controls dan participant management.</p>
+            
+            <div class="docs-example">
+              <div class="video-call">
+                <video class="video-main" autoplay muted>
+                  <source src="data:video/mp4;base64," type="video/mp4">
+                </video>
+                
+                <div class="video-participants">
+                  <div class="video-participant">
+                    <video autoplay muted>
+                      <source src="data:video/mp4;base64," type="video/mp4">
+                    </video>
+                  </div>
+                  <div class="video-participant">
+                    <video autoplay muted>
+                      <source src="data:video/mp4;base64," type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+                
+                <div class="video-controls">
+                  <button class="video-control-btn mute">🔇</button>
+                  <button class="video-control-btn video-on">📹</button>
+                  <button class="video-control-btn end-call">📞</button>
+                </div>
+                
+                <div class="stream-overlay">
+                  <div class="stream-info">
+                    <h3 class="stream-title">Meeting Room</h3>
+                    <div class="stream-viewer-count">3 participants</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-code">
+              <pre><code>&lt;div class="video-call"&gt;
+  &lt;video class="video-main" autoplay muted&gt;&lt;/video&gt;
+  
+  &lt;div class="video-participants"&gt;
+    &lt;div class="video-participant"&gt;
+      &lt;video autoplay muted&gt;&lt;/video&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="video-controls"&gt;
+    &lt;button class="video-control-btn mute"&gt;🔇&lt;/button&gt;
+    &lt;button class="video-control-btn video-on"&gt;📹&lt;/button&gt;
+    &lt;button class="video-control-btn end-call"&gt;📞&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+
+          <div class="docs-section">
+            <h2 id="voice-chat">Voice Chat</h2>
+            <p>Komponen untuk voice chat dengan visual feedback dan controls.</p>
+            
+            <div class="docs-example">
+              <div class="voice-chat">
+                <div class="voice-avatar speaking">JD</div>
+                <div class="voice-info">
+                  <h3>John Doe</h3>
+                  <div class="voice-status">Speaking...</div>
+                </div>
+                <div class="voice-controls">
+                  <button class="voice-control-btn mute">🔇</button>
+                  <button class="voice-control-btn end-call">📞</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-code">
+              <pre><code>&lt;div class="voice-chat"&gt;
+  &lt;div class="voice-avatar speaking"&gt;JD&lt;/div&gt;
+  &lt;div class="voice-info"&gt;
+    &lt;h3&gt;John Doe&lt;/h3&gt;
+    &lt;div class="voice-status"&gt;Speaking...&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="voice-controls"&gt;
+    &lt;button class="voice-control-btn mute"&gt;🔇&lt;/button&gt;
+    &lt;button class="voice-control-btn end-call"&gt;📞&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+
+          <div class="docs-section">
+            <h2 id="notification-center">Notification Center</h2>
+            <p>Pusat notifikasi dengan berbagai jenis pesan dan status.</p>
+            
+            <div class="docs-example">
+              <div class="notification-center">
+                <div class="notification-header">
+                  <h3 class="notification-title">Notifications</h3>
+                  <button class="notification-clear">Clear all</button>
+                </div>
+                
+                <div class="notification-list">
+                  <div class="notification-item unread">
+                    <div class="notification-icon success">✓</div>
+                    <div class="notification-content">
+                      <h5>Payment Successful</h5>
+                      <p>Your payment of $99.00 has been processed successfully.</p>
+                      <div class="notification-time">2 minutes ago</div>
+                    </div>
+                  </div>
+                  
+                  <div class="notification-item">
+                    <div class="notification-icon info">ℹ</div>
+                    <div class="notification-content">
+                      <h5>New Message</h5>
+                      <p>You have received a new message from John Doe.</p>
+                      <div class="notification-time">5 minutes ago</div>
+                    </div>
+                  </div>
+                  
+                  <div class="notification-item">
+                    <div class="notification-icon warning">⚠</div>
+                    <div class="notification-content">
+                      <h5>Low Storage</h5>
+                      <p>Your storage is running low. Consider upgrading your plan.</p>
+                      <div class="notification-time">1 hour ago</div>
+                    </div>
+                  </div>
+                  
+                  <div class="notification-item">
+                    <div class="notification-icon error">✕</div>
+                    <div class="notification-content">
+                      <h5>Connection Failed</h5>
+                      <p>Unable to connect to the server. Please check your internet connection.</p>
+                      <div class="notification-time">2 hours ago</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-code">
+              <pre><code>&lt;div class="notification-center"&gt;
+  &lt;div class="notification-header"&gt;
+    &lt;h3 class="notification-title"&gt;Notifications&lt;/h3&gt;
+    &lt;button class="notification-clear"&gt;Clear all&lt;/button&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="notification-list"&gt;
+    &lt;div class="notification-item unread"&gt;
+      &lt;div class="notification-icon success"&gt;✓&lt;/div&gt;
+      &lt;div class="notification-content"&gt;
+        &lt;h5&gt;Payment Successful&lt;/h5&gt;
+        &lt;p&gt;Your payment has been processed successfully.&lt;/p&gt;
+        &lt;div class="notification-time"&gt;2 minutes ago&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+
+          <div class="docs-section">
+            <h2 id="message-types">Message Types</h2>
+            <p>Berbagai jenis pesan yang dapat ditampilkan dalam chat.</p>
+            
+            <div class="docs-example">
+              <div class="chat-container" style="height: 300px;">
+                <div class="chat-messages">
+                  <div class="chat-message">
+                    <div class="chat-message-avatar">JD</div>
+                    <div class="chat-message-content">
+                      <p class="chat-message-text">Check out this image!</p>
+                      <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmOWZmIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzMzMzMzMyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlPC90ZXh0Pjwvc3ZnPg==" class="chat-message-image" alt="Sample image">
+                      <div class="chat-message-time">10:30 AM</div>
+                    </div>
+                  </div>
+                  
+                  <div class="chat-message own">
+                    <div class="chat-message-avatar">ME</div>
+                    <div class="chat-message-content">
+                      <p class="chat-message-text">Here's a file for you</p>
+                      <div class="chat-message-file">
+                        <div class="chat-message-file-icon">📄</div>
+                        <div class="chat-message-file-info">
+                          <h5>document.pdf</h5>
+                          <p>2.4 MB</p>
+                        </div>
+                      </div>
+                      <div class="chat-message-time">10:32 AM</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-code">
+              <pre><code>&lt;!-- Image Message --&gt;
+&lt;div class="chat-message"&gt;
+  &lt;div class="chat-message-content"&gt;
+    &lt;p class="chat-message-text"&gt;Check out this image!&lt;/p&gt;
+    &lt;img src="image.jpg" class="chat-message-image" alt="Image"&gt;
+    &lt;div class="chat-message-time"&gt;10:30 AM&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- File Message --&gt;
+&lt;div class="chat-message"&gt;
+  &lt;div class="chat-message-content"&gt;
+    &lt;p class="chat-message-text"&gt;Here's a file for you&lt;/p&gt;
+    &lt;div class="chat-message-file"&gt;
+      &lt;div class="chat-message-file-icon"&gt;📄&lt;/div&gt;
+      &lt;div class="chat-message-file-info"&gt;
+        &lt;h5&gt;document.pdf&lt;/h5&gt;
+        &lt;p&gt;2.4 MB&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="chat-message-time"&gt;10:32 AM&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+
+          <div class="docs-section">
+            <h2 id="themes">Chat Themes</h2>
+            <p>Berbagai tema untuk chat interface.</p>
+            
+            <div class="docs-example">
+              <div class="chat-container theme-dark">
+                <div class="chat-header">
+                  <div class="chat-avatar">JD</div>
+                  <div class="chat-info">
+                    <h4>John Doe</h4>
+                    <div class="chat-status online">Online</div>
+                  </div>
+                </div>
+                
+                <div class="chat-messages">
+                  <div class="chat-message">
+                    <div class="chat-message-avatar">JD</div>
+                    <div class="chat-message-content">
+                      <p class="chat-message-text">Dark theme looks great!</p>
+                      <div class="chat-message-time">10:30 AM</div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="chat-input">
+                  <textarea class="chat-input-field" placeholder="Ketik pesan..."></textarea>
+                  <button class="chat-send-btn">📤</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="docs-code">
+              <pre><code>&lt;div class="chat-container theme-dark"&gt;
+  &lt;!-- Chat content --&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../dist/ferzui.js"></script>
+  <script src="assets/docs.js"></script>
+</body>
+</html>
