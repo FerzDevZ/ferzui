@@ -29,6 +29,10 @@
       outline: 2px solid #fff;
       outline-offset: 2px;
     }
+
+    /* Rating demo */
+    .rating .star { cursor: pointer; font-size: 1.25rem; color: var(--fz-c-gray-400); }
+    .rating .star.active { color: var(--fz-c-warning-500); }
     /* Fallback CSS untuk memastikan styling tetap ada */
     :root {
       --fz-c-primary-500: #3b82f6;
@@ -1274,6 +1278,10 @@
               <div class="step is-current"><span class="step-index">2</span> Payment</div>
               <div class="step"><span class="step-index">3</span> Review</div>
             </div>
+            <div style="margin-top:.75rem;display:flex;gap:.5rem">
+              <button class="btn btn-outline btn-sm" onclick="stepperPrev()">Prev</button>
+              <button class="btn btn-primary btn-sm" onclick="stepperNext()">Next</button>
+            </div>
           </div>
         </div>
 
@@ -1684,6 +1692,23 @@
       const star = e.target.closest('.star'); if(!star) return; const stars=[...e.currentTarget.querySelectorAll('.star')];
       const idx = stars.indexOf(star); stars.forEach((s,i)=> s.classList.toggle('active', i<=idx));
     });
+
+    // Stepper controls
+    function stepperUpdate(index){
+      const steps = document.querySelectorAll('.stepper.stepper-horizontal .step');
+      steps.forEach((s,i)=>{
+        s.classList.remove('is-current','is-completed');
+        if(i < index) s.classList.add('is-completed');
+        if(i === index) s.classList.add('is-current');
+      });
+    }
+    function stepperCurrent(){
+      const steps = document.querySelectorAll('.stepper.stepper-horizontal .step');
+      let curr = 0; steps.forEach((s,i)=>{ if(s.classList.contains('is-current')) curr = i; });
+      return curr;
+    }
+    function stepperNext(){ const idx = Math.min(stepperCurrent()+1, 2); stepperUpdate(idx); }
+    function stepperPrev(){ const idx = Math.max(stepperCurrent()-1, 0); stepperUpdate(idx); }
 
     // Sortable table
     (function(){
