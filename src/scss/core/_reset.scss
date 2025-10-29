@@ -1,0 +1,389 @@
+// ferzui Design System - Modern Reset
+// Based on modern CSS reset principles with accessibility in mind
+
+// =============================================================================
+// MODERN CSS RESET
+// =============================================================================
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  line-height: line-height('normal');
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  font-family: $font-sans;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  font-variation-settings: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: theme-color('bg');
+  color: theme-color('text');
+  font-size: font-size('base');
+  font-weight: font-weight('normal');
+  line-height: line-height('normal');
+  letter-spacing: letter-spacing('normal');
+  min-height: 100vh;
+  scroll-behavior: smooth;
+}
+
+// =============================================================================
+// MEDIA ELEMENTS
+// =============================================================================
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+img {
+  border-style: none;
+}
+
+svg {
+  fill: currentColor;
+}
+
+// =============================================================================
+// FORM ELEMENTS
+// =============================================================================
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+button,
+input {
+  overflow: visible;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+
+legend {
+  box-sizing: border-box;
+  color: inherit;
+  display: table;
+  max-width: 100%;
+  padding: 0;
+  white-space: normal;
+}
+
+progress {
+  vertical-align: baseline;
+}
+
+textarea {
+  overflow: auto;
+  resize: vertical;
+}
+
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+[type="search"] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+}
+
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
+}
+
+// =============================================================================
+// INTERACTIVE ELEMENTS
+// =============================================================================
+
+details {
+  display: block;
+}
+
+summary {
+  display: list-item;
+  cursor: pointer;
+}
+
+template {
+  display: none;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+// =============================================================================
+// ACCESSIBILITY IMPROVEMENTS
+// =============================================================================
+
+// Focus management
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  @include focus-ring;
+}
+
+// Skip link
+.skip-link {
+  @include skip-link;
+}
+
+// Screen reader only
+.sr-only {
+  @include sr-only;
+}
+
+.sr-only-focusable {
+  @include sr-only-focusable;
+}
+
+// =============================================================================
+// REDUCED MOTION SUPPORT
+// =============================================================================
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// =============================================================================
+// HIGH CONTRAST SUPPORT
+// =============================================================================
+
+@media (prefers-contrast: high) {
+  * {
+    border-color: currentColor !important;
+  }
+  
+  button,
+  input,
+  select,
+  textarea {
+    border: 1px solid currentColor;
+  }
+}
+
+// =============================================================================
+// PRINT STYLES
+// =============================================================================
+
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  
+  a[href]::after {
+    content: " (" attr(href) ")";
+  }
+  
+  abbr[title]::after {
+    content: " (" attr(title) ")";
+  }
+  
+  a[href^="#"]::after,
+  a[href^="javascript:"]::after {
+    content: "";
+  }
+  
+  pre {
+    white-space: pre-wrap !important;
+  }
+  
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+  
+  thead {
+    display: table-header-group;
+  }
+  
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+  
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
+
+// =============================================================================
+// THEME VARIABLES
+// =============================================================================
+
+:root {
+  // Apply light theme by default
+  @include theme-colors('light');
+  
+  // Font families
+  --fz-font-sans: #{$font-sans};
+  --fz-font-mono: #{$font-mono};
+  --fz-font-serif: #{$font-serif};
+  
+  // Font sizes (fluid)
+  @each $key, $value in $font-sizes {
+    --fz-font-size-#{$key}: #{$value};
+  }
+  
+  // Font weights
+  @each $key, $value in $font-weights {
+    --fz-font-weight-#{$key}: #{$value};
+  }
+  
+  // Line heights
+  @each $key, $value in $line-heights {
+    --fz-line-height-#{$key}: #{$value};
+  }
+  
+  // Letter spacings
+  @each $key, $value in $letter-spacings {
+    --fz-letter-spacing-#{$key}: #{$value};
+  }
+  
+  // Spacings
+  @each $key, $value in $spacings {
+    --fz-space-#{$key}: #{$value};
+  }
+  
+  // Border radiuses
+  @each $key, $value in $border-radiuses {
+    --fz-radius-#{$key}: #{$value};
+  }
+  
+  // Shadows
+  @each $key, $value in $shadows {
+    --fz-shadow-#{$key}: #{$value};
+  }
+  
+  // Z-indexes
+  @each $key, $value in $z-indexes {
+    --fz-z-#{$key}: #{$value};
+  }
+  
+  // Transitions
+  @each $key, $value in $transitions {
+    --fz-transition-#{$key}: #{$value};
+  }
+  
+  // Durations
+  @each $key, $value in $durations {
+    --fz-duration-#{$key}: #{$value};
+  }
+}
+
+// Dark mode
+@media (prefers-color-scheme: dark) {
+  :root {
+    @include theme-colors('dark');
+  }
+}
+
+[data-theme='dark'] {
+  @include theme-colors('dark');
+}
+
+// High contrast mode
+@media (prefers-contrast: high) {
+  :root {
+    @include theme-colors('high-contrast');
+  }
+}
+
+[data-theme='high-contrast'] {
+  @include theme-colors('high-contrast');
+}

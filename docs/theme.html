@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ferzui Theme Editor</title>
+  <link rel="stylesheet" href="../dist/ferzui.css">
+  <link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+  <script src="assets/docs.js"></script>
+  <section class="docs-main container">
+    <h1 id="theme-editor">Theme Editor</h1>
+    <p class="lead">Ubah design tokens (CSS variables) secara live. Nilai disimpan di browser Anda (localStorage).</p>
+
+    <div class="docs-example">
+      <div class="preview">
+        <form class="grid grid-cols-1 gap-4" id="themeForm" style="max-width:720px">
+          <div class="card">
+            <div class="card-header">Brand Colors</div>
+            <div class="card-body grid grid-cols-2 gap-4">
+              <label class="d-flex flex-col gap-2">
+                <span>Primary 500</span>
+                <input type="color" id="var--fz-c-primary-500" value="#3b82f6">
+              </label>
+              <label class="d-flex flex-col gap-2">
+                <span>Primary 600</span>
+                <input type="color" id="var--fz-c-primary-600" value="#2563eb">
+              </label>
+              <label class="d-flex flex-col gap-2">
+                <span>Success 500</span>
+                <input type="color" id="var--fz-c-success-500" value="#22c55e">
+              </label>
+              <label class="d-flex flex-col gap-2">
+                <span>Danger 500</span>
+                <input type="color" id="var--fz-c-danger-500" value="#ef4444">
+              </label>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">Surface & Text</div>
+            <div class="card-body grid grid-cols-2 gap-4">
+              <label class="d-flex flex-col gap-2">
+                <span>Surface</span>
+                <input type="color" id="var--fz-c-surface" value="#f9fafb">
+              </label>
+              <label class="d-flex flex-col gap-2">
+                <span>Text</span>
+                <input type="color" id="var--fz-c-text" value="#111827">
+              </label>
+              <label class="d-flex flex-col gap-2">
+                <span>Border</span>
+                <input type="color" id="var--fz-c-border" value="#e5e7eb">
+              </label>
+              <label class="d-flex flex-col gap-2">
+                <span>Muted</span>
+                <input type="color" id="var--fz-c-muted" value="#f3f4f6">
+              </label>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">Rounding & Shadows</div>
+            <div class="card-body grid grid-cols-2 gap-4">
+              <label class="d-flex flex-col gap-2">
+                <span>Radius MD</span>
+                <input type="range" min="0" max="32" step="1" id="radius-md" value="12">
+              </label>
+              <label class="d-flex flex-col gap-2">
+                <span>Radius XL</span>
+                <input type="range" min="0" max="48" step="1" id="radius-xl" value="24">
+              </label>
+            </div>
+          </div>
+
+          <div class="d-flex gap-2">
+            <button class="btn btn-primary" type="button" id="saveTheme">Simpan</button>
+            <button class="btn btn-outline" type="button" id="resetTheme">Reset</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <h2 id="preview">Preview</h2>
+    <div class="d-flex gap-3 flex-wrap">
+      <button class="btn btn-primary">Primary</button>
+      <button class="btn btn-success">Success</button>
+      <button class="btn btn-danger">Danger</button>
+      <div class="card" style="min-width:260px">
+        <div class="card-header">Card</div>
+        <div class="card-body">Body</div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function(){
+      const VARS = ['--fz-c-primary-500','--fz-c-primary-600','--fz-c-success-500','--fz-c-danger-500','--fz-c-surface','--fz-c-text','--fz-c-border','--fz-c-muted'];
+      function setVar(name, value){ document.documentElement.style.setProperty(name, value); }
+      function getVar(name){ return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+      function load(){
+        try { const data = JSON.parse(localStorage.getItem('ferzui-theme')||'{}');
+          Object.entries(data.vars||{}).forEach(([k,v])=> setVar(k,v));
+          if(data.radius){ setVar('--fz-radius-md', data.radius.md+'px'); setVar('--fz-radius-xl', data.radius.xl+'px'); }
+        } catch(_) {}
+      }
+      function save(){
+        const data = { vars:{}, radius:{} };
+        VARS.forEach(v=> data.vars[v] = getVar(v));
+        data.radius.md = parseInt(getVar('--fz-radius-md'))||12;
+        data.radius.xl = parseInt(getVar('--fz-radius-xl'))||24;
+        localStorage.setItem('ferzui-theme', JSON.stringify(data));
+      }
+      function reset(){ localStorage.removeItem('ferzui-theme'); location.reload(); }
+
+      load();
+
+      // bind inputs
+      VARS.forEach(v=>{
+        const el = document.getElementById('var-'+v);
+        if(el){ el.value = getVar(v) || el.value; el.addEventListener('input', ()=> setVar(v, el.value)); }
+      });
+      const rmd = document.getElementById('radius-md');
+      const rxl = document.getElementById('radius-xl');
+      if(rmd) rmd.addEventListener('input', ()=> setVar('--fz-radius-md', rmd.value+'px'));
+      if(rxl) rxl.addEventListener('input', ()=> setVar('--fz-radius-xl', rxl.value+'px'));
+
+      document.getElementById('saveTheme').addEventListener('click', save);
+      document.getElementById('resetTheme').addEventListener('click', reset);
+    })();
+  </script>
+</body>
+</html>

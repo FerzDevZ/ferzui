@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ferzui Extended Components Demo</title>
+  <link rel="stylesheet" href="../dist/ferzui.css">
+  <link rel="stylesheet" href="assets/docs.css">
+  <style>
+    /* Import extended components */
+    @import url('../src/scss/components/_extended-components.scss');
+    @import url('../src/scss/utilities/_extended-colors.scss');
+    @import url('../src/scss/utilities/_extended-typography.scss');
+  </style>
+</head>
+<body>
+  <script src="assets/docs.js"></script>
+  <section class="docs-main container">
+    <h1 id="extended-components">Extended Components</h1>
+    <p class="lead">Komponen-komponen lanjutan ferzui untuk aplikasi yang lebih kompleks dan modern.</p>
+
+    <h2 id="data-display">Data Display Components</h2>
+    
+    <h3 id="advanced-table">Advanced Table</h3>
+    <div class="docs-example">
+      <div class="preview">
+        <div class="table-responsive">
+          <table class="table-advanced zebra sticky-header">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>John Doe</td>
+                <td>john@example.com</td>
+                <td>Admin</td>
+                <td><span class="badge badge-success">Active</span></td>
+                <td>
+                  <button class="btn btn-sm btn-outline">Edit</button>
+                  <button class="btn btn-sm btn-danger">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td>Jane Smith</td>
+                <td>jane@example.com</td>
+                <td>User</td>
+                <td><span class="badge badge-warning">Pending</span></td>
+                <td>
+                  <button class="btn btn-sm btn-outline">Edit</button>
+                  <button class="btn btn-sm btn-danger">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td>Bob Johnson</td>
+                <td>bob@example.com</td>
+                <td>Moderator</td>
+                <td><span class="badge badge-success">Active</span></td>
+                <td>
+                  <button class="btn btn-sm btn-outline">Edit</button>
+                  <button class="btn btn-sm btn-danger">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <h3 id="charts">Charts</h3>
+    <div class="docs-example">
+      <div class="preview">
+        <div class="chart-container">
+          <div class="chart-placeholder">
+            📊 Chart Component
+          </div>
+        </div>
+        
+        <div class="chart-bar mt-4">
+          <div class="chart-bar-item" style="height: 60%;"></div>
+          <div class="chart-bar-item" style="height: 80%;"></div>
+          <div class="chart-bar-item" style="height: 40%;"></div>
+          <div class="chart-bar-item" style="height: 90%;"></div>
+          <div class="chart-bar-item" style="height: 70%;"></div>
+        </div>
+      </div>
+    </div>
+
+    <h3 id="timeline">Timeline</h3>
+    <div class="docs-example">
+      <div class="preview">
+        <div class="timeline">
+          <div class="timeline-item completed">
+            <div class="timeline-content">
+              <div class="timeline-date">2024-01-15</div>
+              <div class="timeline-title">Project Started</div>
+              <div class="timeline-description">Initial project setup and planning phase completed.</div>
+            </div>
+          </div>
+          <div class="timeline-item completed">
+            <div class="timeline-content">
+              <div class="timeline-date">2024-02-01</div>
+              <div class="timeline-title">First Milestone</div>
+              <div class="timeline-description">Core features implemented and tested.</div>
+            </div>
+          </div>
+          <div class="timeline-item current">
+            <div class="timeline-content">
+              <div class="timeline-date">2024-02-15</div>
+              <div class="timeline-title">Current Phase</div>
+              <div class="timeline-description">Working on advanced features and optimization.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">2024-03-01</div>
+              <div class="timeline-title">Final Release</div>
+              <div class="timeline-description">Project completion and deployment.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="form-components">Advanced Form Components</h2>
+    
+    <h3 id="date-picker">Date Picker</h3>
+    <div class="docs-example">
+      <div class="preview">
+        <div class="date-picker">
+          <input type="text" class="date-picker-input" placeholder="Select date" readonly>
+          <div class="date-picker-calendar" style="display: none;">
+            <div class="date-picker-header">
+              <button class="date-picker-nav">‹</button>
+              <span>February 2024</span>
+              <button class="date-picker-nav">›</button>
+            </div>
+            <div class="date-picker-grid">
+              <div class="date-picker-day">Su</div>
+              <div class="date-picker-day">Mo</div>
+              <div class="date-picker-day">Tu</div>
+              <div class="date-picker-day">We</div>
+              <div class="date-picker-day">Th</div>
+              <div class="date-picker-day">Fr</div>
+              <div class="date-picker-day">Sa</div>
+              <div class="date-picker-day other-month">28</div>
+              <div class="date-picker-day other-month">29</div>
+              <div class="date-picker-day other-month">30</div>
+              <div class="date-picker-day other-month">31</div>
+              <div class="date-picker-day">1</div>
+              <div class="date-picker-day">2</div>
+              <div class="date-picker-day">3</div>
+              <div class="date-picker-day">4</div>
+              <div class="date-picker-day">5</div>
+              <div class="date-picker-day">6</div>
+              <div class="date-picker-day">7</div>
+              <div class="date-picker-day">8</div>
+              <div class="date-picker-day">9</div>
+              <div class="date-picker-day">10</div>
+              <div class="date-picker-day">11</div>
+              <div class="date-picker-day">12</div>
+              <div class="date-picker-day">13</div>
+              <div class="date-picker-day">14</div>
+              <div class="date-picker-day today">15</div>
+              <div class="date-picker-day">16</div>
+              <div class="date-picker-day">17</div>
+              <div class="date-picker-day">18</div>
+              <div class="date-picker-day">19</div>
+              <div class="date-picker-day">20</div>
+              <div class="date-picker-day">21</div>
+              <div class="date-picker-day">22</div>
+              <div class="date-picker-day">23</div>
+              <div class="date-picker-day">24</div>
+              <div class="date-picker-day">25</div>
+              <div class="date-picker-day">26</div>
+              <div class="date-picker-day">27</div>
+              <div class="date-picker-day">28</div>
+              <div class="date-picker-day">29</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 id="file-upload">File Upload</h3>
+    <div class="docs-example">
+      <div class="preview">
+        <div class="upload">
+          <div class="upload-area">
+            <div class="upload-icon">📁</div>
+            <div class="upload-text">Drop files here or click to upload</div>
+            <div class="upload-hint">Supports: JPG, PNG, PDF, DOC (Max 10MB)</div>
+            <input type="file" class="upload-input" multiple>
+          </div>
+          <div class="upload-list">
+            <div class="upload-item">
+              <div class="upload-icon">📄</div>
+              <div class="upload-item-info">
+                <div class="upload-item-name">document.pdf</div>
+                <div class="upload-item-size">2.4 MB</div>
+                <div class="upload-progress">
+                  <div class="upload-progress-bar" style="width: 75%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 id="advanced-select">Advanced Select</h3>
+    <div class="docs-example">
+      <div class="preview">
+        <div class="select-advanced">
+          <div class="select-trigger">
+            <span>Choose an option</span>
+            <span>▼</span>
+          </div>
+          <div class="select-dropdown" style="display: none;">
+            <div class="select-search">
+              <input type="text" class="select-search-input" placeholder="Search...">
+            </div>
+            <div class="select-option">Option 1</div>
+            <div class="select-option selected">Option 2</div>
+            <div class="select-option">Option 3</div>
+            <div class="select-option disabled">Disabled Option</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="navigation-components">Navigation Components</h2>
+    
+    <h3 id="breadcrumb">Breadcrumb</h3>
+    <div class="docs-example">
+      <div class="preview">
+        <nav class="breadcrumb">
+          <div class="breadcrumb-item">
+            <a href="#" class="breadcrumb-link">Home</a>
+            <span class="breadcrumb-separator">/</span>
+          </div>
+          <div class="breadcrumb-item">
+            <a href="#" class="breadcrumb-link">Products</a>
+            <span class="breadcrumb-separator">/</span>
+          </div>
+          <div class="breadcrumb-item">
+            <span class="breadcrumb-current">Electronics</span>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <h3 id="pagination">Pagination</h3>
+    <div class="docs-example">
+      <div class="preview">
+        <div class="pagination">
+          <a href="#" class="pagination-item disabled">‹</a>
+          <a href="#" class="pagination-item">1</a>
+          <a href="#" class="pagination-item active">2</a>
+          <a href="#" class="pagination-item">3</a>
+          <a href="#" class="pagination-item">4</a>
+          <a href="#" class="pagination-item">5</a>
+          <a href="#" class="pagination-item">›</a>
+        </div>
+        <div class="pagination-info">Showing 11-20 of 100 results</div>
+      </div>
+    </div>
+
+    <h3 id="steps">Steps</h3>
+    <div class="docs-example">
+      <div class="preview">
+        <div class="steps">
+          <div class="step completed">
+            <div class="step-number">1</div>
+            <div class="step-title">Personal Info</div>
+            <div class="step-line"></div>
+          </div>
+          <div class="step completed">
+            <div class="step-number">2</div>
+            <div class="step-title">Contact Info</div>
+            <div class="step-line"></div>
+          </div>
+          <div class="step current">
+            <div class="step-number">3</div>
+            <div class="step-title">Review</div>
+            <div class="step-line"></div>
+          </div>
+          <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-title">Complete</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="feedback-components">Feedback Components</h2>
+    
+    <h3 id="skeleton">Skeleton Loading</h3>
+    <div class="docs-example">
+      <div class="preview">
+        <div class="skeleton-card">
+          <div class="d-flex gap-3">
+            <div class="skeleton-avatar"></div>
+            <div class="flex-1">
+              <div class="skeleton skeleton-text medium"></div>
+              <div class="skeleton skeleton-text short"></div>
+              <div class="skeleton skeleton-text long"></div>
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="skeleton skeleton-button"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 id="spinner">Spinner</h3>
+    <div class="docs-example">
+      <div class="preview">
+        <div class="d-flex gap-4 align-items-center">
+          <div class="spinner sm"></div>
+          <div class="spinner"></div>
+          <div class="spinner lg"></div>
+          <div class="spinner xl"></div>
+        </div>
+      </div>
+    </div>
+
+    <h3 id="empty-state">Empty State</h3>
+    <div class="docs-example">
+      <div class="preview">
+        <div class="empty-state">
+          <div class="empty-state-icon">📭</div>
+          <div class="empty-state-title">No Data Available</div>
+          <div class="empty-state-description">
+            There are no items to display at the moment. Start by adding some content or check back later.
+          </div>
+          <div class="empty-state-actions">
+            <button class="btn btn-primary">Add Item</button>
+            <button class="btn btn-outline">Refresh</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 id="progress">Progress Bar</h3>
+    <div class="docs-example">
+      <div class="preview">
+        <div class="mb-3">
+          <div class="progress">
+            <div class="progress-bar" style="width: 25%;"></div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="progress">
+            <div class="progress-bar success" style="width: 50%;"></div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="progress">
+            <div class="progress-bar warning" style="width: 75%;"></div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="progress">
+            <div class="progress-bar danger" style="width: 90%;"></div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="progress">
+            <div class="progress-bar striped animated" style="width: 60%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="layout-components">Layout Components</h2>
+    
+    <h3 id="space">Space</h3>
+    <div class="docs-example">
+      <div class="preview">
+        <div class="space">
+          <button class="btn btn-primary">Button 1</button>
+          <button class="btn btn-outline">Button 2</button>
+          <button class="btn btn-success">Button 3</button>
+        </div>
+        
+        <div class="space vertical mt-4">
+          <button class="btn btn-primary">Button 1</button>
+          <button class="btn btn-outline">Button 2</button>
+          <button class="btn btn-success">Button 3</button>
+        </div>
+      </div>
+    </div>
+
+    <h3 id="divider">Divider</h3>
+    <div class="docs-example">
+      <div class="preview">
+        <div class="divider"></div>
+        <div class="divider text">OR</div>
+        <div class="divider"></div>
+      </div>
+    </div>
+
+    <h3 id="stack">Stack</h3>
+    <div class="docs-example">
+      <div class="preview">
+        <div class="stack">
+          <div class="card">
+            <div class="card-body">Card 1</div>
+          </div>
+          <div class="card">
+            <div class="card-body">Card 2</div>
+          </div>
+          <div class="card">
+            <div class="card-body">Card 3</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="extended-colors">Extended Color System</h2>
+    <div class="docs-example">
+      <div class="preview">
+        <h4>Primary Colors</h4>
+        <div class="d-flex gap-2 mb-4">
+          <div class="bg-primary-100 p-3 rounded text-primary-700">100</div>
+          <div class="bg-primary-200 p-3 rounded text-primary-700">200</div>
+          <div class="bg-primary-300 p-3 rounded text-primary-700">300</div>
+          <div class="bg-primary-400 p-3 rounded text-white">400</div>
+          <div class="bg-primary-500 p-3 rounded text-white">500</div>
+          <div class="bg-primary-600 p-3 rounded text-white">600</div>
+          <div class="bg-primary-700 p-3 rounded text-white">700</div>
+          <div class="bg-primary-800 p-3 rounded text-white">800</div>
+          <div class="bg-primary-900 p-3 rounded text-white">900</div>
+        </div>
+        
+        <h4>Gradients</h4>
+        <div class="d-flex gap-3 mb-4">
+          <div class="bg-gradient-primary p-4 rounded text-white">Primary</div>
+          <div class="bg-gradient-secondary p-4 rounded text-white">Secondary</div>
+          <div class="bg-gradient-success p-4 rounded text-white">Success</div>
+          <div class="bg-gradient-warning p-4 rounded text-white">Warning</div>
+          <div class="bg-gradient-danger p-4 rounded text-white">Danger</div>
+        </div>
+        
+        <h4>Text Gradients</h4>
+        <div class="mb-4">
+          <h3 class="text-gradient-primary">Primary Gradient Text</h3>
+          <h3 class="text-gradient-secondary">Secondary Gradient Text</h3>
+          <h3 class="text-gradient-rainbow">Rainbow Gradient Text</h3>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="extended-typography">Extended Typography</h2>
+    <div class="docs-example">
+      <div class="preview">
+        <div class="display-1 text-gradient-primary">Display 1</div>
+        <div class="display-2 text-gradient-secondary">Display 2</div>
+        <div class="display-3">Display 3</div>
+        <div class="display-4">Display 4</div>
+        
+        <div class="lead mt-4">
+          This is a lead paragraph that stands out from regular text.
+        </div>
+        
+        <div class="mt-4">
+          <p>Regular paragraph with <strong>bold text</strong> and <em>italic text</em>.</p>
+          <p class="small">Small text for additional information.</p>
+          <p><mark>Highlighted text</mark> for emphasis.</p>
+        </div>
+        
+        <div class="mt-4">
+          <code>console.log('Hello World');</code>
+          <kbd>Ctrl</kbd> + <kbd>C</kbd>
+        </div>
+        
+        <blockquote class="mt-4">
+          "The best way to predict the future is to create it."
+          <footer>Peter Drucker</footer>
+        </blockquote>
+      </div>
+    </div>
+
+    <h2 id="animations">Animation Utilities</h2>
+    <div class="docs-example">
+      <div class="preview">
+        <div class="d-flex gap-4">
+          <div class="card fade-in">
+            <div class="card-body">Fade In</div>
+          </div>
+          <div class="card slide-in-left">
+            <div class="card-body">Slide In Left</div>
+          </div>
+          <div class="card scale-in">
+            <div class="card-body">Scale In</div>
+          </div>
+          <div class="card pulse">
+            <div class="card-body">Pulse</div>
+          </div>
+          <div class="card bounce">
+            <div class="card-body">Bounce</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="next-steps">Langkah Selanjutnya</h2>
+    <div class="d-flex gap-3 flex-wrap">
+      <a href="components.html" class="btn btn-primary">Lihat Komponen Dasar</a>
+      <a href="playground.html" class="btn btn-outline">Coba Playground</a>
+      <a href="performance.html" class="btn btn-outline">Performance & A11y</a>
+    </div>
+  </section>
+</body>
+</html>

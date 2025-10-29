@@ -1,0 +1,467 @@
+// ferzui Design System - Core Variables
+// Modern, accessible, and brandable design tokens
+
+// =============================================================================
+// FONT FAMILIES
+// =============================================================================
+$font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !default;
+$font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, 'Liberation Mono', Menlo, Courier, monospace !default;
+$font-serif: 'Playfair Display', 'Times New Roman', Times, serif !default;
+
+// =============================================================================
+// FLUID TYPOGRAPHY SCALE
+// =============================================================================
+$font-size-base: 1rem !default; // 16px
+$font-size-scale: 1.25 !default; // Major third scale
+
+// Fluid typography using clamp()
+$font-sizes: (
+  xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem),    // 12-14px
+  sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem),      // 14-16px
+  base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem),    // 16-18px
+  lg: clamp(1.125rem, 1rem + 0.625vw, 1.5rem),      // 18-24px
+  xl: clamp(1.25rem, 1.1rem + 0.75vw, 2rem),        // 20-32px
+  2xl: clamp(1.5rem, 1.3rem + 1vw, 2.5rem),         // 24-40px
+  3xl: clamp(1.875rem, 1.5rem + 1.875vw, 3.5rem),   // 30-56px
+  4xl: clamp(2.25rem, 1.8rem + 2.25vw, 4.5rem),     // 36-72px
+  5xl: clamp(3rem, 2.5rem + 2.5vw, 5.5rem),         // 48-88px
+  6xl: clamp(3.75rem, 3rem + 3.75vw, 7.5rem)        // 60-120px
+) !default;
+
+// Font weights
+$font-weights: (
+  thin: 100,
+  extralight: 200,
+  light: 300,
+  normal: 400,
+  medium: 500,
+  semibold: 600,
+  bold: 700,
+  extrabold: 800,
+  black: 900
+) !default;
+
+// Line heights
+$line-heights: (
+  none: 1,
+  tight: 1.25,
+  snug: 1.375,
+  normal: 1.5,
+  relaxed: 1.625,
+  loose: 2
+) !default;
+
+// Letter spacing
+$letter-spacings: (
+  tighter: -0.05em,
+  tight: -0.025em,
+  normal: 0em,
+  wide: 0.025em,
+  wider: 0.05em,
+  widest: 0.1em
+) !default;
+
+// =============================================================================
+// SPACING SCALE (8px base)
+// =============================================================================
+$spacing-base: 0.5rem !default; // 8px
+$spacing-scale: 1.5 !default;
+
+$spacings: (
+  0: 0,
+  px: 1px,
+  0\.5: 0.125rem,  // 2px
+  1: 0.25rem,      // 4px
+  1\.5: 0.375rem,  // 6px
+  2: 0.5rem,       // 8px
+  2\.5: 0.625rem,  // 10px
+  3: 0.75rem,      // 12px
+  3\.5: 0.875rem,  // 14px
+  4: 1rem,         // 16px
+  5: 1.25rem,      // 20px
+  6: 1.5rem,       // 24px
+  7: 1.75rem,      // 28px
+  8: 2rem,         // 32px
+  9: 2.25rem,      // 36px
+  10: 2.5rem,      // 40px
+  11: 2.75rem,     // 44px
+  12: 3rem,        // 48px
+  14: 3.5rem,      // 56px
+  16: 4rem,        // 64px
+  20: 5rem,        // 80px
+  24: 6rem,        // 96px
+  28: 7rem,        // 112px
+  32: 8rem,        // 128px
+  36: 9rem,        // 144px
+  40: 10rem,       // 160px
+  44: 11rem,       // 176px
+  48: 12rem,       // 192px
+  52: 13rem,       // 208px
+  56: 14rem,       // 224px
+  60: 15rem,       // 240px
+  64: 16rem,       // 256px
+  72: 18rem,       // 288px
+  80: 20rem,       // 320px
+  96: 24rem        // 384px
+) !default;
+
+// =============================================================================
+// BORDER RADIUS SCALE
+// =============================================================================
+$border-radius-base: 0.5rem !default;
+
+$border-radiuses: (
+  none: 0,
+  xs: 0.125rem,    // 2px
+  sm: 0.25rem,     // 4px
+  base: 0.375rem,  // 6px
+  md: 0.5rem,      // 8px
+  lg: 0.75rem,     // 12px
+  xl: 1rem,        // 16px
+  2xl: 1.5rem,     // 24px
+  3xl: 2rem,       // 32px
+  full: 9999px
+) !default;
+
+// =============================================================================
+// SHADOW SCALE
+// =============================================================================
+$shadows: (
+  none: none,
+  xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05),
+  sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06),
+  base: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06),
+  md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05),
+  lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04),
+  xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25),
+  2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25),
+  inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06),
+  glow: 0 0 0 1px rgba(59, 130, 246, 0.5), 0 0 20px rgba(59, 130, 246, 0.3)
+) !default;
+
+// =============================================================================
+// BRANDABLE COLOR PALETTE
+// =============================================================================
+
+// Neutral colors (Gray scale)
+$grays: (
+  50: #f9fafb,
+  100: #f3f4f6,
+  200: #e5e7eb,
+  300: #d1d5db,
+  400: #9ca3af,
+  500: #6b7280,
+  600: #4b5563,
+  700: #374151,
+  800: #1f2937,
+  900: #111827,
+  950: #030712
+) !default;
+
+// Primary brand colors
+$primarys: (
+  50: #eff6ff,
+  100: #dbeafe,
+  200: #bfdbfe,
+  300: #93c5fd,
+  400: #60a5fa,
+  500: #3b82f6,
+  600: #2563eb,
+  700: #1d4ed8,
+  800: #1e40af,
+  900: #1e3a8a,
+  950: #172554
+) !default;
+
+// Secondary brand colors
+$secondarys: (
+  50: #f8fafc,
+  100: #f1f5f9,
+  200: #e2e8f0,
+  300: #cbd5e1,
+  400: #94a3b8,
+  500: #64748b,
+  600: #475569,
+  700: #334155,
+  800: #1e293b,
+  900: #0f172a,
+  950: #020617
+) !default;
+
+// Success colors
+$successes: (
+  50: #f0fdf4,
+  100: #dcfce7,
+  200: #bbf7d0,
+  300: #86efac,
+  400: #4ade80,
+  500: #22c55e,
+  600: #16a34a,
+  700: #15803d,
+  800: #166534,
+  900: #14532d,
+  950: #052e16
+) !default;
+
+// Danger colors
+$dangers: (
+  50: #fef2f2,
+  100: #fee2e2,
+  200: #fecaca,
+  300: #fca5a5,
+  400: #f87171,
+  500: #ef4444,
+  600: #dc2626,
+  700: #b91c1c,
+  800: #991b1b,
+  900: #7f1d1d,
+  950: #450a0a
+) !default;
+
+// Warning colors
+$warnings: (
+  50: #fffbeb,
+  100: #fef3c7,
+  200: #fde68a,
+  300: #fcd34d,
+  400: #fbbf24,
+  500: #f59e0b,
+  600: #d97706,
+  700: #b45309,
+  800: #92400e,
+  900: #78350f,
+  950: #451a03
+) !default;
+
+// Info colors
+$infos: (
+  50: #f0f9ff,
+  100: #e0f2fe,
+  200: #bae6fd,
+  300: #7dd3fc,
+  400: #38bdf8,
+  500: #0ea5e9,
+  600: #0284c7,
+  700: #0369a1,
+  800: #075985,
+  900: #0c4a6e,
+  950: #082f49
+) !default;
+
+// =============================================================================
+// SEMANTIC COLOR MAPPING
+// =============================================================================
+$colors: (
+  white: #ffffff,
+  black: #000000,
+  gray: $grays,
+  primary: $primarys,
+  secondary: $secondarys,
+  success: $successes,
+  danger: $dangers,
+  warning: $warnings,
+  info: $infos
+) !default;
+
+// =============================================================================
+// THEME VARIABLES
+// =============================================================================
+$themes: (
+  light: (
+    bg: map-get($grays, 50),
+    surface: #ffffff,
+    surface-elevated: #ffffff,
+    muted: map-get($grays, 100),
+    border: map-get($grays, 200),
+    border-strong: map-get($grays, 300),
+    text: map-get($grays, 900),
+    text-muted: map-get($grays, 600),
+    text-subtle: map-get($grays, 500),
+    primary: map-get($primarys, 500),
+    primary-hover: map-get($primarys, 600),
+    primary-active: map-get($primarys, 700),
+    on-primary: #ffffff,
+    success: map-get($successes, 500),
+    danger: map-get($dangers, 500),
+    warning: map-get($warnings, 500),
+    info: map-get($infos, 500),
+    link: map-get($primarys, 600),
+    link-hover: map-get($primarys, 700),
+    code-bg: map-get($grays, 900),
+    code-text: map-get($grays, 100),
+    code-border: map-get($grays, 700),
+    focus-ring: map-get($primarys, 500)
+  ),
+  dark: (
+    bg: map-get($grays, 900),
+    surface: map-get($grays, 800),
+    surface-elevated: map-get($grays, 800),
+    muted: map-get($grays, 800),
+    border: map-get($grays, 700),
+    border-strong: map-get($grays, 600),
+    text: map-get($grays, 100),
+    text-muted: map-get($grays, 400),
+    text-subtle: map-get($grays, 500),
+    primary: map-get($primarys, 400),
+    primary-hover: map-get($primarys, 300),
+    primary-active: map-get($primarys, 200),
+    on-primary: map-get($grays, 900),
+    success: map-get($successes, 400),
+    danger: map-get($dangers, 400),
+    warning: map-get($warnings, 400),
+    info: map-get($infos, 400),
+    link: map-get($primarys, 400),
+    link-hover: map-get($primarys, 300),
+    code-bg: map-get($grays, 950),
+    code-text: map-get($grays, 200),
+    code-border: map-get($grays, 800),
+    focus-ring: map-get($primarys, 400)
+  ),
+  high-contrast: (
+    bg: #ffffff,
+    surface: #ffffff,
+    surface-elevated: #ffffff,
+    muted: #f0f0f0,
+    border: #000000,
+    border-strong: #000000,
+    text: #000000,
+    text-muted: #333333,
+    text-subtle: #666666,
+    primary: #0000ff,
+    primary-hover: #0000cc,
+    primary-active: #000099,
+    on-primary: #ffffff,
+    success: #008000,
+    danger: #ff0000,
+    warning: #ff8c00,
+    info: #0080ff,
+    link: #0000ff,
+    link-hover: #0000cc,
+    code-bg: #000000,
+    code-text: #ffffff,
+    code-border: #000000,
+    focus-ring: #ff0000
+  )
+) !default;
+
+// =============================================================================
+// BREAKPOINTS
+// =============================================================================
+$breakpoints: (
+  xs: 0,
+  sm: 640px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+  2xl: 1536px
+) !default;
+
+// Container max-widths
+$container-max-widths: (
+  sm: 640px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+  2xl: 1536px
+) !default;
+
+// =============================================================================
+// Z-INDEX SCALE
+// =============================================================================
+$z-indexes: (
+  hide: -1,
+  auto: auto,
+  base: 0,
+  docked: 10,
+  dropdown: 1000,
+  sticky: 1020,
+  fixed: 1030,
+  modal-backdrop: 1040,
+  modal: 1050,
+  popover: 1060,
+  skip-link: 1070,
+  toast: 1080,
+  tooltip: 1090
+) !default;
+
+// =============================================================================
+// TRANSITIONS & ANIMATIONS
+// =============================================================================
+$transitions: (
+  fast: 150ms ease,
+  base: 200ms ease,
+  slow: 300ms ease,
+  bounce: 200ms cubic-bezier(0.68, -0.55, 0.265, 1.55),
+  spring: 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275)
+) !default;
+
+// Animation durations
+$durations: (
+  fast: 150ms,
+  base: 200ms,
+  slow: 300ms,
+  slower: 500ms,
+  slowest: 1000ms
+) !default;
+
+// =============================================================================
+// COMPONENT SPECIFIC VARIABLES
+// =============================================================================
+
+// Button variables
+$btn-padding-y: map-get($spacings, 2\.5) !default;
+$btn-padding-x: map-get($spacings, 4) !default;
+$btn-font-size: 0.875rem !default;
+$btn-line-height: 1.25rem !default;
+$btn-border-radius: map-get($border-radiuses, md) !default;
+$btn-border-width: 1px !default;
+$btn-font-weight: 500 !default;
+
+// Card variables
+$card-border-radius: map-get($border-radiuses, xl) !default;
+$card-border-width: 1px !default;
+$card-padding: map-get($spacings, 6) !default;
+
+// Form variables
+$form-control-padding-y: map-get($spacings, 3) !default;
+$form-control-padding-x: map-get($spacings, 4) !default;
+$form-control-border-radius: map-get($border-radiuses, md) !default;
+$form-control-border-width: 1px !default;
+$form-control-font-size: 0.875rem !default;
+
+// Modal variables
+$modal-backdrop-opacity: 0.5 !default;
+$modal-border-radius: map-get($border-radiuses, 2xl) !default;
+
+// Toast variables
+$toast-max-width: 20rem !default;
+$toast-padding: map-get($spacings, 4) map-get($spacings, 5) !default;
+
+// Tooltip variables
+$tooltip-font-size: 0.75rem !default;
+$tooltip-padding: map-get($spacings, 2) map-get($spacings, 3) !default;
+$tooltip-border-radius: map-get($border-radiuses, md) !default;
+
+// =============================================================================
+// ACCESSIBILITY VARIABLES
+// =============================================================================
+$focus-ring-width: 2px !default;
+$focus-ring-offset: 2px !default;
+$focus-ring-opacity: 0.5 !default;
+
+// Skip link
+$skip-link-bg: map-get($primarys, 500) !default;
+$skip-link-color: #ffffff !default;
+$skip-link-padding: map-get($spacings, 2) map-get($spacings, 4) !default;
+$skip-link-border-radius: map-get($border-radiuses, md) !default;
+
+// =============================================================================
+// UTILITY CLASSES
+// =============================================================================
+$enable-rounded: true !default;
+$enable-shadows: true !default;
+$enable-gradients: true !default;
+$enable-transitions: true !default;
+$enable-reduced-motion: true !default;
+$enable-grid-classes: true !default;
+$enable-container-classes: true !default;

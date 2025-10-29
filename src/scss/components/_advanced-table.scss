@@ -1,0 +1,548 @@
+// ferzui Design System - Advanced Table
+// Modern table with sticky headers, zebra stripes, responsive stack, and sorting
+
+// =============================================================================
+// ADVANCED TABLE BASE
+// =============================================================================
+
+.table-advanced {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: theme-color('surface-elevated');
+  border: 1px solid theme-color('border');
+  border-radius: border-radius('lg');
+  overflow: hidden;
+  box-shadow: shadow('sm');
+  
+  th,
+  td {
+    padding: spacing(4);
+    border-bottom: 1px solid theme-color('border');
+    text-align: left;
+    vertical-align: middle;
+  }
+  
+  thead {
+    th {
+      background: theme-color('surface');
+      font-weight: font-weight('semibold');
+      color: theme-color('text');
+      position: relative;
+      
+      // Sortable header
+      &.sortable {
+        cursor: pointer;
+        user-select: none;
+        transition: background transition('fast');
+        
+        &:hover {
+          background: theme-color('muted');
+        }
+        
+        &::after {
+          content: '';
+          position: absolute;
+          right: spacing(3);
+          top: 50%;
+          transform: translateY(-50%);
+          width: 0;
+          height: 0;
+          border-left: 4px solid transparent;
+          border-right: 4px solid transparent;
+          border-bottom: 4px solid theme-color('text-subtle');
+          opacity: 0.5;
+        }
+        
+        &.sort-asc::after {
+          border-bottom: 4px solid theme-color('primary');
+          border-top: none;
+          opacity: 1;
+        }
+        
+        &.sort-desc::after {
+          border-top: 4px solid theme-color('primary');
+          border-bottom: none;
+          opacity: 1;
+        }
+      }
+    }
+  }
+  
+  tbody {
+    tr {
+      transition: background transition('fast');
+      
+      &:hover {
+        background: theme-color('surface');
+      }
+      
+      &:last-child td {
+        border-bottom: none;
+      }
+    }
+  }
+  
+  // Zebra stripes
+  &.zebra tbody tr:nth-child(even) {
+    background: rgba(theme-color('muted'), 0.5);
+    
+    &:hover {
+      background: theme-color('surface');
+    }
+  }
+  
+  // Sticky header
+  &.sticky-header {
+    thead th {
+      position: sticky;
+      top: 0;
+      z-index: z-index('sticky');
+      background: theme-color('surface');
+      box-shadow: 0 1px 0 theme-color('border');
+    }
+  }
+  
+  // Sticky columns
+  &.sticky-col-1 {
+    th:first-child,
+    td:first-child {
+      position: sticky;
+      left: 0;
+      background: theme-color('surface');
+      z-index: z-index('sticky');
+      box-shadow: 1px 0 0 theme-color('border');
+    }
+    
+    thead th:first-child {
+      z-index: z-index('sticky') + 1;
+    }
+  }
+  
+  &.sticky-col-2 {
+    th:nth-child(2),
+    td:nth-child(2) {
+      position: sticky;
+      left: 0;
+      background: theme-color('surface');
+      z-index: z-index('sticky');
+      box-shadow: 1px 0 0 theme-color('border');
+    }
+    
+    th:first-child,
+    td:first-child {
+      position: sticky;
+      left: 0;
+      background: theme-color('surface');
+      z-index: z-index('sticky') + 1;
+      box-shadow: 1px 0 0 theme-color('border');
+    }
+    
+    thead th:first-child {
+      z-index: z-index('sticky') + 2;
+    }
+    
+    thead th:nth-child(2) {
+      z-index: z-index('sticky') + 1;
+    }
+  }
+}
+
+// =============================================================================
+// RESPONSIVE TABLE STACK
+// =============================================================================
+
+.table-responsive-stack {
+  overflow-x: auto;
+  border-radius: border-radius('lg');
+  
+  @include media-breakpoint-down(md) {
+    .table-advanced {
+      display: block;
+      width: 100%;
+      
+      thead,
+      tbody,
+      th,
+      td,
+      tr {
+        display: block;
+      }
+      
+      thead {
+        display: none;
+      }
+      
+      tbody {
+        tr {
+          border: 1px solid theme-color('border');
+          border-radius: border-radius('md');
+          margin-bottom: spacing(3);
+          padding: spacing(4);
+          background: theme-color('surface-elevated');
+          box-shadow: shadow('sm');
+          
+          &:last-child {
+            margin-bottom: 0;
+          }
+          
+          td {
+            border: none;
+            padding: spacing(2) 0;
+            position: relative;
+            padding-left: 50%;
+            
+            &::before {
+              content: attr(data-label);
+              position: absolute;
+              left: 0;
+              width: 45%;
+              padding-right: spacing(2);
+              white-space: nowrap;
+              font-weight: font-weight('semibold');
+              color: theme-color('text');
+            }
+            
+            &:first-child {
+              padding-top: 0;
+              font-weight: font-weight('semibold');
+              color: theme-color('text');
+              border-bottom: 1px solid theme-color('border');
+              margin-bottom: spacing(2);
+              padding-bottom: spacing(2);
+              
+              &::before {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// =============================================================================
+// TABLE ACTIONS
+// =============================================================================
+
+.table-actions {
+  display: flex;
+  gap: spacing(2);
+  align-items: center;
+  margin-bottom: spacing(4);
+  
+  .table-search {
+    flex: 1;
+    max-width: 20rem;
+    
+    .search-input {
+      width: 100%;
+      padding: spacing(2) spacing(3);
+      border: 1px solid theme-color('border');
+      border-radius: border-radius('md');
+      background: theme-color('bg');
+      color: theme-color('text');
+      font-size: font-size('sm');
+      
+      &:focus {
+        border-color: theme-color('primary');
+        box-shadow: 0 0 0 3px rgba(theme-color('primary'), 0.1);
+        outline: none;
+      }
+      
+      &::placeholder {
+        color: theme-color('text-subtle');
+      }
+    }
+  }
+  
+  .table-filters {
+    display: flex;
+    gap: spacing(2);
+    align-items: center;
+    
+    .filter-select {
+      padding: spacing(2) spacing(3);
+      border: 1px solid theme-color('border');
+      border-radius: border-radius('md');
+      background: theme-color('bg');
+      color: theme-color('text');
+      font-size: font-size('sm');
+      cursor: pointer;
+      
+      &:focus {
+        border-color: theme-color('primary');
+        outline: none;
+      }
+    }
+  }
+  
+  .table-export {
+    display: flex;
+    gap: spacing(2);
+    
+    .btn {
+      padding: spacing(2) spacing(3);
+      font-size: font-size('sm');
+    }
+  }
+}
+
+// =============================================================================
+// TABLE PAGINATION
+// =============================================================================
+
+.table-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: between;
+  gap: spacing(4);
+  margin-top: spacing(6);
+  padding: spacing(4) 0;
+  
+  .pagination-info {
+    color: theme-color('text-muted');
+    font-size: font-size('sm');
+  }
+  
+  .pagination-controls {
+    display: flex;
+    gap: spacing(1);
+    align-items: center;
+    
+    .page-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: spacing(2) spacing(3);
+      border: 1px solid theme-color('border');
+      border-radius: border-radius('md');
+      text-decoration: none;
+      color: theme-color('text');
+      font-weight: font-weight('medium');
+      min-width: 2.5rem;
+      transition: all transition('fast');
+      
+      &:hover {
+        background: theme-color('surface');
+        border-color: theme-color('border-strong');
+        transform: translateY(-1px);
+      }
+      
+      &.active {
+        background: theme-color('primary');
+        color: white;
+        border-color: theme-color('primary');
+      }
+      
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+    }
+    
+    .page-ellipsis {
+      padding: spacing(2) spacing(1);
+      color: theme-color('text-subtle');
+    }
+  }
+  
+  .pagination-size {
+    display: flex;
+    align-items: center;
+    gap: spacing(2);
+    
+    label {
+      font-size: font-size('sm');
+      color: theme-color('text-muted');
+    }
+    
+    select {
+      padding: spacing(2) spacing(3);
+      border: 1px solid theme-color('border');
+      border-radius: border-radius('md');
+      background: theme-color('bg');
+      color: theme-color('text');
+      font-size: font-size('sm');
+      cursor: pointer;
+      
+      &:focus {
+        border-color: theme-color('primary');
+        outline: none;
+      }
+    }
+  }
+}
+
+// =============================================================================
+// TABLE LOADING STATES
+// =============================================================================
+
+.table-loading {
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(theme-color('surface'), 0.8);
+    backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: z-index('fixed');
+  }
+  
+  .loading-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: z-index('fixed') + 1;
+  }
+}
+
+// =============================================================================
+// TABLE EMPTY STATE
+// =============================================================================
+
+.table-empty {
+  text-align: center;
+  padding: spacing(12) spacing(4);
+  color: theme-color('text-muted');
+  
+  .empty-icon {
+    width: spacing(16);
+    height: spacing(16);
+    margin: 0 auto spacing(4);
+    color: theme-color('text-subtle');
+  }
+  
+  .empty-title {
+    font-size: font-size('lg');
+    font-weight: font-weight('semibold');
+    margin-bottom: spacing(2);
+    color: theme-color('text');
+  }
+  
+  .empty-description {
+    font-size: font-size('sm');
+    margin-bottom: spacing(4);
+  }
+  
+  .empty-action {
+    .btn {
+      padding: spacing(2) spacing(4);
+    }
+  }
+}
+
+// =============================================================================
+// TABLE DENSITY VARIANTS
+// =============================================================================
+
+.table-compact {
+  th,
+  td {
+    padding: spacing(2) spacing(3);
+  }
+}
+
+.table-comfortable {
+  th,
+  td {
+    padding: spacing(5) spacing(6);
+  }
+}
+
+// =============================================================================
+// TABLE THEMES
+// =============================================================================
+
+.table-bordered {
+  th,
+  td {
+    border: 1px solid theme-color('border');
+  }
+  
+  thead th {
+    border-bottom-width: 2px;
+  }
+}
+
+.table-borderless {
+  th,
+  td {
+    border: none;
+  }
+}
+
+.table-striped {
+  tbody tr:nth-child(odd) {
+    background: rgba(theme-color('muted'), 0.3);
+  }
+}
+
+// =============================================================================
+// RESPONSIVE UTILITIES
+// =============================================================================
+
+@each $breakpoint, $value in $breakpoints {
+  @if $breakpoint != xs {
+    @include media-breakpoint-up($breakpoint) {
+      .#{$breakpoint}\:table-responsive-stack {
+        .table-advanced {
+          display: table;
+          
+          thead,
+          tbody,
+          th,
+          td,
+          tr {
+            display: table-cell;
+          }
+          
+          thead {
+            display: table-header-group;
+          }
+          
+          tbody {
+            tr {
+              border: none;
+              border-radius: 0;
+              margin-bottom: 0;
+              padding: 0;
+              background: transparent;
+              box-shadow: none;
+              
+              td {
+                border-bottom: 1px solid theme-color('border');
+                padding: spacing(4);
+                position: static;
+                padding-left: spacing(4);
+                
+                &::before {
+                  display: none;
+                }
+                
+                &:first-child {
+                  padding-top: spacing(4);
+                  font-weight: font-weight('normal');
+                  color: theme-color('text');
+                  border-bottom: 1px solid theme-color('border');
+                  margin-bottom: 0;
+                  padding-bottom: spacing(4);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

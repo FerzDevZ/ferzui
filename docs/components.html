@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>ferzui Docs — Komponen</title>
+  <link rel="stylesheet" href="../dist/ferzui.css"/>
+  <link rel="stylesheet" href="assets/docs.css"/>
+  <script src="../dist/ferzui.js" defer></script>
+  <script src="assets/docs.js" defer></script>
+</head>
+<body>
+  <nav class="w-full">
+    <div class="docs-nav">
+      <div class="d-flex items-center gap-3">
+        <strong>ferzui</strong>
+        <span class="badge badge-primary">Docs</span>
+      </div>
+      <div class="d-flex items-center gap-2">
+        <a class="link" href="index.html">Mulai</a>
+        <a class="link" href="utilities.html">Utilitas</a>
+        <a class="link" href="components.html">Komponen</a>
+        <a class="link" href="layout.html">Layout</a>
+        <a class="link" href="javascript.html">JavaScript</a>
+        <a class="link" href="customize.html">Kustomisasi</a>
+        <button class="btn" id="docs-theme">Gelap</button>
+      </div>
+    </div>
+  </nav>
+  <div class="docs-main">
+    <div class="d-flex">
+      <aside class="docs-sidebar">
+        <div class="group">
+          <div class="muted small mb-2">Dasar</div>
+          <a href="index.html">Mulai</a>
+          <a href="utilities.html">Utilitas</a>
+          <a href="layout.html">Layout</a>
+        </div>
+        <div class="group">
+          <div class="muted small mb-2">Komponen</div>
+          <a href="components.html#buttons">Buttons</a>
+          <a href="components.html#cards">Cards</a>
+          <a href="components.html#navbar">Navbar</a>
+          <a href="components.html#modal">Modal</a>
+          <a href="components.html#dropdown">Dropdown</a>
+          <a href="components.html#alerts">Alerts</a>
+          <a href="components.html#badges">Badges</a>
+          <a href="components.html#forms">Forms</a>
+          <a href="components.html#table">Table</a>
+          <a href="components.html#progress">Progress</a>
+          <a href="components.html#tabs">Tabs</a>
+          <a href="components.html#accordion">Accordion</a>
+          <a href="components.html#toast">Toast</a>
+          <a href="components.html#tooltip">Tooltip</a>
+          <a href="components.html#offcanvas">Offcanvas</a>
+          <a href="components.html#pagination">Pagination</a>
+          <a href="components.html#breadcrumb">Breadcrumb</a>
+          <a href="components.html#steps">Steps</a>
+        </div>
+        <div class="group">
+          <div class="muted small mb-2">Lanjutan</div>
+          <a href="javascript.html">API JS</a>
+          <a href="customize.html">Kustomisasi</a>
+        </div>
+      </aside>
+      <main class="docs-container">
+        <h1>Komponen</h1>
+        <div class="docs-section" id="buttons">
+          <h2>Buttons</h2>
+          <div class="d-flex gap-2 mb-2">
+            <button class="btn">Default</button>
+            <button class="btn btn-primary">Primary</button>
+            <button class="btn btn-outline">Outline</button>
+            <button class="btn btn-danger">Danger</button>
+            <button class="btn btn-success">Success</button>
+          </div>
+          <div class="code-block"><code>&lt;button class="btn btn-primary"&gt;Primary&lt;/button&gt;<br/>&lt;button class="btn btn-outline"&gt;Outline&lt;/button&gt;</code></div>
+        </div>
+        <div class="docs-section" id="cards">
+          <h2>Cards</h2>
+          <div class="card mb-2">
+            <div class="card-header">Header</div>
+            <div class="card-body">Body content</div>
+            <div class="card-footer">Footer</div>
+          </div>
+          <div class="code-block"><code>&lt;div class="card"&gt;<br/>&nbsp;&nbsp;&lt;div class="card-header"&gt;Header&lt;/div&gt;<br/>&nbsp;&nbsp;&lt;div class="card-body"&gt;Body&lt;/div&gt;<br/>&lt;/div&gt;</code></div>
+        </div>
+        <div class="docs-section" id="navbar">
+          <h2>Navbar</h2>
+          <div class="navbar mb-2">
+            <div class="navbar-brand">ferzui</div>
+            <div class="navbar-nav">
+              <a class="nav-link active" href="#">Home</a>
+              <a class="nav-link" href="#">About</a>
+            </div>
+          </div>
+          <div class="code-block"><code>&lt;nav class="navbar"&gt;<br/>&nbsp;&nbsp;&lt;div class="navbar-brand"&gt;Brand&lt;/div&gt;<br/>&nbsp;&nbsp;&lt;div class="navbar-nav"&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;a class="nav-link active" href="#"&gt;Home&lt;/a&gt;<br/>&nbsp;&nbsp;&lt;/div&gt;<br/>&lt;/nav&gt;</code></div>
+        </div>
+        <div class="docs-section" id="modal">
+          <h2>Modal</h2>
+          <button class="btn btn-primary" data-modal-open="#modal-demo">Buka Modal</button>
+          <div class="modal" id="modal-demo" data-modal aria-hidden="true">
+            <div class="modal-backdrop"></div>
+            <div class="modal-dialog">
+              <div class="modal-header"><strong>Modal</strong><button class="btn" data-modal-close>Close</button></div>
+              <div class="modal-body">Isi modal</div>
+              <div class="modal-footer"><button class="btn" data-modal-close>OK</button></div>
+            </div>
+          </div>
+          <div class="code-block"><code>&lt;button data-modal-open="#my-modal"&gt;Buka&lt;/button&gt;<br/>&lt;div class="modal" id="my-modal" data-modal&gt;<br/>&nbsp;&nbsp;&lt;div class="modal-backdrop"&gt;&lt;/div&gt;<br/>&nbsp;&nbsp;&lt;div class="modal-dialog"&gt;...&lt;/div&gt;<br/>&lt;/div&gt;</code></div>
+        </div>
+        <div class="docs-section" id="dropdown">
+          <h2>Dropdown</h2>
+          <div class="dropdown mb-2">
+            <a href="#" class="btn btn-outline" data-dropdown>Menu</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Item 1</a>
+              <a class="dropdown-item" href="#">Item 2</a>
+            </div>
+          </div>
+          <div class="code-block"><code>&lt;div class="dropdown"&gt;<br/>&nbsp;&nbsp;&lt;a href="#" data-dropdown&gt;Menu&lt;/a&gt;<br/>&nbsp;&nbsp;&lt;div class="dropdown-menu"&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;a class="dropdown-item" href="#"&gt;Item&lt;/a&gt;<br/>&nbsp;&nbsp;&lt;/div&gt;<br/>&lt;/div&gt;</code></div>
+        </div>
+        <div class="docs-section" id="alerts">
+          <h2>Alerts</h2>
+          <div class="alert alert-primary mb-2">Contoh alert</div>
+          <div class="code-block"><code>&lt;div class="alert alert-primary"&gt;Alert message&lt;/div&gt;</code></div>
+        </div>
+        <div class="docs-section" id="badges">
+          <h2>Badges</h2>
+          <div class="d-flex gap-2 mb-2">
+            <span class="badge">Netral</span>
+            <span class="badge badge-primary">Primary</span>
+            <span class="badge badge-success">Success</span>
+          </div>
+          <div class="code-block"><code>&lt;span class="badge badge-primary"&gt;Primary&lt;/span&gt;</code></div>
+        </div>
+        <div class="docs-section" id="forms">
+          <h2>Forms</h2>
+          <div class="mb-2">
+            <input class="form-control" placeholder="Email"/>
+          </div>
+          <div class="code-block"><code>&lt;input class="form-control" placeholder="Email"/&gt;</code></div>
+        </div>
+        <div class="docs-section" id="table">
+          <h2>Table</h2>
+          <div class="table-responsive table-sticky mb-2">
+            <table class="table">
+              <thead><tr><th>Nama</th><th>Status</th></tr></thead>
+              <tbody><tr><td>Alpha</td><td>Aktif</td></tr></tbody>
+            </table>
+          </div>
+          <div class="code-block"><code>&lt;div class="table-responsive"&gt;<br/>&nbsp;&nbsp;&lt;table class="table"&gt;...&lt;/table&gt;<br/>&lt;/div&gt;</code></div>
+        </div>
+        <div class="docs-section" id="progress">
+          <h2>Progress</h2>
+          <div class="progress mb-2">
+            <div class="progress-bar" style="width:50%"></div>
+          </div>
+          <div class="code-block"><code>&lt;div class="progress"&gt;<br/>&nbsp;&nbsp;&lt;div class="progress-bar" style="width:50%"&gt;&lt;/div&gt;<br/>&lt;/div&gt;</code></div>
+        </div>
+        <div class="docs-section" id="tabs">
+          <h2>Tabs</h2>
+          <div data-tabs class="mb-2">
+            <div class="tabs">
+              <button class="tab" data-tab="a">Tab A</button>
+              <button class="tab" data-tab="b">Tab B</button>
+            </div>
+            <div class="tab-panel" data-tab-panel="a">Panel A</div>
+            <div class="tab-panel" data-tab-panel="b">Panel B</div>
+          </div>
+          <div class="code-block"><code>&lt;div data-tabs&gt;<br/>&nbsp;&nbsp;&lt;div class="tabs"&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;button class="tab" data-tab="a"&gt;A&lt;/button&gt;<br/>&nbsp;&nbsp;&lt;/div&gt;<br/>&nbsp;&nbsp;&lt;div class="tab-panel" data-tab-panel="a"&gt;Panel A&lt;/div&gt;<br/>&lt;/div&gt;</code></div>
+        </div>
+        <div class="docs-section" id="accordion">
+          <h2>Accordion</h2>
+          <div class="accordion mb-2">
+            <div class="accordion-item">
+              <div class="accordion-header">Bagian 1</div>
+              <div class="accordion-body">Konten 1</div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header">Bagian 2</div>
+              <div class="accordion-body">Konten 2</div>
+            </div>
+          </div>
+          <div class="code-block"><code>&lt;div class="accordion"&gt;<br/>&nbsp;&nbsp;&lt;div class="accordion-item"&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="accordion-header"&gt;Header&lt;/div&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="accordion-body"&gt;Body&lt;/div&gt;<br/>&nbsp;&nbsp;&lt;/div&gt;<br/>&lt;/div&gt;</code></div>
+        </div>
+        <div class="docs-section" id="toast">
+          <h2>Toast</h2>
+          <button class="btn btn-primary" id="toast-demo">Tampilkan Toast</button>
+          <div class="code-block"><code>ferzui.toast('Pesan', {type: 'info', duration: 3000})</code></div>
+        </div>
+        <div class="docs-section" id="tooltip">
+          <h2>Tooltip</h2>
+          <button class="btn" data-tooltip="Ini tooltip" data-tooltip-pos="top">Hover me</button>
+          <div class="code-block"><code>&lt;button data-tooltip="Tooltip text" data-tooltip-pos="top"&gt;Hover&lt;/button&gt;</code></div>
+        </div>
+        <div class="docs-section" id="offcanvas">
+          <h2>Offcanvas</h2>
+          <button class="btn btn-outline" data-offcanvas-open="#offcanvas-demo">Buka Offcanvas</button>
+          <div class="offcanvas" id="offcanvas-demo">
+            <div class="offcanvas-backdrop" data-offcanvas-close></div>
+            <div class="offcanvas-panel">
+              <div class="p-4">
+                <div class="d-flex justify-between items-center mb-4">
+                  <strong>Offcanvas</strong>
+                  <button class="btn" data-offcanvas-close>Tutup</button>
+                </div>
+                <p>Konten offcanvas</p>
+              </div>
+            </div>
+          </div>
+          <div class="code-block"><code>&lt;button data-offcanvas-open="#my-offcanvas"&gt;Buka&lt;/button&gt;<br/>&lt;div class="offcanvas" id="my-offcanvas"&gt;<br/>&nbsp;&nbsp;&lt;div class="offcanvas-backdrop" data-offcanvas-close&gt;&lt;/div&gt;<br/>&nbsp;&nbsp;&lt;div class="offcanvas-panel"&gt;...&lt;/div&gt;<br/>&lt;/div&gt;</code></div>
+        </div>
+        <div class="docs-section" id="pagination">
+          <h2>Pagination</h2>
+          <nav class="pagination mb-2">
+            <a class="page-link" href="#">Prev</a>
+            <a class="page-link active" href="#">1</a>
+            <a class="page-link" href="#">2</a>
+            <a class="page-link" href="#">Next</a>
+          </nav>
+          <div class="code-block"><code>&lt;nav class="pagination"&gt;<br/>&nbsp;&nbsp;&lt;a class="page-link active" href="#"&gt;1&lt;/a&gt;<br/>&lt;/nav&gt;</code></div>
+        </div>
+        <div class="docs-section" id="breadcrumb">
+          <h2>Breadcrumb</h2>
+          <nav class="breadcrumb mb-2">
+            <a href="#">Home</a><span class="divider">/</span>
+            <a href="#">Library</a><span class="divider">/</span>
+            <span>Data</span>
+          </nav>
+          <div class="code-block"><code>&lt;nav class="breadcrumb"&gt;<br/>&nbsp;&nbsp;&lt;a href="#"&gt;Home&lt;/a&gt;<span class="divider">/</span><br/>&nbsp;&nbsp;&lt;span&gt;Current&lt;/span&gt;<br/>&lt;/nav&gt;</code></div>
+        </div>
+        <div class="docs-section" id="steps">
+          <h2>Steps</h2>
+          <div class="steps mb-2">
+            <div class="step active">Mulai</div>
+            <div class="step">Proses</div>
+            <div class="step">Selesai</div>
+          </div>
+          <div class="code-block"><code>&lt;div class="steps"&gt;<br/>&nbsp;&nbsp;&lt;div class="step active"&gt;Step 1&lt;/div&gt;<br/>&nbsp;&nbsp;&lt;div class="step"&gt;Step 2&lt;/div&gt;<br/>&lt;/div&gt;</code></div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      const b=document.getElementById('docs-theme'); if(!b) return; b.addEventListener('click', function(){
+        const html=document.documentElement; const dark=html.getAttribute('data-theme')==='dark';
+        html.setAttribute('data-theme', dark? 'light':'dark'); this.textContent = dark? 'Gelap':'Terang';
+      });
+      const toastBtn=document.getElementById('toast-demo'); if(toastBtn) toastBtn.addEventListener('click', function(){
+        window.ferzui.toast('Halo dari ferzui!', {type: 'info'});
+      });
+    });
+  </script>
+</body>
+</html>

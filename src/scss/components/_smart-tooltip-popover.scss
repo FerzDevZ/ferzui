@@ -1,0 +1,592 @@
+// ferzui Design System - Smart Tooltip & Popover
+// Advanced tooltips and popovers with intelligent positioning, flip, and portal support
+
+// =============================================================================
+// TOOLTIP BASE
+// =============================================================================
+
+.tooltip {
+  position: absolute;
+  z-index: z-index('tooltip');
+  background: theme-color('gray-900');
+  color: white;
+  padding: spacing(2) spacing(3);
+  border-radius: border-radius('md');
+  font-size: font-size('xs');
+  font-weight: font-weight('medium');
+  white-space: nowrap;
+  max-width: 16rem;
+  word-wrap: break-word;
+  white-space: normal;
+  box-shadow: shadow('lg');
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.95);
+  transition: all transition('fast');
+  pointer-events: none;
+  
+  &.show {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+  
+  // Arrow
+  &::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 4px solid transparent;
+  }
+}
+
+// =============================================================================
+// TOOLTIP POSITIONS
+// =============================================================================
+
+// Top position
+.tooltip-top {
+  transform: translateX(-50%);
+  margin-bottom: spacing(2);
+  
+  &::after {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-top-color: theme-color('gray-900');
+  }
+}
+
+// Bottom position
+.tooltip-bottom {
+  transform: translateX(-50%);
+  margin-top: spacing(2);
+  
+  &::after {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-bottom-color: theme-color('gray-900');
+  }
+}
+
+// Left position
+.tooltip-left {
+  transform: translateY(-50%);
+  margin-right: spacing(2);
+  
+  &::after {
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+    border-left-color: theme-color('gray-900');
+  }
+}
+
+// Right position
+.tooltip-right {
+  transform: translateY(-50%);
+  margin-left: spacing(2);
+  
+  &::after {
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    border-right-color: theme-color('gray-900');
+  }
+}
+
+// =============================================================================
+// TOOLTIP VARIANTS
+// =============================================================================
+
+.tooltip-primary {
+  background: theme-color('primary');
+  
+  &.tooltip-top::after { border-top-color: theme-color('primary'); }
+  &.tooltip-bottom::after { border-bottom-color: theme-color('primary'); }
+  &.tooltip-left::after { border-left-color: theme-color('primary'); }
+  &.tooltip-right::after { border-right-color: theme-color('primary'); }
+}
+
+.tooltip-success {
+  background: theme-color('success');
+  
+  &.tooltip-top::after { border-top-color: theme-color('success'); }
+  &.tooltip-bottom::after { border-bottom-color: theme-color('success'); }
+  &.tooltip-left::after { border-left-color: theme-color('success'); }
+  &.tooltip-right::after { border-right-color: theme-color('right'); }
+}
+
+.tooltip-danger {
+  background: theme-color('danger');
+  
+  &.tooltip-top::after { border-top-color: theme-color('danger'); }
+  &.tooltip-bottom::after { border-bottom-color: theme-color('danger'); }
+  &.tooltip-left::after { border-left-color: theme-color('danger'); }
+  &.tooltip-right::after { border-right-color: theme-color('danger'); }
+}
+
+.tooltip-warning {
+  background: theme-color('warning');
+  
+  &.tooltip-top::after { border-top-color: theme-color('warning'); }
+  &.tooltip-bottom::after { border-bottom-color: theme-color('warning'); }
+  &.tooltip-left::after { border-left-color: theme-color('warning'); }
+  &.tooltip-right::after { border-right-color: theme-color('warning'); }
+}
+
+.tooltip-info {
+  background: theme-color('info');
+  
+  &.tooltip-top::after { border-top-color: theme-color('info'); }
+  &.tooltip-bottom::after { border-bottom-color: theme-color('info'); }
+  &.tooltip-left::after { border-left-color: theme-color('info'); }
+  &.tooltip-right::after { border-right-color: theme-color('info'); }
+}
+
+// =============================================================================
+// TOOLTIP SIZES
+// =============================================================================
+
+.tooltip-sm {
+  padding: spacing(1) spacing(2);
+  font-size: font-size('xs');
+  max-width: 12rem;
+}
+
+.tooltip-lg {
+  padding: spacing(3) spacing(4);
+  font-size: font-size('sm');
+  max-width: 20rem;
+}
+
+// =============================================================================
+// POPOVER BASE
+// =============================================================================
+
+.popover {
+  position: absolute;
+  z-index: z-index('popover');
+  background: theme-color('surface-elevated');
+  border: 1px solid theme-color('border');
+  border-radius: border-radius('lg');
+  box-shadow: shadow('xl');
+  max-width: 20rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.95);
+  transition: all transition('fast');
+  pointer-events: none;
+  
+  &.show {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+    pointer-events: auto;
+  }
+  
+  // Arrow
+  &::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 8px solid transparent;
+  }
+}
+
+// =============================================================================
+// POPOVER POSITIONS
+// =============================================================================
+
+// Top position
+.popover-top {
+  transform: translateX(-50%);
+  margin-bottom: spacing(2);
+  
+  &::before {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-top-color: theme-color('border');
+    border-bottom: none;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border: 7px solid transparent;
+    border-top-color: theme-color('surface-elevated');
+    border-bottom: none;
+    margin-top: -1px;
+  }
+}
+
+// Bottom position
+.popover-bottom {
+  transform: translateX(-50%);
+  margin-top: spacing(2);
+  
+  &::before {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-bottom-color: theme-color('border');
+    border-top: none;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border: 7px solid transparent;
+    border-bottom-color: theme-color('surface-elevated');
+    border-top: none;
+    margin-bottom: -1px;
+  }
+}
+
+// Left position
+.popover-left {
+  transform: translateY(-50%);
+  margin-right: spacing(2);
+  
+  &::before {
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+    border-left-color: theme-color('border');
+    border-right: none;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border: 7px solid transparent;
+    border-left-color: theme-color('surface-elevated');
+    border-right: none;
+    margin-right: -1px;
+  }
+}
+
+// Right position
+.popover-right {
+  transform: translateY(-50%);
+  margin-left: spacing(2);
+  
+  &::before {
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    border-right-color: theme-color('border');
+    border-left: none;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border: 7px solid transparent;
+    border-right-color: theme-color('surface-elevated');
+    border-left: none;
+    margin-left: -1px;
+  }
+}
+
+// =============================================================================
+// POPOVER CONTENT
+// =============================================================================
+
+.popover-header {
+  padding: spacing(4) spacing(5) spacing(3);
+  border-bottom: 1px solid theme-color('border');
+  font-weight: font-weight('semibold');
+  font-size: font-size('sm');
+  color: theme-color('text');
+}
+
+.popover-body {
+  padding: spacing(4) spacing(5);
+  color: theme-color('text-muted');
+  font-size: font-size('sm');
+  line-height: line-height('relaxed');
+}
+
+.popover-footer {
+  padding: spacing(3) spacing(5) spacing(4);
+  border-top: 1px solid theme-color('border');
+  display: flex;
+  gap: spacing(2);
+  justify-content: flex-end;
+  
+  .btn {
+    padding: spacing(1\.5) spacing(3);
+    font-size: font-size('xs');
+  }
+}
+
+// =============================================================================
+// POPOVER VARIANTS
+// =============================================================================
+
+.popover-primary {
+  border-color: theme-color('primary');
+  
+  .popover-header {
+    background: rgba(theme-color('primary'), 0.05);
+    color: theme-color('primary');
+    border-bottom-color: rgba(theme-color('primary'), 0.2);
+  }
+}
+
+.popover-success {
+  border-color: theme-color('success');
+  
+  .popover-header {
+    background: rgba(theme-color('success'), 0.05);
+    color: theme-color('success');
+    border-bottom-color: rgba(theme-color('success'), 0.2);
+  }
+}
+
+.popover-danger {
+  border-color: theme-color('danger');
+  
+  .popover-header {
+    background: rgba(theme-color('danger'), 0.05);
+    color: theme-color('danger');
+    border-bottom-color: rgba(theme-color('danger'), 0.2);
+  }
+}
+
+.popover-warning {
+  border-color: theme-color('warning');
+  
+  .popover-header {
+    background: rgba(theme-color('warning'), 0.05);
+    color: theme-color('warning');
+    border-bottom-color: rgba(theme-color('warning'), 0.2);
+  }
+}
+
+.popover-info {
+  border-color: theme-color('info');
+  
+  .popover-header {
+    background: rgba(theme-color('info'), 0.05);
+    color: theme-color('info');
+    border-bottom-color: rgba(theme-color('info'), 0.2);
+  }
+}
+
+// =============================================================================
+// POPOVER SIZES
+// =============================================================================
+
+.popover-sm {
+  max-width: 16rem;
+  
+  .popover-header,
+  .popover-body,
+  .popover-footer {
+    padding-left: spacing(4);
+    padding-right: spacing(4);
+  }
+  
+  .popover-header {
+    padding-top: spacing(3);
+    padding-bottom: spacing(2);
+  }
+  
+  .popover-body {
+    padding-top: spacing(3);
+    padding-bottom: spacing(3);
+  }
+  
+  .popover-footer {
+    padding-top: spacing(2);
+    padding-bottom: spacing(3);
+  }
+}
+
+.popover-lg {
+  max-width: 24rem;
+  
+  .popover-header,
+  .popover-body,
+  .popover-footer {
+    padding-left: spacing(6);
+    padding-right: spacing(6);
+  }
+  
+  .popover-header {
+    padding-top: spacing(5);
+    padding-bottom: spacing(4);
+  }
+  
+  .popover-body {
+    padding-top: spacing(5);
+    padding-bottom: spacing(5);
+  }
+  
+  .popover-footer {
+    padding-top: spacing(4);
+    padding-bottom: spacing(5);
+  }
+}
+
+// =============================================================================
+// SMART POSITIONING
+// =============================================================================
+
+.tooltip-smart,
+.popover-smart {
+  // These classes are handled by JavaScript for intelligent positioning
+  // The JS will add appropriate position classes based on available space
+}
+
+// =============================================================================
+// PORTAL SUPPORT
+// =============================================================================
+
+.tooltip-portal,
+.popover-portal {
+  // These classes indicate the element should be rendered in a portal
+  // JavaScript will move these elements to document.body
+}
+
+// =============================================================================
+// TRIGGER ELEMENTS
+// =============================================================================
+
+[data-tooltip],
+[data-popover] {
+  cursor: help;
+  position: relative;
+}
+
+.tooltip-trigger,
+.popover-trigger {
+  cursor: pointer;
+  
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+// =============================================================================
+// DELAY SUPPORT
+// =============================================================================
+
+.tooltip-delay-100 { transition-delay: 100ms; }
+.tooltip-delay-200 { transition-delay: 200ms; }
+.tooltip-delay-300 { transition-delay: 300ms; }
+.tooltip-delay-500 { transition-delay: 500ms; }
+
+.popover-delay-100 { transition-delay: 100ms; }
+.popover-delay-200 { transition-delay: 200ms; }
+.popover-delay-300 { transition-delay: 300ms; }
+.popover-delay-500 { transition-delay: 500ms; }
+
+// =============================================================================
+// RESPONSIVE BEHAVIOR
+// =============================================================================
+
+@include media-breakpoint-down(md) {
+  .tooltip,
+  .popover {
+    max-width: calc(100vw - #{spacing(4)});
+  }
+  
+  .tooltip-sm,
+  .popover-sm {
+    max-width: calc(100vw - #{spacing(4)});
+  }
+  
+  .tooltip-lg,
+  .popover-lg {
+    max-width: calc(100vw - #{spacing(4)});
+  }
+}
+
+// =============================================================================
+// ACCESSIBILITY
+// =============================================================================
+
+.tooltip[role="tooltip"],
+.popover[role="tooltip"] {
+  // Ensure proper ARIA roles
+}
+
+.tooltip-trigger[aria-describedby],
+.popover-trigger[aria-describedby] {
+  // Link trigger to tooltip/popover content
+}
+
+// =============================================================================
+// ANIMATIONS
+// =============================================================================
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes tooltipFadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes popoverSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes popoverSlideOut {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95) translateY(-8px);
+  }
+}

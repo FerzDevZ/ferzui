@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ferzui Playground</title>
+  <link rel="stylesheet" href="../dist/ferzui.css">
+  <link rel="stylesheet" href="assets/docs.css">
+  <style>
+    .playground {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 1rem;
+      height: calc(100vh - 120px);
+    }
+    
+    .playground-panel {
+      background: var(--fz-c-surface);
+      border: 1px solid var(--fz-c-border);
+      border-radius: var(--fz-radius-md);
+      padding: 1rem;
+      overflow-y: auto;
+    }
+    
+    .playground-preview {
+      background: var(--fz-c-surface);
+      border: 1px solid var(--fz-c-border);
+      border-radius: var(--fz-radius-md);
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-y: auto;
+    }
+    
+    .playground-code {
+      background: var(--fz-c-surface);
+      border: 1px solid var(--fz-c-border);
+      border-radius: var(--fz-radius-md);
+      padding: 1rem;
+      margin-top: 1rem;
+      font-family: monospace;
+      font-size: 0.875rem;
+      white-space: pre-wrap;
+      overflow-x: auto;
+    }
+    
+    .prop-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .prop-group h4 {
+      margin: 0 0 0.5rem 0;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--fz-c-text-muted);
+    }
+    
+    .prop-control {
+      margin-bottom: 0.75rem;
+    }
+    
+    .prop-control label {
+      display: block;
+      font-size: 0.75rem;
+      margin-bottom: 0.25rem;
+      color: var(--fz-c-text-muted);
+    }
+    
+    .prop-control select,
+    .prop-control input {
+      width: 100%;
+      padding: 0.375rem 0.5rem;
+      border: 1px solid var(--fz-c-border);
+      border-radius: var(--fz-radius-sm);
+      background: var(--fz-c-bg);
+      color: var(--fz-c-text);
+      font-size: 0.875rem;
+    }
+    
+    .copy-btn {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.75rem;
+    }
+    
+    .code-container {
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <script src="assets/docs.js"></script>
+  <section class="docs-main container">
+    <h1 id="playground">Playground</h1>
+    <p class="lead">Ubah properti komponen secara live dan lihat hasilnya. Kode HTML akan diupdate otomatis.</p>
+
+    <div class="playground">
+      <div class="playground-panel">
+        <div class="prop-group">
+          <h4>Komponen</h4>
+          <div class="prop-control">
+            <label>Pilih Komponen</label>
+            <select id="componentSelect">
+              <option value="button">Button</option>
+              <option value="card">Card</option>
+              <option value="alert">Alert</option>
+              <option value="badge">Badge</option>
+              <option value="input">Input</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="prop-group" id="buttonProps" style="display: none;">
+          <h4>Button Properties</h4>
+          <div class="prop-control">
+            <label>Variant</label>
+            <select id="btnVariant">
+              <option value="primary">Primary</option>
+              <option value="secondary">Secondary</option>
+              <option value="success">Success</option>
+              <option value="danger">Danger</option>
+              <option value="warning">Warning</option>
+              <option value="info">Info</option>
+              <option value="outline">Outline</option>
+              <option value="ghost">Ghost</option>
+            </select>
+          </div>
+          <div class="prop-control">
+            <label>Size</label>
+            <select id="btnSize">
+              <option value="sm">Small</option>
+              <option value="">Default</option>
+              <option value="lg">Large</option>
+            </select>
+          </div>
+          <div class="prop-control">
+            <label>Text</label>
+            <input type="text" id="btnText" value="Click me">
+          </div>
+          <div class="prop-control">
+            <label>
+              <input type="checkbox" id="btnDisabled"> Disabled
+            </label>
+          </div>
+        </div>
+
+        <div class="prop-group" id="cardProps" style="display: none;">
+          <h4>Card Properties</h4>
+          <div class="prop-control">
+            <label>Title</label>
+            <input type="text" id="cardTitle" value="Card Title">
+          </div>
+          <div class="prop-control">
+            <label>Content</label>
+            <input type="text" id="cardContent" value="This is card content">
+          </div>
+          <div class="prop-control">
+            <label>
+              <input type="checkbox" id="cardHeader"> Show Header
+            </label>
+          </div>
+          <div class="prop-control">
+            <label>
+              <input type="checkbox" id="cardFooter"> Show Footer
+            </label>
+          </div>
+        </div>
+
+        <div class="prop-group" id="alertProps" style="display: none;">
+          <h4>Alert Properties</h4>
+          <div class="prop-control">
+            <label>Variant</label>
+            <select id="alertVariant">
+              <option value="primary">Primary</option>
+              <option value="success">Success</option>
+              <option value="danger">Danger</option>
+              <option value="warning">Warning</option>
+              <option value="info">Info</option>
+            </select>
+          </div>
+          <div class="prop-control">
+            <label>Message</label>
+            <input type="text" id="alertMessage" value="This is an alert message">
+          </div>
+          <div class="prop-control">
+            <label>
+              <input type="checkbox" id="alertDismissible"> Dismissible
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="playground-preview" id="preview">
+        <button class="btn btn-primary">Click me</button>
+      </div>
+    </div>
+
+    <div class="code-container">
+      <button class="btn btn-outline copy-btn" onclick="copyCode()">Copy</button>
+      <div class="playground-code" id="codeOutput">&lt;button class="btn btn-primary"&gt;Click me&lt;/button&gt;</div>
+    </div>
+  </section>
+
+  <script>
+    let currentComponent = 'button';
+    
+    function updatePreview() {
+      const preview = document.getElementById('preview');
+      const codeOutput = document.getElementById('codeOutput');
+      let html = '';
+      
+      switch(currentComponent) {
+        case 'button':
+          const variant = document.getElementById('btnVariant').value;
+          const size = document.getElementById('btnSize').value;
+          const text = document.getElementById('btnText').value;
+          const disabled = document.getElementById('btnDisabled').checked;
+          
+          const btnClasses = ['btn'];
+          if (variant !== 'primary') btnClasses.push(`btn-${variant}`);
+          if (size) btnClasses.push(`btn-${size}`);
+          
+          html = `<button class="${btnClasses.join(' ')}"${disabled ? ' disabled' : ''}>${text}</button>`;
+          break;
+          
+        case 'card':
+          const title = document.getElementById('cardTitle').value;
+          const content = document.getElementById('cardContent').value;
+          const showHeader = document.getElementById('cardHeader').checked;
+          const showFooter = document.getElementById('cardFooter').checked;
+          
+          html = '<div class="card">';
+          if (showHeader) html += `<div class="card-header">${title}</div>`;
+          html += `<div class="card-body">${content}</div>`;
+          if (showFooter) html += '<div class="card-footer">Footer</div>';
+          html += '</div>';
+          break;
+          
+        case 'alert':
+          const alertVariant = document.getElementById('alertVariant').value;
+          const message = document.getElementById('alertMessage').value;
+          const dismissible = document.getElementById('alertDismissible').checked;
+          
+          html = `<div class="alert alert-${alertVariant}" role="alert">`;
+          if (dismissible) html += '<button type="button" class="btn-close" aria-label="Close"></button>';
+          html += message;
+          html += '</div>';
+          break;
+      }
+      
+      preview.innerHTML = html;
+      codeOutput.textContent = html;
+    }
+    
+    function showProps(component) {
+      // Hide all prop groups
+      document.querySelectorAll('.prop-group').forEach(group => {
+        if (group.id.endsWith('Props')) group.style.display = 'none';
+      });
+      
+      // Show relevant props
+      document.getElementById(`${component}Props`).style.display = 'block';
+    }
+    
+    function copyCode() {
+      const code = document.getElementById('codeOutput').textContent;
+      navigator.clipboard.writeText(code).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        const originalText = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = originalText, 1000);
+      });
+    }
+    
+    // Event listeners
+    document.getElementById('componentSelect').addEventListener('change', (e) => {
+      currentComponent = e.target.value;
+      showProps(currentComponent);
+      updatePreview();
+    });
+    
+    // Button props
+    document.getElementById('btnVariant').addEventListener('change', updatePreview);
+    document.getElementById('btnSize').addEventListener('change', updatePreview);
+    document.getElementById('btnText').addEventListener('input', updatePreview);
+    document.getElementById('btnDisabled').addEventListener('change', updatePreview);
+    
+    // Card props
+    document.getElementById('cardTitle').addEventListener('input', updatePreview);
+    document.getElementById('cardContent').addEventListener('input', updatePreview);
+    document.getElementById('cardHeader').addEventListener('change', updatePreview);
+    document.getElementById('cardFooter').addEventListener('change', updatePreview);
+    
+    // Alert props
+    document.getElementById('alertVariant').addEventListener('change', updatePreview);
+    document.getElementById('alertMessage').addEventListener('input', updatePreview);
+    document.getElementById('alertDismissible').addEventListener('change', updatePreview);
+    
+    // Initialize
+    showProps('button');
+  </script>
+</body>
+</html>

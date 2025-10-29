@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ferzui Utilities</title>
+  <link rel="stylesheet" href="../dist/ferzui.css">
+  <link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+  <script src="assets/docs.js"></script>
+  <section class="docs-main container">
+    <h1 id="utilities">Utilities</h1>
+    <p class="lead">Kelas utilitas untuk styling cepat tanpa menulis CSS custom.</p>
+
+    <h2 id="spacing">Spacing</h2>
+    <p>Margin dan padding dengan skala spacing yang konsisten.</p>
+
+    <div class="docs-example">
+      <div class="preview">
+        <div class="d-flex gap-3">
+          <div class="p-2 bg-primary-100 rounded">p-2</div>
+          <div class="p-3 bg-primary-100 rounded">p-3</div>
+          <div class="p-4 bg-primary-100 rounded">p-4</div>
+          <div class="p-5 bg-primary-100 rounded">p-5</div>
+        </div>
+        <div class="mt-3 d-flex gap-3">
+          <div class="m-2 bg-success-100 rounded">m-2</div>
+          <div class="m-3 bg-success-100 rounded">m-3</div>
+          <div class="m-4 bg-success-100 rounded">m-4</div>
+          <div class="m-5 bg-success-100 rounded">m-5</div>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="display">Display</h2>
+    <p>Kontrol visibility dan display type.</p>
+
+    <div class="docs-example">
+      <div class="preview">
+        <div class="d-flex gap-3">
+          <div class="d-block p-3 bg-primary-100 rounded">d-block</div>
+          <div class="d-inline p-3 bg-primary-100 rounded">d-inline</div>
+          <div class="d-flex p-3 bg-primary-100 rounded">d-flex</div>
+          <div class="d-none">d-none</div>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="flex">Flexbox</h2>
+    <p>Utilitas flexbox untuk alignment dan distribution.</p>
+
+    <div class="docs-example">
+      <div class="preview">
+        <div class="d-flex justify-between items-center p-3 bg-muted rounded mb-3">
+          <div>Left</div>
+          <div>Center</div>
+          <div>Right</div>
+        </div>
+        <div class="d-flex flex-col gap-2 p-3 bg-muted rounded">
+          <div>Item 1</div>
+          <div>Item 2</div>
+          <div>Item 3</div>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="grid">CSS Grid</h2>
+    <p>Utilitas CSS Grid untuk layout kompleks.</p>
+
+    <div class="docs-example">
+      <div class="preview">
+        <div class="grid grid-cols-3 gap-3">
+          <div class="p-3 bg-primary-100 rounded text-center">1</div>
+          <div class="p-3 bg-primary-100 rounded text-center">2</div>
+          <div class="p-3 bg-primary-100 rounded text-center">3</div>
+          <div class="p-3 bg-primary-100 rounded text-center">4</div>
+          <div class="p-3 bg-primary-100 rounded text-center">5</div>
+          <div class="p-3 bg-primary-100 rounded text-center">6</div>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="colors">Colors</h2>
+    <p>Sistem warna dengan semantic naming dan variants.</p>
+
+    <div class="docs-example">
+      <div class="preview">
+        <div class="d-flex gap-3 flex-wrap">
+          <div class="p-3 bg-primary-100 text-primary-700 rounded">bg-primary-100</div>
+          <div class="p-3 bg-success-100 text-success-700 rounded">bg-success-100</div>
+          <div class="p-3 bg-danger-100 text-danger-700 rounded">bg-danger-100</div>
+          <div class="p-3 bg-warning-100 text-warning-700 rounded">bg-warning-100</div>
+          <div class="p-3 bg-info-100 text-info-700 rounded">bg-info-100</div>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="shadows">Shadows</h2>
+    <p>Sistem shadow yang konsisten untuk depth dan elevation.</p>
+
+    <div class="docs-example">
+      <div class="preview">
+        <div class="d-flex gap-4">
+          <div class="p-4 bg-surface rounded shadow-sm">shadow-sm</div>
+          <div class="p-4 bg-surface rounded shadow">shadow</div>
+          <div class="p-4 bg-surface rounded shadow-md">shadow-md</div>
+          <div class="p-4 bg-surface rounded shadow-lg">shadow-lg</div>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="typography">Typography</h2>
+    <p>Utilitas untuk text styling dan sizing.</p>
+
+    <div class="docs-example">
+      <div class="preview">
+        <div class="d-flex flex-col gap-2">
+          <div class="text-xs text-muted">text-xs - Extra small</div>
+          <div class="text-sm text-muted">text-sm - Small</div>
+          <div class="text-base">text-base - Base</div>
+          <div class="text-lg">text-lg - Large</div>
+          <div class="text-xl">text-xl - Extra large</div>
+          <div class="text-2xl">text-2xl - 2X large</div>
+          <div class="text-3xl">text-3xl - 3X large</div>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="borders">Borders</h2>
+    <p>Utilitas untuk border styling dan radius.</p>
+
+    <div class="docs-example">
+      <div class="preview">
+        <div class="d-flex gap-3">
+          <div class="p-3 border rounded-sm">rounded-sm</div>
+          <div class="p-3 border rounded">rounded</div>
+          <div class="p-3 border rounded-md">rounded-md</div>
+          <div class="p-3 border rounded-lg">rounded-lg</div>
+          <div class="p-3 border rounded-xl">rounded-xl</div>
+          <div class="p-3 border rounded-full">rounded-full</div>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="responsive">Responsive Utilities</h2>
+    <p>Utilitas responsif dengan breakpoint prefixes.</p>
+
+    <div class="docs-example">
+      <div class="preview">
+        <div class="d-flex flex-col md:d-flex-row gap-3">
+          <div class="p-3 bg-primary-100 rounded flex-1">Responsive item 1</div>
+          <div class="p-3 bg-primary-100 rounded flex-1">Responsive item 2</div>
+          <div class="p-3 bg-primary-100 rounded flex-1">Responsive item 3</div>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="interactions">Interactions</h2>
+    <p>Utilitas untuk hover, focus, dan state interactions.</p>
+
+    <div class="docs-example">
+      <div class="preview">
+        <div class="d-flex gap-3">
+          <button class="btn btn-primary hover:shadow-lg transition">Hover me</button>
+          <div class="p-3 bg-surface rounded cursor-pointer hover:bg-muted transition">Hover card</div>
+          <div class="p-3 bg-surface rounded focus:ring-2 focus:ring-primary-500">Focus me</div>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="next-steps">Langkah Selanjutnya</h2>
+    <div class="d-flex gap-3 flex-wrap">
+      <a href="components.html" class="btn btn-primary">Lihat Komponen</a>
+      <a href="layout.html" class="btn btn-outline">Lihat Layout</a>
+      <a href="playground.html" class="btn btn-outline">Coba Playground</a>
+    </div>
+  </section>
+</body>
+</html>

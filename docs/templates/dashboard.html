@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - ferzui</title>
+  <link rel="stylesheet" href="../../dist/ferzui.css">
+  <link rel="stylesheet" href="../assets/docs.css">
+</head>
+<body>
+  <script src="../assets/docs.js"></script>
+  <section class="docs-main container">
+    <h1>Dashboard</h1>
+    <div class="grid grid-cols-12 gap-4">
+      <aside class="col-span-3 d-none md:d-block">
+        <div class="card">
+          <div class="card-header">Menu</div>
+          <div class="card-body d-flex flex-col gap-2">
+            <a class="link" href="#">Overview</a>
+            <a class="link" href="#">Sales</a>
+            <a class="link" href="#">Customers</a>
+            <a class="link" href="#">Settings</a>
+          </div>
+        </div>
+      </aside>
+      <main class="col-span-12 md:col-span-9 d-flex flex-col gap-4">
+        <div class="stats-grid">
+          <div class="stat-card stat-primary"><div class="stat-header"><div class="stat-icon">💵</div><div class="stat-trend trend-up">+8%</div></div><div class="stat-value">$24,320</div><div class="stat-label">MRR</div></div>
+          <div class="stat-card stat-success"><div class="stat-header"><div class="stat-icon">🧑</div><div class="stat-trend trend-up">+3%</div></div><div class="stat-value">1,204</div><div class="stat-label">Active Users</div></div>
+          <div class="stat-card stat-info"><div class="stat-header"><div class="stat-icon">📈</div><div class="stat-trend trend-up">+12%</div></div><div class="stat-value">98.7%</div><div class="stat-label">Uptime</div></div>
+        </div>
+        <div class="card">
+          <div class="card-header">Recent Sales</div>
+          <div class="card-body table-responsive">
+            <table class="table-advanced zebra">
+              <thead><tr><th>Order</th><th>Customer</th><th>Total</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>#1024</td><td>John</td><td>$120</td><td><span class="badge badge-success">Paid</span></td></tr>
+                <tr><td>#1025</td><td>Jane</td><td>$90</td><td><span class="badge badge-warning">Pending</span></td></tr>
+                <tr><td>#1026</td><td>Bob</td><td>$300</td><td><span class="badge badge-success">Paid</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </section>
+</body>
+</html>

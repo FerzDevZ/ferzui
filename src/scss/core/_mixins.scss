@@ -1,0 +1,462 @@
+// ferzui Design System - Mixins & Functions
+// Modern, accessible, and brandable utilities
+
+// =============================================================================
+// COLOR FUNCTIONS
+// =============================================================================
+
+// Get color from palette
+@function color($color-name, $shade: 500) {
+  @if type-of($color-name) == 'string' {
+    $color-map: map-get($colors, $color-name);
+    @if $color-map {
+      @return map-get($color-map, $shade);
+    }
+  }
+  @return $color-name;
+}
+
+// Get theme color
+@function theme-color($key) {
+  $current-theme: map-get($themes, 'light');
+  @if $current-theme {
+    @return map-get($current-theme, $key);
+  }
+  @return null;
+}
+
+// Generate color variations
+@function color-mix($color1, $color2, $weight: 50%) {
+  @return mix($color1, $color2, $weight);
+}
+
+// =============================================================================
+// SPACING FUNCTIONS
+// =============================================================================
+
+// Get spacing value
+@function spacing($key) {
+  @return map-get($spacings, $key);
+}
+
+// Convert px to rem
+@function rem($pixels, $base: 16px) {
+  @return $pixels / $base * 1rem;
+}
+
+// =============================================================================
+// TYPOGRAPHY FUNCTIONS
+// =============================================================================
+
+// Get font size
+@function font-size($key) {
+  @return map-get($font-sizes, $key);
+}
+
+// Get font weight
+@function font-weight($key) {
+  @return map-get($font-weights, $key);
+}
+
+// Get line height
+@function line-height($key) {
+  @return map-get($line-heights, $key);
+}
+
+// Get letter spacing
+@function letter-spacing($key) {
+  @return map-get($letter-spacings, $key);
+}
+
+// =============================================================================
+// BORDER RADIUS FUNCTIONS
+// =============================================================================
+
+// Get border radius
+@function border-radius($key) {
+  @return map-get($border-radiuses, $key);
+}
+
+// =============================================================================
+// SHADOW FUNCTIONS
+// =============================================================================
+
+// Get shadow
+@function shadow($key) {
+  @return map-get($shadows, $key);
+}
+
+// =============================================================================
+// BREAKPOINT FUNCTIONS
+// =============================================================================
+
+// Get breakpoint value
+@function breakpoint($key) {
+  @return map-get($breakpoints, $key);
+}
+
+// =============================================================================
+// Z-INDEX FUNCTIONS
+// =============================================================================
+
+// Get z-index value
+@function z-index($key) {
+  @return map-get($z-indexes, $key);
+}
+
+// =============================================================================
+// TRANSITION FUNCTIONS
+// =============================================================================
+
+// Get transition
+@function transition($key) {
+  @return map-get($transitions, $key);
+}
+
+// Get duration
+@function duration($key) {
+  @return map-get($durations, $key);
+}
+
+// =============================================================================
+// RESPONSIVE MIXINS
+// =============================================================================
+
+// Media query mixin
+@mixin media-breakpoint-up($name) {
+  $min: breakpoint($name);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-down($name) {
+  $max: breakpoint($name) - 0.02px;
+  @if $max {
+    @media (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-between($lower, $upper) {
+  $min: breakpoint($lower);
+  $max: breakpoint($upper) - 0.02px;
+  
+  @if $min and $max {
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else if $min {
+    @include media-breakpoint-up($lower) {
+      @content;
+    }
+  } @else if $max {
+    @include media-breakpoint-down($upper) {
+      @content;
+    }
+  }
+}
+
+@mixin media-breakpoint-only($name) {
+  @include media-breakpoint-between($name, $name) {
+    @content;
+  }
+}
+
+// =============================================================================
+// ACCESSIBILITY MIXINS
+// =============================================================================
+
+// Focus ring mixin
+@mixin focus-ring($color: theme-color('focus-ring'), $width: $focus-ring-width, $offset: $focus-ring-offset) {
+  outline: $width solid $color;
+  outline-offset: $offset;
+  border-radius: border-radius('sm');
+}
+
+// Focus visible mixin
+@mixin focus-visible {
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+// Skip link mixin
+@mixin skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  z-index: z-index('skip-link');
+  padding: $skip-link-padding;
+  background: $skip-link-bg;
+  color: $skip-link-color;
+  text-decoration: none;
+  border-radius: $skip-link-border-radius;
+  font-weight: font-weight('medium');
+  transition: all transition('fast');
+  
+  &:focus {
+    top: 6px;
+  }
+}
+
+// Screen reader only content
+@mixin sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+// Screen reader only content (focusable)
+@mixin sr-only-focusable {
+  @include sr-only;
+  
+  &:active,
+  &:focus {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    padding: inherit !important;
+    margin: inherit !important;
+    overflow: visible !important;
+    clip: auto !important;
+    white-space: normal !important;
+  }
+}
+
+// =============================================================================
+// ANIMATION MIXINS
+// =============================================================================
+
+// Reduced motion support
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+// Smooth transitions
+@mixin smooth-transition($properties: all, $duration: transition('base'), $timing: ease) {
+  transition: $properties $duration $timing;
+  @include reduced-motion;
+}
+
+// Hover lift effect
+@mixin hover-lift($lift: 2px, $shadow: shadow('md')) {
+  transition: transform transition('base'), box-shadow transition('base');
+  
+  &:hover {
+    transform: translateY(-#{$lift});
+    box-shadow: $shadow;
+  }
+  
+  @include reduced-motion;
+}
+
+// =============================================================================
+// LAYOUT MIXINS
+// =============================================================================
+
+// Container mixin
+@mixin make-container($padding-x: spacing(4)) {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $padding-x;
+  padding-right: $padding-x;
+}
+
+// Container max-width mixin
+@mixin make-container-max-widths($max-widths: $container-max-widths, $breakpoints: $breakpoints) {
+  @each $breakpoint, $container-max-width in $max-widths {
+    @include media-breakpoint-up($breakpoint) {
+      max-width: $container-max-width;
+    }
+  }
+}
+
+// Row mixin
+@mixin make-row($gutter-x: spacing(3)) {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: calc(#{$gutter-x} * -0.5);
+  margin-right: calc(#{$gutter-x} * -0.5);
+}
+
+// Column mixin
+@mixin make-col($gutter-x: spacing(3)) {
+  flex: 1 0 0%;
+  padding-left: calc(#{$gutter-x} * 0.5);
+  padding-right: calc(#{$gutter-x} * 0.5);
+}
+
+// Column size mixin
+@mixin make-col-size($size, $columns: 12, $gutter-x: spacing(3)) {
+  flex: 0 0 auto;
+  width: percentage($size / $columns);
+  padding-left: calc(#{$gutter-x} * 0.5);
+  padding-right: calc(#{$gutter-x} * 0.5);
+}
+
+// =============================================================================
+// COMPONENT MIXINS
+// =============================================================================
+
+// Button variant mixin
+@mixin button-variant($background, $border, $color, $hover-background: darken($background, 7.5%), $hover-border: darken($border, 10%), $hover-color: $color, $active-background: darken($background, 10%), $active-border: darken($border, 12.5%), $active-color: $color) {
+  color: $color;
+  background: $background;
+  border-color: $border;
+  
+  &:hover {
+    color: $hover-color;
+    background: $hover-background;
+    border-color: $hover-border;
+  }
+  
+  &:focus {
+    @include focus-ring(rgba($background, 0.5));
+  }
+  
+  &:active {
+    color: $active-color;
+    background: $active-background;
+    border-color: $active-border;
+  }
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+// Button size mixin
+@mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
+  padding: $padding-y $padding-x;
+  font-size: $font-size;
+  border-radius: $border-radius;
+}
+
+// Form control mixin
+@mixin form-control($padding-y: $form-control-padding-y, $padding-x: $form-control-padding-x, $font-size: $form-control-font-size, $border-radius: $form-control-border-radius, $border-width: $form-control-border-width) {
+  display: block;
+  width: 100%;
+  padding: $padding-y $padding-x;
+  font-size: $font-size;
+  font-weight: font-weight('normal');
+  line-height: line-height('normal');
+  color: theme-color('text');
+  background-color: theme-color('bg');
+  border: $border-width solid theme-color('border');
+  border-radius: $border-radius;
+  transition: border-color transition('base'), box-shadow transition('base');
+  
+  &:focus {
+    border-color: theme-color('primary');
+    box-shadow: 0 0 0 3px rgba(theme-color('primary'), 0.1);
+    outline: none;
+  }
+  
+  &::placeholder {
+    color: theme-color('text-subtle');
+    opacity: 1;
+  }
+  
+  &:disabled {
+    background-color: theme-color('muted');
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// =============================================================================
+// UTILITY MIXINS
+// =============================================================================
+
+// Text truncation
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Clearfix
+@mixin clearfix {
+  &::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+}
+
+// Aspect ratio
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  
+  &::before {
+    display: block;
+    padding-top: percentage($height / $width);
+    content: "";
+  }
+  
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// =============================================================================
+// THEME MIXINS
+// =============================================================================
+
+// Apply theme colors
+@mixin theme-colors($theme-name: 'light') {
+  $theme: map-get($themes, $theme-name);
+  
+  @if $theme {
+    @each $key, $value in $theme {
+      --fz-c-#{$key}: #{$value};
+    }
+  }
+}
+
+// Dark mode support
+@mixin dark-mode {
+  @media (prefers-color-scheme: dark) {
+    @include theme-colors('dark');
+  }
+  
+  [data-theme='dark'] & {
+    @include theme-colors('dark');
+  }
+}
+
+// High contrast mode support
+@mixin high-contrast-mode {
+  @media (prefers-contrast: high) {
+    @include theme-colors('high-contrast');
+  }
+  
+  [data-theme='high-contrast'] & {
+    @include theme-colors('high-contrast');
+  }
+}

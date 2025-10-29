@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ferzui - Modern UI Framework</title>
+  <meta name="description" content="ferzui adalah framework UI modern yang lebih baik dari Bootstrap dengan 80+ komponen, dark mode, dan performa tinggi.">
+  <meta name="keywords" content="ferzui, UI framework, CSS framework, Bootstrap alternative, modern UI, components">
+  <meta name="author" content="FerzDevZ">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ferzdevz.github.io/ferzui/">
+  <meta property="og:title" content="ferzui - Modern UI Framework">
+  <meta property="og:description" content="ferzui adalah framework UI modern yang lebih baik dari Bootstrap dengan 80+ komponen, dark mode, dan performa tinggi.">
+  <meta property="og:image" content="https://ferzdevz.github.io/ferzui/assets/og-image.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://ferzdevz.github.io/ferzui/">
+  <meta property="twitter:title" content="ferzui - Modern UI Framework">
+  <meta property="twitter:description" content="ferzui adalah framework UI modern yang lebih baik dari Bootstrap dengan 80+ komponen, dark mode, dan performa tinggi.">
+  <meta property="twitter:image" content="https://ferzdevz.github.io/ferzui/assets/og-image.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="dist/ferzui.css">
+  <style>
+    :root {
+      --fz-c-primary-500: #3b82f6;
+      --fz-c-primary-600: #2563eb;
+      --fz-c-primary-700: #1d4ed8;
+      --fz-c-primary-100: #dbeafe;
+      --fz-c-primary-50: #eff6ff;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: var(--fz-c-text);
+      background: var(--fz-c-bg);
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--fz-c-primary-500) 0%, var(--fz-c-primary-700) 100%);
+      color: white;
+      padding: 6rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(45deg, #ffffff, #e0f2fe);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: clamp(1.1rem, 2vw, 1.25rem);
+      margin-bottom: 2rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    .hero-btn {
+      padding: 1rem 2rem;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-btn.primary {
+      background: white;
+      color: var(--fz-c-primary-600);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero-btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero-btn.secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .hero-btn.secondary:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    .features {
+      padding: 6rem 0;
+      background: var(--fz-c-bg);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--fz-c-text);
+    }
+
+    .section-title p {
+      font-size: 1.1rem;
+      color: var(--fz-c-text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: var(--fz-c-surface);
+      border: 1px solid var(--fz-c-border);
+      border-radius: 1rem;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-icon {
+      width: 4rem;
+      height: 4rem;
+      background: var(--fz-c-primary-100);
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 1.5rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--fz-c-text);
+    }
+
+    .feature-card p {
+      color: var(--fz-c-text-muted);
+      line-height: 1.6;
+    }
+
+    .components-preview {
+      padding: 6rem 0;
+      background: var(--fz-c-muted);
+    }
+
+    .components-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .component-card {
+      background: var(--fz-c-surface);
+      border: 1px solid var(--fz-c-border);
+      border-radius: 0.75rem;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .component-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    .component-preview {
+      padding: 1.5rem;
+      background: var(--fz-c-gray-50);
+      border-bottom: 1px solid var(--fz-c-border);
+    }
+
+    .component-info {
+      padding: 1rem 1.5rem;
+    }
+
+    .component-info h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--fz-c-text);
+    }
+
+    .component-info p {
+      font-size: 0.875rem;
+      color: var(--fz-c-text-muted);
+      margin: 0;
+    }
+
+    .cta {
+      padding: 6rem 0;
+      background: var(--fz-c-primary-500);
+      color: white;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .cta p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn {
+      padding: 1rem 2rem;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .cta-btn.primary {
+      background: white;
+      color: var(--fz-c-primary-600);
+    }
+
+    .cta-btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    .cta-btn.secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .cta-btn.secondary:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .footer {
+      background: var(--fz-c-gray-900);
+      color: white;
+      padding: 3rem 0 2rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-section h3 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-section li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-section a {
+      color: var(--fz-c-gray-300);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-section a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--fz-c-gray-700);
+      padding-top: 2rem;
+      text-align: center;
+      color: var(--fz-c-gray-400);
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--fz-c-border);
+      z-index: 1000;
+      padding: 1rem 0;
+    }
+
+    .navbar-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--fz-c-primary-600);
+      text-decoration: none;
+    }
+
+    .navbar-nav {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar-nav a {
+      color: var(--fz-c-text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .navbar-nav a:hover {
+      color: var(--fz-c-primary-600);
+    }
+
+    .navbar-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn {
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--fz-c-primary-500);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--fz-c-primary-600);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--fz-c-text);
+      border: 1px solid var(--fz-c-border);
+    }
+
+    .btn-outline:hover {
+      background: var(--fz-c-muted);
+    }
+
+    @media (max-width: 768px) {
+      .navbar-nav {
+        display: none;
+      }
+      
+      .hero {
+        padding: 4rem 0;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+      
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .components-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+    }
+
+    /* Demo components */
+    .demo-button {
+      background: var(--fz-c-primary-500);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .demo-button:hover {
+      background: var(--fz-c-primary-600);
+      transform: translateY(-1px);
+    }
+
+    .demo-card {
+      background: var(--fz-c-surface);
+      border: 1px solid var(--fz-c-border);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    .demo-badge {
+      background: var(--fz-c-success-500);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .demo-alert {
+      background: var(--fz-c-primary-50);
+      border: 1px solid var(--fz-c-primary-200);
+      border-radius: 0.5rem;
+      padding: 1rem;
+      color: var(--fz-c-primary-800);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="navbar-content">
+      <a href="/" class="navbar-brand">ferzui</a>
+      <ul class="navbar-nav">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#components">Components</a></li>
+        <li><a href="docs/index.html">Documentation</a></li>
+        <li><a href="demo/index.html">Demo</a></li>
+      </ul>
+      <div class="navbar-actions">
+        <a href="https://github.com/FerzDevZ/ferzui" class="btn btn-outline" target="_blank">GitHub</a>
+        <a href="docs/index.html" class="btn btn-primary">Get Started</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>ferzui</h1>
+      <p>Framework UI modern yang lebih baik dari Bootstrap dengan 80+ komponen, dark mode, dan performa tinggi untuk aplikasi web masa depan.</p>
+      
+      <div class="hero-buttons">
+        <a href="docs/index.html" class="hero-btn primary">
+          📚 Documentation
+        </a>
+        <a href="demo/index.html" class="hero-btn secondary">
+          🎮 Live Demo
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-number">80+</div>
+          <div class="stat-label">Components</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Responsive</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">0</div>
+          <div class="stat-label">Dependencies</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">2025</div>
+          <div class="stat-label">Latest</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-title">
+        <h2>Mengapa ferzui?</h2>
+        <p>Framework UI yang dirancang untuk developer modern dengan fitur-fitur terdepan dan performa tinggi.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <h3>Modern Design</h3>
+          <p>Desain yang lebih modern dari Bootstrap dengan glassmorphism, gradients, dan animasi yang smooth.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🌙</div>
+          <h3>Dark Mode</h3>
+          <p>Support dark mode otomatis dengan prefers-color-scheme dan toggle manual untuk pengalaman terbaik.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h3>Mobile First</h3>
+          <p>Responsive design yang mobile-first dengan breakpoints yang optimal untuk semua perangkat.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>High Performance</h3>
+          <p>Optimized untuk performa dengan lazy loading, code splitting, dan bundle size yang minimal.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">♿</div>
+          <h3>Accessible</h3>
+          <p>WCAG AA compliant dengan keyboard navigation, screen reader support, dan high contrast mode.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🔧</div>
+          <h3>Customizable</h3>
+          <p>Mudah dikustomisasi dengan CSS variables, SCSS mixins, dan theme editor yang interaktif.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Components Preview -->
+  <section class="components-preview" id="components">
+    <div class="container">
+      <div class="section-title">
+        <h2>Komponen Lengkap</h2>
+        <p>80+ komponen siap pakai untuk berbagai kebutuhan aplikasi modern.</p>
+      </div>
+
+      <div class="components-grid">
+        <div class="component-card">
+          <div class="component-preview">
+            <button class="demo-button">Primary Button</button>
+          </div>
+          <div class="component-info">
+            <h4>Buttons</h4>
+            <p>Berbagai variasi button dengan states dan sizes</p>
+          </div>
+        </div>
+
+        <div class="component-card">
+          <div class="component-preview">
+            <div class="demo-card">
+              <h4>Card Title</h4>
+              <p>Card content dengan shadow dan border radius</p>
+            </div>
+          </div>
+          <div class="component-info">
+            <h4>Cards</h4>
+            <p>Container untuk konten dengan berbagai variasi</p>
+          </div>
+        </div>
+
+        <div class="component-card">
+          <div class="component-preview">
+            <span class="demo-badge">Success</span>
+          </div>
+          <div class="component-info">
+            <h4>Badges</h4>
+            <p>Label dan status indicators</p>
+          </div>
+        </div>
+
+        <div class="component-card">
+          <div class="component-preview">
+            <div class="demo-alert">
+              <strong>Info!</strong> This is an alert message.
+            </div>
+          </div>
+          <div class="component-info">
+            <h4>Alerts</h4>
+            <p>Notifikasi dan pesan penting</p>
+          </div>
+        </div>
+
+        <div class="component-card">
+          <div class="component-preview">
+            <div style="width: 100%; height: 40px; background: var(--fz-c-primary-200); border-radius: 0.5rem; position: relative;">
+              <div style="width: 60%; height: 100%; background: var(--fz-c-primary-500); border-radius: 0.5rem;"></div>
+            </div>
+          </div>
+          <div class="component-info">
+            <h4>Progress</h4>
+            <p>Progress bars dan loading indicators</p>
+          </div>
+        </div>
+
+        <div class="component-card">
+          <div class="component-preview">
+            <div style="display: flex; gap: 0.5rem;">
+              <div style="width: 20px; height: 20px; border: 2px solid var(--fz-c-primary-500); border-radius: 50%;"></div>
+              <div style="width: 20px; height: 20px; background: var(--fz-c-primary-500); border-radius: 50%;"></div>
+            </div>
+          </div>
+          <div class="component-info">
+            <h4>Forms</h4>
+            <p>Input fields, checkboxes, dan form controls</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="container">
+      <h2>Siap memulai dengan ferzui?</h2>
+      <p>Mulai membangun aplikasi modern dengan framework UI yang powerful dan mudah digunakan.</p>
+      
+      <div class="cta-buttons">
+        <a href="docs/index.html" class="cta-btn primary">
+          📖 Baca Dokumentasi
+        </a>
+        <a href="demo/index.html" class="cta-btn secondary">
+          🎮 Lihat Demo
+        </a>
+        <a href="https://github.com/FerzDevZ/ferzui" class="cta-btn secondary" target="_blank">
+          ⭐ Star di GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>ferzui</h3>
+          <p>Framework UI modern untuk developer masa depan. Lebih baik dari Bootstrap dengan fitur-fitur terdepan.</p>
+        </div>
+
+        <div class="footer-section">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="docs/index.html">Documentation</a></li>
+            <li><a href="demo/index.html">Demo</a></li>
+            <li><a href="docs/playground.html">Playground</a></li>
+            <li><a href="docs/templates/dashboard.html">Templates</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Community</h3>
+          <ul>
+            <li><a href="https://github.com/FerzDevZ/ferzui" target="_blank">GitHub</a></li>
+            <li><a href="https://github.com/FerzDevZ/ferzui/issues" target="_blank">Issues</a></li>
+            <li><a href="https://github.com/FerzDevZ/ferzui/discussions" target="_blank">Discussions</a></li>
+            <li><a href="https://github.com/FerzDevZ/ferzui/releases" target="_blank">Releases</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Support</h3>
+          <ul>
+            <li><a href="docs/migrate.html">Migration Guide</a></li>
+            <li><a href="docs/customize.html">Customization</a></li>
+            <li><a href="docs/performance.html">Performance</a></li>
+            <li><a href="docs/javascript.html">JavaScript</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 FerzDevZ. All rights reserved. Made with ❤️ for the developer community.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 100) {
+        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+        navbar.style.boxShadow = '0 1px 3px 0 rgba(0, 0, 0, 0.1)';
+      } else {
+        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+        navbar.style.boxShadow = 'none';
+      }
+    });
+
+    // Add loading animation
+    window.addEventListener('load', function() {
+      document.body.style.opacity = '1';
+    });
+
+    // Initialize theme detection
+    if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  </script>
+</body>
+</html>
