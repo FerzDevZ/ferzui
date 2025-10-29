@@ -12,6 +12,23 @@
     /* Simple visibility utilities for demo toggles */
     .d-none { display: none !important; }
     .d-block { display: block !important; }
+    /* A11y skip-link: hidden until focus */
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 1rem;
+      background: var(--fz-c-primary-600);
+      color: #fff;
+      padding: .5rem 1rem;
+      border-radius: .5rem;
+      text-decoration: none;
+      z-index: 2000;
+    }
+    .skip-link:focus {
+      left: 1rem;
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
     /* Fallback CSS untuk memastikan styling tetap ada */
     :root {
       --fz-c-primary-500: #3b82f6;
@@ -1300,19 +1317,7 @@
           </div>
         </div>
 
-        <div class="demo-card">
-          <h3>Collapsible Sidebar</h3>
-            <div class="demo-preview d-flex" style="min-height:160px">
-            <div class="sidebar collapsed" id="demo-sidebar">
-              <a class="item" href="#">Dashboard</a>
-              <a class="item" href="#">Projects</a>
-              <a class="item" href="#">Settings</a>
-            </div>
-            <div style="flex:1; padding:1rem">
-              <button class="btn btn-outline" onclick="toggleSidebar()">Toggle Sidebar</button>
-            </div>
-          </div>
-        </div>
+        <!-- Collapsible Sidebar demo removed to avoid fixed element leaking to the viewport -->
 
       </div>
     </section>
