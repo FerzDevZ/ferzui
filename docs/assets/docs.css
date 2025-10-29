@@ -220,12 +220,205 @@ body.docs-layout {
   border-top: 1px solid var(--fz-c-border);
   background: var(--fz-c-gray-900);
   color: var(--fz-c-gray-100);
-  font-family: var(--fz-font-mono);
+  font-family: var(--fz-font-mono, 'Monaco', 'Menlo', 'Ubuntu Mono', monospace);
   font-size: .875rem;
   padding: var(--fz-space-4);
   overflow: auto;
   border-bottom-left-radius: var(--fz-radius-lg);
   border-bottom-right-radius: var(--fz-radius-lg);
+  line-height: 1.6;
+}
+
+.docs-example .code code {
+  display: block;
+  color: inherit;
+  background: none;
+  padding: 0;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Ensure code blocks in docs-main are styled */
+.docs-main code:not(.docs-example .code code) {
+  background: var(--fz-c-gray-100);
+  color: var(--fz-c-gray-800);
+  padding: 0.125rem 0.375rem;
+  border-radius: var(--fz-radius-sm);
+  font-family: var(--fz-font-mono, 'Monaco', 'Menlo', 'Ubuntu Mono', monospace);
+  font-size: 0.875em;
+}
+
+[data-theme="dark"] .docs-main code:not(.docs-example .code code) {
+  background: var(--fz-c-gray-800);
+  color: var(--fz-c-gray-100);
+}
+
+/* Form controls styling in docs */
+.docs-example .preview .form-control {
+  display: block;
+  width: 100%;
+  padding: var(--fz-space-2) var(--fz-space-3);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--fz-c-text);
+  background-color: var(--fz-c-bg);
+  border: 1px solid var(--fz-c-border);
+  border-radius: var(--fz-radius-md);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.docs-example .preview .form-control:focus {
+  outline: 0;
+  border-color: var(--fz-c-primary-500);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.docs-example .preview .form-control::placeholder {
+  color: var(--fz-c-text-muted);
+  opacity: 1;
+}
+
+.docs-example .preview .form-label {
+  display: block;
+  margin-bottom: var(--fz-space-2);
+  font-weight: 500;
+  color: var(--fz-c-text);
+}
+
+.docs-example .preview .form-group {
+  margin-bottom: var(--fz-space-4);
+}
+
+.docs-example .preview .form-group:last-child {
+  margin-bottom: 0;
+}
+
+.docs-example .preview textarea.form-control {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.docs-example .preview select.form-control {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right var(--fz-space-2) center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+  appearance: none;
+}
+
+/* Checkbox and Radio styling */
+.docs-example .preview input[type="checkbox"],
+.docs-example .preview input[type="radio"] {
+  width: 1rem;
+  height: 1rem;
+  margin-right: var(--fz-space-2);
+  margin-top: 0.125rem;
+  cursor: pointer;
+}
+
+.docs-example .preview label {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: var(--fz-space-2);
+  cursor: pointer;
+  color: var(--fz-c-text);
+}
+
+.docs-example .preview label:has(input[type="checkbox"]),
+.docs-example .preview label:has(input[type="radio"]) {
+  margin-right: var(--fz-space-3);
+}
+
+/* Input group styling */
+.docs-example .preview .input-group {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  width: 100%;
+}
+
+.docs-example .preview .input-group > * {
+  border-radius: 0;
+  margin: 0;
+}
+
+.docs-example .preview .input-group > *:first-child {
+  border-top-left-radius: var(--fz-radius-md);
+  border-bottom-left-radius: var(--fz-radius-md);
+  border-right: none;
+}
+
+.docs-example .preview .input-group > *:last-child {
+  border-top-right-radius: var(--fz-radius-md);
+  border-bottom-right-radius: var(--fz-radius-md);
+}
+
+.docs-example .preview .input-group > *:not(:first-child):not(:last-child) {
+  border-left: none;
+  border-right: none;
+}
+
+.docs-example .preview .input-group .form-control {
+  flex: 1;
+}
+
+.docs-example .preview .input-group .btn {
+  margin: 0;
+}
+
+/* Range input */
+.docs-example .preview input[type="range"].form-control {
+  height: 0.5rem;
+  background: var(--fz-c-gray-200);
+  border-radius: var(--fz-radius-full);
+  outline: none;
+  appearance: none;
+}
+
+.docs-example .preview input[type="range"].form-control::-webkit-slider-thumb {
+  appearance: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  background: var(--fz-c-primary-500);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.docs-example .preview input[type="range"].form-control::-moz-range-thumb {
+  width: 1.25rem;
+  height: 1.25rem;
+  background: var(--fz-c-primary-500);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+/* Fix for validation feedback */
+.docs-example .preview .text-danger {
+  color: var(--fz-c-danger-600);
+  font-size: 0.875rem;
+  margin-top: var(--fz-space-1);
+}
+
+.docs-example .preview .invalid-feedback {
+  display: block;
+  width: 100%;
+  margin-top: var(--fz-space-1);
+  font-size: 0.875rem;
+  color: var(--fz-c-danger-600);
+}
+
+.docs-example .preview .is-invalid {
+  border-color: var(--fz-c-danger-500);
+}
+
+.docs-example .preview .is-invalid:focus {
+  border-color: var(--fz-c-danger-500);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
 }
 
 .docs-toc {
@@ -662,8 +855,25 @@ html {
   transform: scale(.98);
   transition: opacity .15s ease, transform .15s ease;
   z-index: 1080;
+  pointer-events: none;
+  visibility: hidden;
 }
-.popover.show { opacity: 1; transform: scale(1); }
+.popover.show { 
+  opacity: 1; 
+  transform: scale(1);
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Hide tooltips/popovers by default in docs examples */
+.docs-example .preview .tooltip,
+.docs-example .preview .popover:not(.show),
+.docs-example .preview [data-toggle="tooltip"]::before,
+.docs-example .preview [data-toggle="popover"]::before {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
 
 [data-carousel] { position: relative; overflow: hidden; border-radius: var(--fz-radius-lg); border: 1px solid var(--fz-c-border); }
 [data-carousel-track] { display: flex; width: 100%; transition: transform .3s ease; }

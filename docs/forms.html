@@ -64,10 +64,12 @@
 
   <h2 id="input-group">Input Group</h2>
   <div class="docs-example">
-    <div class="preview" style="max-width:520px; display:flex; gap:.5rem">
-      <span class="btn btn-outline">@</span>
-      <input class="form-control" placeholder="username">
-      <button class="btn btn-primary">Submit</button>
+    <div class="preview" style="max-width:520px">
+      <div class="input-group">
+        <span class="btn btn-outline">@</span>
+        <input class="form-control" placeholder="username">
+        <button class="btn btn-primary">Submit</button>
+      </div>
     </div>
     <div class="code"><code>&lt;div class="input-group"&gt;
   &lt;span class="btn btn-outline"&gt;@&lt;/span&gt;
@@ -107,8 +109,8 @@
   <h2 id="validation">Validation</h2>
   <div class="docs-example">
     <div class="preview" style="max-width:520px">
-      <input class="form-control" placeholder="Invalid example" style="border-color: var(--fz-c-danger-500)">
-      <div class="text-danger mt-1">Please provide a valid input.</div>
+      <input class="form-control is-invalid" placeholder="Invalid example">
+      <div class="invalid-feedback">Please provide a valid input.</div>
     </div>
     <div class="code"><code>&lt;input class="form-control is-invalid" placeholder="Invalid"&gt;
 &lt;div class="invalid-feedback"&gt;Please provide a valid input.&lt;/div&gt;</code></div>
