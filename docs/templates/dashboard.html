@@ -3,47 +3,297 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard - ferzui</title>
+  <title>Dashboard Template - ferzui</title>
+  <meta name="description" content="Dashboard template lengkap dengan sidebar, navbar, dan komponen-komponen modern">
   <link rel="stylesheet" href="../../dist/ferzui.css">
   <link rel="stylesheet" href="../assets/docs.css">
+  <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+  <style>
+    .dashboard-layout {
+      display: flex;
+      min-height: 100vh;
+    }
+    
+    .dashboard-sidebar {
+      width: 280px;
+      background: var(--fz-c-surface);
+      border-right: 1px solid var(--fz-c-border);
+      padding: var(--fz-space-6);
+      position: fixed;
+      height: 100vh;
+      overflow-y: auto;
+    }
+    
+    .dashboard-main {
+      flex: 1;
+      margin-left: 280px;
+      padding: var(--fz-space-6);
+    }
+    
+    .dashboard-header {
+      background: var(--fz-c-surface);
+      border-bottom: 1px solid var(--fz-c-border);
+      padding: var(--fz-space-4) var(--fz-space-6);
+      margin: calc(var(--fz-space-6) * -1) calc(var(--fz-space-6) * -1) var(--fz-space-6);
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--fz-space-4);
+      margin-bottom: var(--fz-space-6);
+    }
+    
+    .stat-card {
+      background: var(--fz-c-surface);
+      border: 1px solid var(--fz-c-border);
+      border-radius: var(--fz-border-radius-lg);
+      padding: var(--fz-space-6);
+      box-shadow: var(--fz-shadow-sm);
+    }
+    
+    .stat-icon {
+      width: 3rem;
+      height: 3rem;
+      border-radius: var(--fz-border-radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: var(--fz-space-4);
+    }
+    
+    .chart-container {
+      background: var(--fz-c-surface);
+      border: 1px solid var(--fz-c-border);
+      border-radius: var(--fz-border-radius-lg);
+      padding: var(--fz-space-6);
+      margin-bottom: var(--fz-space-6);
+    }
+    
+    .chart-placeholder {
+      height: 300px;
+      background: var(--fz-c-gray-100);
+      border-radius: var(--fz-border-radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--fz-c-text-muted);
+      font-size: 1.1rem;
+    }
+    
+    @media (max-width: 768px) {
+      .dashboard-sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+      }
+      
+      .dashboard-sidebar.show {
+        transform: translateX(0);
+      }
+      
+      .dashboard-main {
+        margin-left: 0;
+      }
+    }
+  </style>
 </head>
 <body>
   <script src="../assets/docs.js"></script>
-  <section class="docs-main container">
-    <h1>Dashboard</h1>
-    <div class="grid grid-cols-12 gap-4">
-      <aside class="col-span-3 d-none md:d-block">
-        <div class="card">
-          <div class="card-header">Menu</div>
-          <div class="card-body d-flex flex-col gap-2">
-            <a class="link" href="#">Overview</a>
-            <a class="link" href="#">Sales</a>
-            <a class="link" href="#">Customers</a>
-            <a class="link" href="#">Settings</a>
+  
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+      <div class="mb-6">
+        <h2 class="text-xl font-bold text-primary-600">ferzui</h2>
+        <p class="text-sm text-muted">Dashboard Template</p>
+      </div>
+      
+      <nav class="space-y-2">
+        <a href="#" class="flex items-center gap-3 p-3 rounded-lg bg-primary-50 text-primary-600">
+          <span>📊</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="#" class="flex items-center gap-3 p-3 rounded-lg text-muted hover:bg-gray-50">
+          <span>👥</span>
+          <span>Users</span>
+        </a>
+        <a href="#" class="flex items-center gap-3 p-3 rounded-lg text-muted hover:bg-gray-50">
+          <span>📦</span>
+          <span>Products</span>
+        </a>
+        <a href="#" class="flex items-center gap-3 p-3 rounded-lg text-muted hover:bg-gray-50">
+          <span>📈</span>
+          <span>Analytics</span>
+        </a>
+        <a href="#" class="flex items-center gap-3 p-3 rounded-lg text-muted hover:bg-gray-50">
+          <span>⚙️</span>
+          <span>Settings</span>
+        </a>
+      </nav>
+      
+      <div class="mt-8">
+        <h3 class="text-sm font-semibold text-muted mb-3">Quick Actions</h3>
+        <div class="space-y-2">
+          <button class="btn btn-primary btn-sm w-full">+ New User</button>
+          <button class="btn btn-outline btn-sm w-full">📊 Generate Report</button>
+        </div>
+      </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="dashboard-main">
+      <!-- Header -->
+      <header class="dashboard-header">
+        <div class="flex items-center justify-between">
+          <div>
+            <h1 class="text-2xl font-bold">Dashboard</h1>
+            <p class="text-muted">Welcome back! Here's what's happening today.</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="relative">
+              <input type="search" placeholder="Search..." class="form-control" style="width: 300px;">
+            </div>
+            <button class="btn btn-outline">🔔</button>
+            <div class="dropdown">
+              <button class="btn btn-outline" data-toggle="dropdown">
+                👤 Admin User
+              </button>
+              <div class="dropdown-menu">
+                <a href="#" class="dropdown-item">Profile</a>
+                <a href="#" class="dropdown-item">Settings</a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item">Logout</a>
+              </div>
+            </div>
           </div>
         </div>
-      </aside>
-      <main class="col-span-12 md:col-span-9 d-flex flex-col gap-4">
-        <div class="stats-grid">
-          <div class="stat-card stat-primary"><div class="stat-header"><div class="stat-icon">💵</div><div class="stat-trend trend-up">+8%</div></div><div class="stat-value">$24,320</div><div class="stat-label">MRR</div></div>
-          <div class="stat-card stat-success"><div class="stat-header"><div class="stat-icon">🧑</div><div class="stat-trend trend-up">+3%</div></div><div class="stat-value">1,204</div><div class="stat-label">Active Users</div></div>
-          <div class="stat-card stat-info"><div class="stat-header"><div class="stat-icon">📈</div><div class="stat-trend trend-up">+12%</div></div><div class="stat-value">98.7%</div><div class="stat-label">Uptime</div></div>
+      </header>
+      
+      <!-- Stats Grid -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon bg-primary-100 text-primary-600">👥</div>
+          <h3 class="text-2xl font-bold mb-1">2,543</h3>
+          <p class="text-muted">Total Users</p>
+          <div class="mt-2 text-sm text-success-600">+12% from last month</div>
         </div>
-        <div class="card">
-          <div class="card-header">Recent Sales</div>
-          <div class="card-body table-responsive">
-            <table class="table-advanced zebra">
-              <thead><tr><th>Order</th><th>Customer</th><th>Total</th><th>Status</th></tr></thead>
-              <tbody>
-                <tr><td>#1024</td><td>John</td><td>$120</td><td><span class="badge badge-success">Paid</span></td></tr>
-                <tr><td>#1025</td><td>Jane</td><td>$90</td><td><span class="badge badge-warning">Pending</span></td></tr>
-                <tr><td>#1026</td><td>Bob</td><td>$300</td><td><span class="badge badge-success">Paid</span></td></tr>
-              </tbody>
-            </table>
+        
+        <div class="stat-card">
+          <div class="stat-icon bg-success-100 text-success-600">💰</div>
+          <h3 class="text-2xl font-bold mb-1">$45,231</h3>
+          <p class="text-muted">Revenue</p>
+          <div class="mt-2 text-sm text-success-600">+8% from last month</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon bg-warning-100 text-warning-600">📦</div>
+          <h3 class="text-2xl font-bold mb-1">1,234</h3>
+          <p class="text-muted">Orders</p>
+          <div class="mt-2 text-sm text-danger-600">-3% from last month</div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon bg-info-100 text-info-600">📈</div>
+          <h3 class="text-2xl font-bold mb-1">89.2%</h3>
+          <p class="text-muted">Conversion Rate</p>
+          <div class="mt-2 text-sm text-success-600">+5% from last month</div>
+        </div>
+      </div>
+      
+      <!-- Charts Section -->
+      <div class="row gap-4">
+        <div class="col-lg-8">
+          <div class="chart-container">
+            <h3 class="text-lg font-semibold mb-4">Revenue Overview</h3>
+            <div class="chart-placeholder">
+              📊 Chart would be rendered here (Chart.js, D3.js, etc.)
+            </div>
           </div>
         </div>
-      </main>
-    </div>
-  </section>
+        
+        <div class="col-lg-4">
+          <div class="chart-container">
+            <h3 class="text-lg font-semibold mb-4">Top Products</h3>
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 bg-primary-100 rounded"></div>
+                  <span>Product A</span>
+                </div>
+                <span class="font-semibold">$2,340</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 bg-success-100 rounded"></div>
+                  <span>Product B</span>
+                </div>
+                <span class="font-semibold">$1,890</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 bg-warning-100 rounded"></div>
+                  <span>Product C</span>
+                </div>
+                <span class="font-semibold">$1,234</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Recent Activity -->
+      <div class="row gap-4">
+        <div class="col-lg-6">
+          <div class="chart-container">
+            <h3 class="text-lg font-semibold mb-4">Recent Orders</h3>
+            <div class="space-y-3">
+              <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
+                <div>
+                  <div class="font-medium">Order #1234</div>
+                  <div class="text-sm text-muted">John Doe • $234.00</div>
+                </div>
+                <span class="badge badge-success">Completed</span>
+              </div>
+              <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
+                <div>
+                  <div class="font-medium">Order #1235</div>
+                  <div class="text-sm text-muted">Jane Smith • $189.00</div>
+                </div>
+                <span class="badge badge-warning">Processing</span>
+              </div>
+              <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
+                <div>
+                  <div class="font-medium">Order #1236</div>
+                  <div class="text-sm text-muted">Bob Johnson • $456.00</div>
+                </div>
+                <span class="badge badge-primary">Shipped</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6">
+          <div class="chart-container">
+            <h3 class="text-lg font-semibold mb-4">Quick Actions</h3>
+            <div class="grid grid-cols-2 gap-3">
+              <button class="btn btn-primary">+ New Order</button>
+              <button class="btn btn-success">📊 Reports</button>
+              <button class="btn btn-warning">👥 Users</button>
+              <button class="btn btn-info">⚙️ Settings</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  
+  <script>
+    // Mobile sidebar toggle
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add mobile menu toggle functionality here
+      console.log('Dashboard template loaded');
+    });
+  </script>
 </body>
 </html>

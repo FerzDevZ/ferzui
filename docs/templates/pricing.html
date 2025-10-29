@@ -3,65 +3,523 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pricing - ferzui</title>
+  <title>Pricing Template - ferzui</title>
+  <meta name="description" content="Template halaman pricing dengan berbagai paket dan fitur">
   <link rel="stylesheet" href="../../dist/ferzui.css">
   <link rel="stylesheet" href="../assets/docs.css">
+  <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+  <style>
+    .pricing-hero {
+      background: linear-gradient(135deg, var(--fz-c-primary-50) 0%, var(--fz-c-primary-100) 100%);
+      padding: 4rem 0;
+      text-align: center;
+    }
+    
+    .pricing-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--fz-space-4);
+      margin: var(--fz-space-8) 0;
+    }
+    
+    .toggle-switch {
+      position: relative;
+      width: 60px;
+      height: 30px;
+      background: var(--fz-c-gray-300);
+      border-radius: 15px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    
+    .toggle-switch.active {
+      background: var(--fz-c-primary-500);
+    }
+    
+    .toggle-slider {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 24px;
+      height: 24px;
+      background: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+    
+    .toggle-switch.active .toggle-slider {
+      transform: translateX(30px);
+    }
+    
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--fz-space-6);
+      margin: var(--fz-space-8) 0;
+    }
+    
+    .pricing-card {
+      background: var(--fz-c-surface);
+      border: 2px solid var(--fz-c-border);
+      border-radius: var(--fz-border-radius-xl);
+      padding: var(--fz-space-8);
+      text-align: center;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--fz-shadow-xl);
+    }
+    
+    .pricing-card.popular {
+      border-color: var(--fz-c-primary-500);
+      transform: scale(1.05);
+    }
+    
+    .pricing-card.popular::before {
+      content: 'Most Popular';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--fz-c-primary-500);
+      color: white;
+      padding: var(--fz-space-2) var(--fz-space-4);
+      border-radius: var(--fz-border-radius-full);
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+    
+    .pricing-header {
+      margin-bottom: var(--fz-space-6);
+    }
+    
+    .pricing-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: var(--fz-space-2);
+    }
+    
+    .pricing-description {
+      color: var(--fz-c-text-muted);
+      margin-bottom: var(--fz-space-4);
+    }
+    
+    .pricing-price {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: var(--fz-space-2);
+      margin-bottom: var(--fz-space-4);
+    }
+    
+    .pricing-amount {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--fz-c-primary-600);
+    }
+    
+    .pricing-period {
+      color: var(--fz-c-text-muted);
+      font-size: 1rem;
+    }
+    
+    .pricing-features {
+      text-align: left;
+      margin-bottom: var(--fz-space-6);
+    }
+    
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: var(--fz-space-3);
+      margin-bottom: var(--fz-space-3);
+      padding: var(--fz-space-2) 0;
+    }
+    
+    .feature-icon {
+      width: 20px;
+      height: 20px;
+      background: var(--fz-c-success-100);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: var(--fz-c-success-600);
+    }
+    
+    .feature-text {
+      flex: 1;
+    }
+    
+    .feature-unavailable {
+      opacity: 0.5;
+    }
+    
+    .feature-unavailable .feature-icon {
+      background: var(--fz-c-gray-200);
+      color: var(--fz-c-gray-400);
+    }
+    
+    .pricing-cta {
+      width: 100%;
+    }
+    
+    .faq-section {
+      padding: 4rem 0;
+      background: var(--fz-c-gray-50);
+    }
+    
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: var(--fz-space-6);
+      margin-top: var(--fz-space-8);
+    }
+    
+    .faq-item {
+      background: var(--fz-c-surface);
+      border: 1px solid var(--fz-c-border);
+      border-radius: var(--fz-border-radius-lg);
+      overflow: hidden;
+    }
+    
+    .faq-question {
+      padding: var(--fz-space-4);
+      background: var(--fz-c-gray-50);
+      border-bottom: 1px solid var(--fz-c-border);
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .faq-answer {
+      padding: var(--fz-space-4);
+      display: none;
+    }
+    
+    .faq-answer.show {
+      display: block;
+    }
+    
+    .faq-icon {
+      transition: transform 0.3s ease;
+    }
+    
+    .faq-item.active .faq-icon {
+      transform: rotate(180deg);
+    }
+  </style>
 </head>
 <body>
   <script src="../assets/docs.js"></script>
-  <section class="docs-main container">
-    <h1 class="text-center">Pricing</h1>
-    <p class="text-center lead">Pilih paket yang sesuai kebutuhan Anda</p>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-      <div class="card">
-        <div class="card-header text-center">Starter</div>
-        <div class="card-body text-center">
-          <div class="text-3xl fw-bold mb-2">$0</div>
-          <p class="text-muted mb-3">Untuk proyek kecil & belajar</p>
-          <ul class="d-flex flex-col gap-2 items-start" style="max-width:280px; margin:0 auto">
-            <li>Komponen dasar</li>
-            <li>Dokumentasi</li>
-            <li>CDN</li>
-          </ul>
-        </div>
-        <div class="card-footer text-center">
-          <button class="btn btn-outline">Mulai</button>
-        </div>
+  
+  <!-- Navigation -->
+  <nav class="navbar navbar-light bg-white shadow-sm">
+    <div class="container">
+      <div class="navbar-brand">
+        <strong class="text-primary-600">ferzui</strong>
       </div>
-
-      <div class="card">
-        <div class="card-header text-center">Pro</div>
-        <div class="card-body text-center">
-          <div class="text-3xl fw-bold mb-2">$19</div>
-          <p class="text-muted mb-3">Untuk tim kecil & startup</p>
-          <ul class="d-flex flex-col gap-2 items-start" style="max-width:280px; margin:0 auto">
-            <li>Semua komponen</li>
-            <li>Theme editor</li>
-            <li>Template siap pakai</li>
-          </ul>
-        </div>
-        <div class="card-footer text-center">
-          <button class="btn btn-primary">Pilih Pro</button>
-        </div>
+      <div class="navbar-nav">
+        <a href="#" class="nav-link">Features</a>
+        <a href="#" class="nav-link">Documentation</a>
+        <a href="#" class="nav-link">Support</a>
+        <button class="btn btn-primary">Get Started</button>
       </div>
-
-      <div class="card">
-        <div class="card-header text-center">Enterprise</div>
-        <div class="card-body text-center">
-          <div class="text-3xl fw-bold mb-2">Hubungi</div>
-          <p class="text-muted mb-3">Untuk kebutuhan skala besar</p>
-          <ul class="d-flex flex-col gap-2 items-start" style="max-width:280px; margin:0 auto">
-            <li>Support prioritas</li>
-            <li>Kustomisasi</li>
-            <li>Audit aksesibilitas</li>
-          </ul>
+    </div>
+  </nav>
+  
+  <!-- Hero Section -->
+  <section class="pricing-hero">
+    <div class="container">
+      <h1 class="text-4xl font-bold mb-4">Simple, Transparent Pricing</h1>
+      <p class="text-xl text-muted max-w-2xl mx-auto">
+        Choose the perfect plan for your project. All plans include our core features 
+        with no hidden fees or surprises.
+      </p>
+      
+      <!-- Pricing Toggle -->
+      <div class="pricing-toggle">
+        <span class="text-lg font-medium">Monthly</span>
+        <div class="toggle-switch" id="pricingToggle">
+          <div class="toggle-slider"></div>
         </div>
-        <div class="card-footer text-center">
-          <button class="btn btn-outline">Kontak Kami</button>
+        <span class="text-lg font-medium">Yearly</span>
+        <span class="badge badge-success">Save 20%</span>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Pricing Cards -->
+  <section class="container">
+    <div class="pricing-grid">
+      <!-- Free Plan -->
+      <div class="pricing-card">
+        <div class="pricing-header">
+          <h3 class="pricing-name">Free</h3>
+          <p class="pricing-description">Perfect for personal projects and learning</p>
+          <div class="pricing-price">
+            <span class="pricing-amount">$0</span>
+            <span class="pricing-period">/month</span>
+          </div>
+        </div>
+        
+        <div class="pricing-features">
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <span class="feature-text">Up to 3 projects</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <span class="feature-text">Basic components</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <span class="feature-text">Community support</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <span class="feature-text">Documentation access</span>
+          </div>
+          <div class="feature-item feature-unavailable">
+            <div class="feature-icon">✗</div>
+            <span class="feature-text">Premium components</span>
+          </div>
+          <div class="feature-item feature-unavailable">
+            <div class="feature-icon">✗</div>
+            <span class="feature-text">Priority support</span>
+          </div>
+        </div>
+        
+        <button class="btn btn-outline pricing-cta">Get Started</button>
+      </div>
+      
+      <!-- Pro Plan -->
+      <div class="pricing-card popular">
+        <div class="pricing-header">
+          <h3 class="pricing-name">Pro</h3>
+          <p class="pricing-description">Best for professional developers and teams</p>
+          <div class="pricing-price">
+            <span class="pricing-amount" id="proPrice">$29</span>
+            <span class="pricing-period">/month</span>
+          </div>
+        </div>
+        
+        <div class="pricing-features">
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <span class="feature-text">Unlimited projects</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <span class="feature-text">All components</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <span class="feature-text">Premium templates</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <span class="feature-text">Priority support</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <span class="feature-text">Custom themes</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <span class="feature-text">Team collaboration</span>
+          </div>
+        </div>
+        
+        <button class="btn btn-primary pricing-cta">Start Pro Trial</button>
+      </div>
+      
+      <!-- Enterprise Plan -->
+      <div class="pricing-card">
+        <div class="pricing-header">
+          <h3 class="pricing-name">Enterprise</h3>
+          <p class="pricing-description">For large organizations with custom needs</p>
+          <div class="pricing-price">
+            <span class="pricing-amount">$99</span>
+            <span class="pricing-period">/month</span>
+          </div>
+        </div>
+        
+        <div class="pricing-features">
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <span class="feature-text">Everything in Pro</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <span class="feature-text">Custom components</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <span class="feature-text">Dedicated support</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <span class="feature-text">SLA guarantee</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <span class="feature-text">Training sessions</span>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <span class="feature-text">On-premise deployment</span>
+          </div>
+        </div>
+        
+        <button class="btn btn-outline pricing-cta">Contact Sales</button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
+        <p class="text-xl text-muted max-w-2xl mx-auto">
+          Have questions? We've got answers. If you can't find what you're looking for, 
+          feel free to contact our support team.
+        </p>
+      </div>
+      
+      <div class="faq-grid">
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span>Can I change plans anytime?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            <p>Yes, you can upgrade or downgrade your plan at any time. Changes will be reflected in your next billing cycle.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span>Is there a free trial?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            <p>Yes! We offer a 14-day free trial for all paid plans. No credit card required to start.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span>What payment methods do you accept?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            <p>We accept all major credit cards, PayPal, and bank transfers for Enterprise plans.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span>Do you offer refunds?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            <p>We offer a 30-day money-back guarantee for all paid plans. Contact support for assistance.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span>Can I cancel anytime?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            <p>Absolutely! You can cancel your subscription at any time from your account settings.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span>Is there a student discount?</span>
+            <span class="faq-icon">▼</span>
+          </div>
+          <div class="faq-answer">
+            <p>Yes! Students get 50% off all paid plans with a valid student email address.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
+  
+  <!-- CTA Section -->
+  <section class="container text-center py-8">
+    <h2 class="text-3xl font-bold mb-4">Ready to Get Started?</h2>
+    <p class="text-xl text-muted mb-6">
+      Join thousands of developers who are already building amazing UIs with ferzui.
+    </p>
+    <button class="btn btn-primary btn-lg">Start Your Free Trial</button>
+  </section>
+  
+  <script>
+    // Pricing toggle functionality
+    const pricingToggle = document.getElementById('pricingToggle');
+    const proPrice = document.getElementById('proPrice');
+    let isYearly = false;
+    
+    pricingToggle.addEventListener('click', function() {
+      isYearly = !isYearly;
+      this.classList.toggle('active');
+      
+      // Update prices
+      if (isYearly) {
+        proPrice.textContent = '$24';
+        // Update other prices here
+      } else {
+        proPrice.textContent = '$29';
+        // Update other prices here
+      }
+    });
+    
+    // FAQ toggle functionality
+    function toggleFAQ(element) {
+      const faqItem = element.parentElement;
+      const answer = faqItem.querySelector('.faq-answer');
+      
+      // Close other open FAQs
+      document.querySelectorAll('.faq-item').forEach(item => {
+        if (item !== faqItem) {
+          item.classList.remove('active');
+          item.querySelector('.faq-answer').classList.remove('show');
+        }
+      });
+      
+      // Toggle current FAQ
+      faqItem.classList.toggle('active');
+      answer.classList.toggle('show');
+    }
+    
+    // Pricing card interactions
+    document.querySelectorAll('.pricing-card').forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        if (!this.classList.contains('popular')) {
+          this.style.transform = 'translateY(-4px)';
+        }
+      });
+      
+      card.addEventListener('mouseleave', function() {
+        if (!this.classList.contains('popular')) {
+          this.style.transform = 'translateY(0)';
+        }
+      });
+    });
+  </script>
 </body>
 </html>

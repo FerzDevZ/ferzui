@@ -1,25 +1,27 @@
 /* ferzui Docs JS - inject layout, sidebar, search (lunr), responsive, RTL */
 (function () {
   const PAGES = [
-    { title: 'Getting Started', url: 'index.html' },
-    { title: 'Layout', url: 'layout.html' },
-    { title: 'Components', url: 'components.html' },
-    { title: 'Utilities', url: 'utilities.html' },
-    { title: 'Customize', url: 'customize.html' },
-    { title: 'JavaScript', url: 'javascript.html' },
-    { title: 'Theme Editor', url: 'theme.html' },
-    { title: 'Migrate', url: 'migrate.html' },
-    { title: 'Templates / Dashboard', url: 'templates/dashboard.html' },
-    { title: 'Templates / Auth', url: 'templates/auth.html' },
-    { title: 'Templates / Pricing', url: 'templates/pricing.html' },
-    { title: 'Templates / Landing', url: 'templates/landing.html' },
-    { title: 'Playground', url: 'playground.html' },
-    { title: 'Performance & Accessibility', url: 'performance.html' },
-    { title: 'Extended Components', url: 'extended.html' },
-    { title: 'Varied Components', url: 'varied.html' },
-    { title: 'Communication Components', url: 'communication.html' },
-    { title: 'Entertainment Components', url: 'entertainment.html' },
-    { title: 'Business Components', url: 'business.html' }
+    { title: 'Getting Started', url: 'index.html', category: 'Getting Started' },
+    { title: 'Installation', url: 'installation.html', category: 'Getting Started' },
+    { title: 'Usage', url: 'usage.html', category: 'Getting Started' },
+    { title: 'Layout', url: 'layout.html', category: 'Layout' },
+    { title: 'Components', url: 'components.html', category: 'Components' },
+    { title: 'Extended Components', url: 'extended.html', category: 'Components' },
+    { title: 'Varied Components', url: 'varied.html', category: 'Components' },
+    { title: 'Communication Components', url: 'communication.html', category: 'Components' },
+    { title: 'Entertainment Components', url: 'entertainment.html', category: 'Components' },
+    { title: 'Business Components', url: 'business.html', category: 'Components' },
+    { title: 'Utilities', url: 'utilities.html', category: 'Utilities' },
+    { title: 'Customize', url: 'customize.html', category: 'Customization' },
+    { title: 'Theme Editor', url: 'theme.html', category: 'Customization' },
+    { title: 'JavaScript', url: 'javascript.html', category: 'JavaScript' },
+    { title: 'Migrate', url: 'migrate.html', category: 'Migration' },
+    { title: 'Performance & Accessibility', url: 'performance.html', category: 'Advanced' },
+    { title: 'Playground', url: 'playground.html', category: 'Tools' },
+    { title: 'Templates / Dashboard', url: 'templates/dashboard.html', category: 'Templates' },
+    { title: 'Templates / Auth', url: 'templates/auth.html', category: 'Templates' },
+    { title: 'Templates / Pricing', url: 'templates/pricing.html', category: 'Templates' },
+    { title: 'Templates / Landing', url: 'templates/landing.html', category: 'Templates' }
   ];
 
   let lunrReady = false;
@@ -91,6 +93,8 @@
       <div>
         <div class="docs-section-title">Getting Started</div>
         <a class="docs-link" href="index.html">Getting Started</a>
+        <a class="docs-link" href="installation.html">Installation</a>
+        <a class="docs-link" href="usage.html">Usage</a>
         <a class="docs-link" href="customize.html">Customize</a>
         <a class="docs-link" href="migrate.html">Migrate</a>
         <a class="docs-link" href="theme.html">Theme Editor</a>
@@ -115,6 +119,14 @@
         <a class="docs-link" href="components.html#progress">Progress</a>
       </div>
       <div>
+        <div class="docs-section-title">Extended Components</div>
+        <a class="docs-link" href="extended.html">Extended Components</a>
+        <a class="docs-link" href="varied.html">Varied Components</a>
+        <a class="docs-link" href="communication.html">Communication</a>
+        <a class="docs-link" href="entertainment.html">Entertainment</a>
+        <a class="docs-link" href="business.html">Business</a>
+      </div>
+      <div>
         <div class="docs-section-title">Utilities</div>
         <a class="docs-link" href="utilities.html#spacing">Spacing</a>
         <a class="docs-link" href="utilities.html#display">Display</a>
@@ -122,6 +134,10 @@
         <a class="docs-link" href="utilities.html#grid">Grid</a>
         <a class="docs-link" href="utilities.html#colors">Colors</a>
         <a class="docs-link" href="utilities.html#shadows">Shadows</a>
+      </div>
+      <div>
+        <div class="docs-section-title">JavaScript</div>
+        <a class="docs-link" href="javascript.html">JavaScript API</a>
       </div>
       <div>
         <div class="docs-section-title">Templates</div>

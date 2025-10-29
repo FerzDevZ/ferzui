@@ -3,32 +3,283 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Auth - ferzui</title>
+  <title>Auth Template - ferzui</title>
+  <meta name="description" content="Template autentikasi lengkap dengan login, register, dan forgot password">
   <link rel="stylesheet" href="../../dist/ferzui.css">
   <link rel="stylesheet" href="../assets/docs.css">
+  <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+  <style>
+    .auth-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--fz-c-primary-50) 0%, var(--fz-c-primary-100) 100%);
+      padding: var(--fz-space-4);
+    }
+    
+    .auth-card {
+      background: var(--fz-c-surface);
+      border-radius: var(--fz-border-radius-xl);
+      box-shadow: var(--fz-shadow-xl);
+      padding: var(--fz-space-8);
+      width: 100%;
+      max-width: 400px;
+      border: 1px solid var(--fz-c-border);
+    }
+    
+    .auth-header {
+      text-align: center;
+      margin-bottom: var(--fz-space-8);
+    }
+    
+    .auth-logo {
+      width: 64px;
+      height: 64px;
+      background: var(--fz-c-primary-500);
+      border-radius: var(--fz-border-radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--fz-space-4);
+      font-size: 1.5rem;
+      color: white;
+    }
+    
+    .auth-tabs {
+      display: flex;
+      margin-bottom: var(--fz-space-6);
+      border-bottom: 1px solid var(--fz-c-border);
+    }
+    
+    .auth-tab {
+      flex: 1;
+      padding: var(--fz-space-3);
+      text-align: center;
+      border: none;
+      background: none;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s ease;
+    }
+    
+    .auth-tab.active {
+      color: var(--fz-c-primary-600);
+      border-bottom-color: var(--fz-c-primary-600);
+    }
+    
+    .auth-form {
+      display: none;
+    }
+    
+    .auth-form.active {
+      display: block;
+    }
+    
+    .social-login {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--fz-space-3);
+      margin: var(--fz-space-6) 0;
+    }
+    
+    .social-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--fz-space-2);
+      padding: var(--fz-space-3);
+      border: 1px solid var(--fz-c-border);
+      border-radius: var(--fz-border-radius-md);
+      background: var(--fz-c-surface);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .social-btn:hover {
+      background: var(--fz-c-gray-50);
+    }
+    
+    .divider {
+      text-align: center;
+      margin: var(--fz-space-6) 0;
+      position: relative;
+    }
+    
+    .divider::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--fz-c-border);
+    }
+    
+    .divider span {
+      background: var(--fz-c-surface);
+      padding: 0 var(--fz-space-4);
+      color: var(--fz-c-text-muted);
+      font-size: 0.875rem;
+    }
+    
+    .forgot-link {
+      text-align: right;
+      margin-top: var(--fz-space-2);
+    }
+    
+    .auth-footer {
+      text-align: center;
+      margin-top: var(--fz-space-6);
+      padding-top: var(--fz-space-6);
+      border-top: 1px solid var(--fz-c-border);
+    }
+  </style>
 </head>
 <body>
   <script src="../assets/docs.js"></script>
-  <section class="docs-main container d-flex justify-center items-center" style="min-height:70vh">
-    <div class="card" style="max-width: 420px; width:100%">
-      <div class="card-header">Masuk</div>
-      <div class="card-body d-flex flex-col gap-3">
-        <div>
-          <label class="form-label">Email</label>
-          <input type="email" class="form-control" placeholder="you@example.com">
+  
+  <div class="auth-container">
+    <div class="auth-card">
+      <!-- Header -->
+      <div class="auth-header">
+        <div class="auth-logo">F</div>
+        <h1 class="text-2xl font-bold">Welcome to ferzui</h1>
+        <p class="text-muted">Sign in to your account or create a new one</p>
+      </div>
+      
+      <!-- Tabs -->
+      <div class="auth-tabs">
+        <button class="auth-tab active" onclick="showTab('login')">Sign In</button>
+        <button class="auth-tab" onclick="showTab('register')">Sign Up</button>
+      </div>
+      
+      <!-- Login Form -->
+      <form class="auth-form active" id="login-form">
+        <div class="space-y-4">
+          <div>
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" placeholder="Enter your email" required>
+          </div>
+          
+          <div>
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" placeholder="Enter your password" required>
+          </div>
+          
+          <div class="flex items-center justify-between">
+            <label class="flex items-center gap-2">
+              <input type="checkbox" class="form-checkbox">
+              <span class="text-sm">Remember me</span>
+            </label>
+            <a href="#" class="text-sm text-primary-600 hover:text-primary-700">Forgot password?</a>
+          </div>
+          
+          <button type="submit" class="btn btn-primary w-full">Sign In</button>
         </div>
-        <div>
-          <label class="form-label">Password</label>
-          <input type="password" class="form-control" placeholder="••••••••">
+      </form>
+      
+      <!-- Register Form -->
+      <form class="auth-form" id="register-form">
+        <div class="space-y-4">
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="form-label">First Name</label>
+              <input type="text" class="form-control" placeholder="John" required>
+            </div>
+            <div>
+              <label class="form-label">Last Name</label>
+              <input type="text" class="form-control" placeholder="Doe" required>
+            </div>
+          </div>
+          
+          <div>
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" placeholder="john@example.com" required>
+          </div>
+          
+          <div>
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" placeholder="Create a password" required>
+          </div>
+          
+          <div>
+            <label class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" placeholder="Confirm your password" required>
+          </div>
+          
+          <label class="flex items-center gap-2">
+            <input type="checkbox" class="form-checkbox" required>
+            <span class="text-sm">I agree to the <a href="#" class="text-primary-600">Terms of Service</a> and <a href="#" class="text-primary-600">Privacy Policy</a></span>
+          </label>
+          
+          <button type="submit" class="btn btn-primary w-full">Create Account</button>
         </div>
-        <div class="d-flex justify-between items-center">
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="remember"><label for="remember">Ingat saya</label></div>
-          <a href="#" class="link">Lupa password?</a>
-        </div>
-        <button class="btn btn-primary w-full">Masuk</button>
-        <div class="text-center text-muted">Belum punya akun? <a href="#" class="link">Daftar</a></div>
+      </form>
+      
+      <!-- Social Login -->
+      <div class="divider">
+        <span>Or continue with</span>
+      </div>
+      
+      <div class="social-login">
+        <button class="social-btn">
+          <span>🔍</span>
+          <span>Google</span>
+        </button>
+        <button class="social-btn">
+          <span>📘</span>
+          <span>Facebook</span>
+        </button>
+      </div>
+      
+      <!-- Footer -->
+      <div class="auth-footer">
+        <p class="text-sm text-muted">
+          By signing up, you agree to our 
+          <a href="#" class="text-primary-600">Terms of Service</a> and 
+          <a href="#" class="text-primary-600">Privacy Policy</a>
+        </p>
       </div>
     </div>
-  </section>
+  </div>
+  
+  <script>
+    function showTab(tabName) {
+      // Hide all forms
+      document.querySelectorAll('.auth-form').forEach(form => {
+        form.classList.remove('active');
+      });
+      
+      // Remove active class from all tabs
+      document.querySelectorAll('.auth-tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      
+      // Show selected form
+      document.getElementById(tabName + '-form').classList.add('active');
+      
+      // Add active class to clicked tab
+      event.target.classList.add('active');
+    }
+    
+    // Form submission
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Login form submitted!');
+    });
+    
+    document.getElementById('register-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Register form submitted!');
+    });
+    
+    // Social login buttons
+    document.querySelectorAll('.social-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        alert('Social login clicked: ' + this.textContent.trim());
+      });
+    });
+  </script>
 </body>
 </html>
