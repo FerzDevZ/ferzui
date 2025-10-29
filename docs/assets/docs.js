@@ -35,6 +35,29 @@
     });
   }
 
+  function ensureAssets() {
+    // Ensure ferzui CSS (CDN-first) and docs.css are loaded on every docs page
+    const head = document.head;
+    const hasFerzuiCss = [...document.querySelectorAll('link[rel="stylesheet"]')].some(l => /ferzui(\.min)?\.css/.test(l.href));
+    const hasDocsCss = [...document.querySelectorAll('link[rel="stylesheet"]')].some(l => /docs\.css$/.test(l.href));
+    if (!hasFerzuiCss) {
+      const cdn = document.createElement('link'); cdn.rel = 'stylesheet'; cdn.href = 'https://cdn.jsdelivr.net/npm/ferzui@latest/dist/ferzui.min.css';
+      head.appendChild(cdn);
+    }
+    if (!hasDocsCss) {
+      const docsCss = document.createElement('link'); docsCss.rel = 'stylesheet'; docsCss.href = './assets/docs.css';
+      head.appendChild(docsCss);
+    }
+  }
+
+  async function ensureFerzuiJS() {
+    // Ensure ferzui JS exists for interactive examples
+    const hasFerzuiJs = !![...document.scripts].find(s => /ferzui(\.min)?\.js/.test(s.src));
+    if (!hasFerzuiJs) {
+      try { await loadScript('https://cdn.jsdelivr.net/npm/ferzui@latest/dist/ferzui.min.js'); } catch (_) {}
+    }
+  }
+
   function wrapAsDocsLayout() {
     if (document.body.classList.contains('docs-layout')) return;
 
@@ -49,7 +72,7 @@
             <a class="nav-link" href="components.html">🧩 Components</a>
             <a class="nav-link" href="utilities.html">⚡ Utilities</a>
             <a class="nav-link" href="layout.html">📐 Layout</a>
-            <a class="nav-link" href="playground.html">🎮 Playground</a>
+          <a class="nav-link" href="playground.html">🎮 Playground</a>
             <a class="nav-link" href="https://github.com/FerzDevZ/ferzui" target="_blank">⭐ GitHub</a>
           </nav>
           <div class="docs-actions">
@@ -102,6 +125,8 @@
       <div>
         <div class="docs-section-title">Layout</div>
         <a class="docs-link" href="layout.html">Grid & Container</a>
+        <a class="docs-link" href="layout.html#advanced-grid">Advanced Grid</a>
+        <a class="docs-link" href="layout.html#responsive-utilities">Responsive Utilities</a>
       </div>
       <div>
         <div class="docs-section-title">Components</div>
@@ -117,6 +142,7 @@
         <a class="docs-link" href="components.html#accordion">Accordion</a>
         <a class="docs-link" href="components.html#offcanvas">Offcanvas</a>
         <a class="docs-link" href="components.html#progress">Progress</a>
+        <a class="docs-link" href="extended.html">Extended Suite</a>
       </div>
       <div>
         <div class="docs-section-title">Extended Components</div>
@@ -134,6 +160,12 @@
         <a class="docs-link" href="utilities.html#grid">Grid</a>
         <a class="docs-link" href="utilities.html#colors">Colors</a>
         <a class="docs-link" href="utilities.html#shadows">Shadows</a>
+        <a class="docs-link" href="utilities.html#typography">Typography</a>
+        <a class="docs-link" href="utilities.html#position">Position</a>
+        <a class="docs-link" href="utilities.html#sizing">Sizing</a>
+        <a class="docs-link" href="utilities.html#opacity">Opacity</a>
+        <a class="docs-link" href="utilities.html#z-index">Z-Index</a>
+        <a class="docs-link" href="utilities.html#animations">Animations</a>
       </div>
       <div>
         <div class="docs-section-title">JavaScript</div>
@@ -150,18 +182,15 @@
         <div class="docs-section-title">Tools</div>
         <a class="docs-link" href="playground.html">Playground</a>
         <a class="docs-link" href="performance.html">Performance & A11y</a>
-        <a class="docs-link" href="extended.html">Extended Components</a>
-        <a class="docs-link" href="varied.html">Varied Components</a>
-        <a class="docs-link" href="communication.html">Communication</a>
-        <a class="docs-link" href="entertainment.html">Entertainment</a>
-        <a class="docs-link" href="business.html">Business</a>
       </div>
     `;
     nav.innerHTML = html;
 
-    const here = location.pathname + location.hash;
+    const currentPath = location.pathname.split('/').pop() + location.hash;
     nav.querySelectorAll('a').forEach(a => {
-      if (a.getAttribute('href') === here || a.getAttribute('href') === location.pathname) {
+      const href = a.getAttribute('href');
+      const hrefNoBase = href.split('/').pop();
+      if (currentPath === href || currentPath === hrefNoBase || location.href.endsWith(href)) {
         a.classList.add('active');
       }
     });
@@ -319,6 +348,8 @@
   }
 
   document.addEventListener('DOMContentLoaded', async () => {
+    ensureAssets();
+    await ensureFerzuiJS();
     wrapAsDocsLayout();
     buildSidebar();
     buildTOC();

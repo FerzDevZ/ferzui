@@ -826,6 +826,222 @@
       </div>
     </section>
 
+    <!-- Tabs & Accordion Demo -->
+    <section class="demo-section">
+      <h2>Tabs & Accordion</h2>
+      <p>Navigasi konten menggunakan tabs dan accordion.</p>
+
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>Tabs</h3>
+          <div class="demo-preview">
+            <div class="tabs" id="demo-tabs">
+              <div class="tab-nav">
+                <button class="btn btn-outline btn-sm" onclick="switchTab('tab1')">Overview</button>
+                <button class="btn btn-outline btn-sm" onclick="switchTab('tab2')">Details</button>
+                <button class="btn btn-outline btn-sm" onclick="switchTab('tab3')">Reviews</button>
+              </div>
+              <div class="tab-content" style="margin-top:1rem">
+                <div class="tab-pane" id="tab1">Ini adalah ringkasan produk.</div>
+                <div class="tab-pane d-none" id="tab2">Detail spesifikasi lengkap di sini.</div>
+                <div class="tab-pane d-none" id="tab3">Ulasan pengguna akan muncul di sini.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>Accordion</h3>
+          <div class="demo-preview">
+            <div class="accordion" id="demo-accordion">
+              <div class="card">
+                <div class="card-header"><button class="btn btn-outline btn-sm" onclick="toggleAccordion('acc1')">Apa itu ferzui?</button></div>
+                <div class="card-body d-none" id="acc1">ferzui adalah framework UI modern dengan 120+ komponen.</div>
+              </div>
+              <div class="card" style="margin-top:.75rem">
+                <div class="card-header"><button class="btn btn-outline btn-sm" onclick="toggleAccordion('acc2')">Cara install?</button></div>
+                <div class="card-body d-none" id="acc2">Gunakan CDN atau NPM sesuai kebutuhan.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dropdowns & Tooltips Demo -->
+    <section class="demo-section">
+      <h2>Dropdowns & Tooltips</h2>
+      <p>Interaksi dasar untuk membantu navigasi dan informasi.</p>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>Dropdown</h3>
+          <div class="demo-preview">
+            <div class="dropdown" style="position:relative;display:inline-block;">
+              <button class="btn btn-primary" onclick="toggleDropdown('dd1')">Open Menu</button>
+              <div class="card d-none" id="dd1" style="position:absolute;min-width:200px;margin-top:.5rem;">
+                <div class="card-body">
+                  <a href="#" class="d-block mb-2">Action</a>
+                  <a href="#" class="d-block mb-2">Another action</a>
+                  <a href="#" class="d-block">Something else</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>Tooltip</h3>
+          <div class="demo-preview">
+            <button class="btn btn-outline" onmouseover="showTooltip(this,'Tooltip pada tombol')" onmouseout="hideTooltip()">Hover me</button>
+            <div id="demo-tooltip" class="d-none" style="position:absolute;background:var(--fz-c-gray-900);color:#fff;padding:.5rem .75rem;border-radius:.5rem;font-size:.875rem"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modals & Offcanvas Demo -->
+    <section class="demo-section">
+      <h2>Modals & Offcanvas</h2>
+      <p>Komponen overlay untuk dialog dan panel samping.</p>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>Modal</h3>
+          <div class="demo-preview">
+            <button class="btn btn-primary" onclick="openModal('demo-modal')">Open Modal</button>
+            <div id="demo-modal" class="d-none" style="position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:1050;">
+              <div class="card" style="max-width:520px;width:90%">
+                <div class="card-header d-flex justify-between align-center">
+                  <strong>Modal Title</strong>
+                  <button class="btn btn-outline btn-sm" onclick="closeModal('demo-modal')">✕</button>
+                </div>
+                <div class="card-body">
+                  <p>Ini adalah isi modal. Gunakan untuk konfirmasi atau formulir singkat.</p>
+                </div>
+                <div class="card-footer" style="padding:1rem;border-top:1px solid var(--fz-c-border)">
+                  <button class="btn btn-outline" onclick="closeModal('demo-modal')">Cancel</button>
+                  <button class="btn btn-primary" onclick="closeModal('demo-modal')">Confirm</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>Offcanvas</h3>
+          <div class="demo-preview">
+            <button class="btn btn-primary" onclick="openOffcanvas('demo-offcanvas')">Open Offcanvas</button>
+            <div id="demo-offcanvas" class="d-none" style="position:fixed;inset:0;display:flex;z-index:1050;">
+              <div onclick="closeOffcanvas('demo-offcanvas')" style="flex:1;background:rgba(0,0,0,.4)"></div>
+              <div class="card" style="width:min(90%,360px);height:100%;border-radius:0">
+                <div class="card-header d-flex justify-between align-center">
+                  <strong>Menu</strong>
+                  <button class="btn btn-outline btn-sm" onclick="closeOffcanvas('demo-offcanvas')">✕</button>
+                </div>
+                <div class="card-body">
+                  <a href="#" class="d-block mb-2">Dashboard</a>
+                  <a href="#" class="d-block mb-2">Projects</a>
+                  <a href="#" class="d-block">Settings</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Toasts & Notifications Demo -->
+    <section class="demo-section">
+      <h2>Toasts & Notifications</h2>
+      <p>Pesan notifikasi ringan untuk feedback cepat.</p>
+      <div class="demo-controls">
+        <button class="btn btn-primary" onclick="showToast('primary','Hello from ferzui!')">Show Primary Toast</button>
+        <button class="btn btn-success" onclick="showToast('success','Saved successfully!')">Show Success Toast</button>
+        <button class="btn btn-warning" onclick="showToast('warning','Please check your inputs.')">Show Warning Toast</button>
+        <button class="btn btn-danger" onclick="showToast('danger','Something went wrong!')">Show Danger Toast</button>
+      </div>
+      <div id="toast-container" style="position:fixed;right:1rem;bottom:1rem;display:flex;flex-direction:column;gap:.5rem;z-index:2000"></div>
+    </section>
+
+    <!-- Tables & Advanced Grid Demo -->
+    <section class="demo-section">
+      <h2>Tables & Advanced Grid</h2>
+      <p>Tabel sederhana dan layout grid responsif.</p>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>Table</h3>
+          <div class="demo-preview" style="overflow:auto">
+            <table class="table" style="width:100%;border-collapse:collapse">
+              <thead>
+                <tr>
+                  <th style="text-align:left;padding:.75rem;border-bottom:1px solid var(--fz-c-border)">Name</th>
+                  <th style="text-align:left;padding:.75rem;border-bottom:1px solid var(--fz-c-border)">Role</th>
+                  <th style="text-align:left;padding:.75rem;border-bottom:1px solid var(--fz-c-border)">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:.75rem;border-bottom:1px solid var(--fz-c-border)">Alice</td>
+                  <td style="padding:.75rem;border-bottom:1px solid var(--fz-c-border)">Designer</td>
+                  <td style="padding:.75rem;border-bottom:1px solid var(--fz-c-border)"><span class="badge badge-success">Active</span></td>
+                </tr>
+                <tr>
+                  <td style="padding:.75rem;border-bottom:1px solid var(--fz-c-border)">Bob</td>
+                  <td style="padding:.75rem;border-bottom:1px solid var(--fz-c-border)">Developer</td>
+                  <td style="padding:.75rem;border-bottom:1px solid var(--fz-c-border)"><span class="badge badge-warning">Pending</span></td>
+                </tr>
+                <tr>
+                  <td style="padding:.75rem">Carol</td>
+                  <td style="padding:.75rem">PM</td>
+                  <td style="padding:.75rem"><span class="badge badge-danger">Blocked</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>Advanced Grid</h3>
+          <div class="demo-preview">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem">
+              <div class="card"><div class="card-body">1</div></div>
+              <div class="card"><div class="card-body">2</div></div>
+              <div class="card"><div class="card-body">3</div></div>
+              <div class="card"><div class="card-body">4</div></div>
+              <div class="card"><div class="card-body">5</div></div>
+              <div class="card"><div class="card-body">6</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Utilities Showcase -->
+    <section class="demo-section">
+      <h2>Utilities</h2>
+      <p>Contoh utilities spacing, colors, shadows, dan typography.</p>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>Spacing & Shadows</h3>
+          <div class="demo-preview">
+            <div class="card shadow-sm mb-3"><div class="card-body">shadow-sm .mb-3</div></div>
+            <div class="card shadow-md mb-3"><div class="card-body">shadow-md .mb-3</div></div>
+            <div class="card shadow-lg"><div class="card-body">shadow-lg</div></div>
+          </div>
+        </div>
+        <div class="demo-card">
+          <h3>Colors</h3>
+          <div class="demo-preview" style="display:flex;gap:.5rem;flex-wrap:wrap">
+            <span class="badge badge-primary">primary</span>
+            <span class="badge badge-secondary">secondary</span>
+            <span class="badge badge-success">success</span>
+            <span class="badge badge-warning">warning</span>
+            <span class="badge badge-danger">danger</span>
+            <span class="badge badge-info">info</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- More Components Link -->
     <section class="demo-section">
       <div class="demo-showcase">
@@ -987,6 +1203,87 @@
     // Initialize theme detection
     if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.setAttribute('data-theme', 'dark');
+    }
+
+    // Tabs
+    function switchTab(id) {
+      document.querySelectorAll('#demo-tabs .tab-pane').forEach(p => p.classList.add('d-none'));
+      const el = document.getElementById(id);
+      if (el) el.classList.remove('d-none');
+    }
+
+    // Accordion
+    function toggleAccordion(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.toggle('d-none');
+    }
+
+    // Dropdown
+    function toggleDropdown(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.classList.toggle('d-none');
+      if (!el.classList.contains('d-none')) {
+        const close = (e) => {
+          if (!el.contains(e.target)) { el.classList.add('d-none'); document.removeEventListener('click', close); }
+        };
+        setTimeout(() => document.addEventListener('click', close), 0);
+      }
+    }
+
+    // Tooltip
+    function showTooltip(target, text) {
+      const tip = document.getElementById('demo-tooltip');
+      if (!tip) return;
+      tip.textContent = text;
+      tip.classList.remove('d-none');
+      const rect = target.getBoundingClientRect();
+      tip.style.left = `${rect.left + window.scrollX + rect.width/2 - tip.offsetWidth/2}px`;
+      tip.style.top = `${rect.top + window.scrollY - 36}px`;
+    }
+    function hideTooltip() {
+      const tip = document.getElementById('demo-tooltip');
+      if (tip) tip.classList.add('d-none');
+    }
+
+    // Modal
+    function openModal(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.remove('d-none');
+    }
+    function closeModal(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.add('d-none');
+    }
+
+    // Offcanvas
+    function openOffcanvas(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.remove('d-none');
+    }
+    function closeOffcanvas(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.add('d-none');
+    }
+
+    // Toasts
+    function showToast(type, message) {
+      const container = document.getElementById('toast-container');
+      if (!container) return;
+      const id = 'toast-' + Date.now();
+      const el = document.createElement('div');
+      el.id = id;
+      el.className = `alert alert-${type}`;
+      el.style.display = 'flex';
+      el.style.alignItems = 'center';
+      el.style.gap = '.5rem';
+      el.innerHTML = `<strong>${type.toUpperCase()}</strong> ${message} <button class="btn btn-outline btn-sm" onclick="dismissToast('${id}')">Close</button>`;
+      container.appendChild(el);
+      setTimeout(() => dismissToast(id), 4000);
+    }
+    function dismissToast(id) {
+      const el = document.getElementById(id);
+      if (el) el.remove();
     }
   </script>
 </body>
