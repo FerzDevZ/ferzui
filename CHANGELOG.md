@@ -5,6 +5,34 @@ All notable changes to ferzui will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2025-01-27
+
+### Added
+- 🏗️ Professional template system dengan 4 template lengkap:
+  - 📊 Dashboard template dengan sidebar, stats grid, dan charts
+  - 🔐 Auth template dengan login/register dan social login
+  - 💰 Pricing template dengan toggle monthly/yearly dan FAQ
+  - 🚀 Landing page template dengan hero section dan features
+- 📚 Extended documentation dengan navigasi yang lebih baik
+- 🎨 Professional styling untuk semua template
+- 📱 Responsive design untuk semua device
+- ⚡ Interactive components dengan JavaScript
+- 🎯 Better navigation structure dengan kategori yang jelas
+
+### Improved
+- 📚 Documentation structure dengan sidebar yang lebih terorganisir
+- 🎨 UI/UX yang lebih profesional dan modern
+- 🔗 Navigation yang lebih intuitif antar halaman
+- 📖 Content yang lebih lengkap dan informatif
+- 🎮 Better user experience di semua halaman
+
+### Fixed
+- 📄 Empty pages yang sekarang memiliki konten lengkap
+- 🔗 Navigation links yang tidak terhubung
+- 📚 Documentation yang tidak lengkap
+- 🎨 Inconsistent styling across pages
+- 📱 Mobile responsiveness issues
+
 ## [1.0.1] - 2025-01-27
 
 ### Added
