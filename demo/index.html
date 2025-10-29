@@ -1302,8 +1302,8 @@
 
         <div class="demo-card">
           <h3>Collapsible Sidebar</h3>
-          <div class="demo-preview d-flex" style="min-height:160px">
-            <div class="sidebar" id="demo-sidebar">
+            <div class="demo-preview d-flex" style="min-height:160px">
+            <div class="sidebar collapsed" id="demo-sidebar">
               <a class="item" href="#">Dashboard</a>
               <a class="item" href="#">Projects</a>
               <a class="item" href="#">Settings</a>
@@ -1697,7 +1697,7 @@
     })();
 
     // Collapsible sidebar
-    function toggleSidebar(){ const el=document.getElementById('demo-sidebar'); if(el) el.classList.toggle('sidebar-collapsed'); }
+    function toggleSidebar(){ const el=document.getElementById('demo-sidebar'); if(el) el.classList.toggle('collapsed'); }
 
     // Split view drag
     (function(){
