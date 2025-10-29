@@ -1,5 +1,6 @@
 /* ferzui Docs JS - inject layout, sidebar, search (lunr), responsive, RTL */
 (function () {
+  const VERSION = '1.3.1';
   const PAGES = [
     { title: 'Getting Started', url: 'index.html', category: 'Getting Started' },
     { title: 'Installation', url: 'installation.html', category: 'Getting Started' },
@@ -45,11 +46,11 @@
     const hasFerzuiCss = [...document.querySelectorAll('link[rel="stylesheet"]')].some(l => /ferzui(\.min)?\.css/.test(l.href));
     const hasDocsCss = [...document.querySelectorAll('link[rel="stylesheet"]')].some(l => /docs\.css$/.test(l.href));
     if (!hasFerzuiCss) {
-      const cdn = document.createElement('link'); cdn.rel = 'stylesheet'; cdn.href = 'https://cdn.jsdelivr.net/npm/ferzui@latest/dist/ferzui.min.css';
+      const cdn = document.createElement('link'); cdn.rel = 'stylesheet'; cdn.href = `https://cdn.jsdelivr.net/npm/ferzui@latest/dist/ferzui.min.css?v=${VERSION}`;
       head.appendChild(cdn);
     }
     if (!hasDocsCss) {
-      const docsCss = document.createElement('link'); docsCss.rel = 'stylesheet'; docsCss.href = './assets/docs.css';
+      const docsCss = document.createElement('link'); docsCss.rel = 'stylesheet'; docsCss.href = `./assets/docs.css?v=${VERSION}`;
       head.appendChild(docsCss);
     }
   }
@@ -59,8 +60,8 @@
     const hasFerzuiJs = !![...document.scripts].find(s => /ferzui(\.min)?\.js/.test(s.src));
     if (hasFerzuiJs) return;
     // try local build first
-    try { await loadScript('../dist/ferzui.min.js'); return; } catch (_) {}
-    try { await loadScript('https://cdn.jsdelivr.net/npm/ferzui@latest/dist/ferzui.min.js'); } catch (_) {}
+    try { await loadScript(`../dist/ferzui.min.js?v=${VERSION}`); return; } catch (_) {}
+    try { await loadScript(`https://cdn.jsdelivr.net/npm/ferzui@latest/dist/ferzui.min.js?v=${VERSION}`); } catch (_) {}
   }
 
   function wrapAsDocsLayout() {

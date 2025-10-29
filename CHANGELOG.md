@@ -1,4 +1,16 @@
 # Changelog
+## [1.3.1] - 2025-01-29
+
+### Fixed
+- 🧪 Docs JS stability: hindari duplikasi inisialisasi dan prefer JS lokal sebelum CDN
+- 🪟 Modal demo tidak lagi auto-muncul tanpa interaksi; perbaikan binding selector
+- 🚫 Cache-busting untuk CSS/JS docs agar perubahan terbaru tampil di GitHub Pages
+
+### Internal
+- 🔖 Version bump untuk rilis npm
+
+---
+
 ## [1.3.0] - 2025-01-28
 
 ### Fixed
