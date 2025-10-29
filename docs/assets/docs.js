@@ -63,7 +63,7 @@
       <div class="docs-mobilebar">
         <div class="bar container">
           <button class="docs-toggle-btn" id="toggleSidebar">Menu</button>
-          <a class="nav-link" href="/demo/index.html">Demo</a>
+          <a class="nav-link" href="../demo/index.html">Demo</a>
           <input class="docs-search-input" id="searchMobile" placeholder="Cari komponen..." />
         </div>
       </div>
