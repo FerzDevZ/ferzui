@@ -80,17 +80,17 @@
 @each $breakpoint, $value in $breakpoints {
   @if $breakpoint != xs {
     @include media-breakpoint-up($breakpoint) {
-      .#{$breakpoint}\:col {
+      .#{escape-class-name($breakpoint)}\:col {
         @include make-col;
       }
       
-      .#{$breakpoint}\:col-auto {
+      .#{escape-class-name($breakpoint)}\:col-auto {
         flex: 0 0 auto;
         width: auto;
       }
       
       @for $i from 1 through 12 {
-        .#{$breakpoint}\:col-#{$i} {
+        .#{escape-class-name($breakpoint)}\:col-#{$i} {
           @include make-col-size($i);
         }
       }
@@ -149,33 +149,33 @@
 @each $breakpoint, $value in $breakpoints {
   @if $breakpoint != xs {
     @include media-breakpoint-up($breakpoint) {
-      .#{$breakpoint}\:grid { display: grid; }
-      .#{$breakpoint}\:grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-      .#{$breakpoint}\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .#{$breakpoint}\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .#{$breakpoint}\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-      .#{$breakpoint}\:grid-cols-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-      .#{$breakpoint}\:grid-cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
-      .#{$breakpoint}\:grid-cols-12 { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+      .#{escape-class-name($breakpoint)}\:grid { display: grid; }
+      .#{escape-class-name($breakpoint)}\:grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+      .#{escape-class-name($breakpoint)}\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .#{escape-class-name($breakpoint)}\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .#{escape-class-name($breakpoint)}\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .#{escape-class-name($breakpoint)}\:grid-cols-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+      .#{escape-class-name($breakpoint)}\:grid-cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+      .#{escape-class-name($breakpoint)}\:grid-cols-12 { grid-template-columns: repeat(12, minmax(0, 1fr)); }
       
-      .#{$breakpoint}\:col-span-1 { grid-column: span 1 / span 1; }
-      .#{$breakpoint}\:col-span-2 { grid-column: span 2 / span 2; }
-      .#{$breakpoint}\:col-span-3 { grid-column: span 3 / span 3; }
-      .#{$breakpoint}\:col-span-4 { grid-column: span 4 / span 4; }
-      .#{$breakpoint}\:col-span-5 { grid-column: span 5 / span 5; }
-      .#{$breakpoint}\:col-span-6 { grid-column: span 6 / span 6; }
-      .#{$breakpoint}\:col-span-full { grid-column: 1 / -1; }
+      .#{escape-class-name($breakpoint)}\:col-span-1 { grid-column: span 1 / span 1; }
+      .#{escape-class-name($breakpoint)}\:col-span-2 { grid-column: span 2 / span 2; }
+      .#{escape-class-name($breakpoint)}\:col-span-3 { grid-column: span 3 / span 3; }
+      .#{escape-class-name($breakpoint)}\:col-span-4 { grid-column: span 4 / span 4; }
+      .#{escape-class-name($breakpoint)}\:col-span-5 { grid-column: span 5 / span 5; }
+      .#{escape-class-name($breakpoint)}\:col-span-6 { grid-column: span 6 / span 6; }
+      .#{escape-class-name($breakpoint)}\:col-span-full { grid-column: 1 / -1; }
       
-      .#{$breakpoint}\:gap-0 { gap: 0; }
-      .#{$breakpoint}\:gap-1 { gap: spacing(1); }
-      .#{$breakpoint}\:gap-2 { gap: spacing(2); }
-      .#{$breakpoint}\:gap-3 { gap: spacing(3); }
-      .#{$breakpoint}\:gap-4 { gap: spacing(4); }
-      .#{$breakpoint}\:gap-5 { gap: spacing(5); }
-      .#{$breakpoint}\:gap-6 { gap: spacing(6); }
-      .#{$breakpoint}\:gap-8 { gap: spacing(8); }
-      .#{$breakpoint}\:gap-10 { gap: spacing(10); }
-      .#{$breakpoint}\:gap-12 { gap: spacing(12); }
+      .#{escape-class-name($breakpoint)}\:gap-0 { gap: 0; }
+      .#{escape-class-name($breakpoint)}\:gap-1 { gap: spacing(1); }
+      .#{escape-class-name($breakpoint)}\:gap-2 { gap: spacing(2); }
+      .#{escape-class-name($breakpoint)}\:gap-3 { gap: spacing(3); }
+      .#{escape-class-name($breakpoint)}\:gap-4 { gap: spacing(4); }
+      .#{escape-class-name($breakpoint)}\:gap-5 { gap: spacing(5); }
+      .#{escape-class-name($breakpoint)}\:gap-6 { gap: spacing(6); }
+      .#{escape-class-name($breakpoint)}\:gap-8 { gap: spacing(8); }
+      .#{escape-class-name($breakpoint)}\:gap-10 { gap: spacing(10); }
+      .#{escape-class-name($breakpoint)}\:gap-12 { gap: spacing(12); }
     }
   }
 }
@@ -224,27 +224,27 @@
 @each $breakpoint, $value in $breakpoints {
   @if $breakpoint != xs {
     @include media-breakpoint-up($breakpoint) {
-      .#{$breakpoint}\:flex { display: flex; }
-      .#{$breakpoint}\:inline-flex { display: inline-flex; }
-      .#{$breakpoint}\:flex-row { flex-direction: row; }
-      .#{$breakpoint}\:flex-col { flex-direction: column; }
-      .#{$breakpoint}\:flex-wrap { flex-wrap: wrap; }
-      .#{$breakpoint}\:flex-nowrap { flex-wrap: nowrap; }
-      .#{$breakpoint}\:items-start { align-items: flex-start; }
-      .#{$breakpoint}\:items-end { align-items: flex-end; }
-      .#{$breakpoint}\:items-center { align-items: center; }
-      .#{$breakpoint}\:items-baseline { align-items: baseline; }
-      .#{$breakpoint}\:items-stretch { align-items: stretch; }
-      .#{$breakpoint}\:justify-start { justify-content: flex-start; }
-      .#{$breakpoint}\:justify-end { justify-content: flex-end; }
-      .#{$breakpoint}\:justify-center { justify-content: center; }
-      .#{$breakpoint}\:justify-between { justify-content: space-between; }
-      .#{$breakpoint}\:justify-around { justify-content: space-around; }
-      .#{$breakpoint}\:justify-evenly { justify-content: space-evenly; }
-      .#{$breakpoint}\:flex-1 { flex: 1 1 0%; }
-      .#{$breakpoint}\:flex-auto { flex: 1 1 auto; }
-      .#{$breakpoint}\:flex-initial { flex: 0 1 auto; }
-      .#{$breakpoint}\:flex-none { flex: none; }
+      .#{escape-class-name($breakpoint)}\:flex { display: flex; }
+      .#{escape-class-name($breakpoint)}\:inline-flex { display: inline-flex; }
+      .#{escape-class-name($breakpoint)}\:flex-row { flex-direction: row; }
+      .#{escape-class-name($breakpoint)}\:flex-col { flex-direction: column; }
+      .#{escape-class-name($breakpoint)}\:flex-wrap { flex-wrap: wrap; }
+      .#{escape-class-name($breakpoint)}\:flex-nowrap { flex-wrap: nowrap; }
+      .#{escape-class-name($breakpoint)}\:items-start { align-items: flex-start; }
+      .#{escape-class-name($breakpoint)}\:items-end { align-items: flex-end; }
+      .#{escape-class-name($breakpoint)}\:items-center { align-items: center; }
+      .#{escape-class-name($breakpoint)}\:items-baseline { align-items: baseline; }
+      .#{escape-class-name($breakpoint)}\:items-stretch { align-items: stretch; }
+      .#{escape-class-name($breakpoint)}\:justify-start { justify-content: flex-start; }
+      .#{escape-class-name($breakpoint)}\:justify-end { justify-content: flex-end; }
+      .#{escape-class-name($breakpoint)}\:justify-center { justify-content: center; }
+      .#{escape-class-name($breakpoint)}\:justify-between { justify-content: space-between; }
+      .#{escape-class-name($breakpoint)}\:justify-around { justify-content: space-around; }
+      .#{escape-class-name($breakpoint)}\:justify-evenly { justify-content: space-evenly; }
+      .#{escape-class-name($breakpoint)}\:flex-1 { flex: 1 1 0%; }
+      .#{escape-class-name($breakpoint)}\:flex-auto { flex: 1 1 auto; }
+      .#{escape-class-name($breakpoint)}\:flex-initial { flex: 0 1 auto; }
+      .#{escape-class-name($breakpoint)}\:flex-none { flex: none; }
     }
   }
 }
@@ -329,14 +329,14 @@
 @each $breakpoint, $value in $breakpoints {
   @if $breakpoint != xs {
     @include media-breakpoint-up($breakpoint) {
-      .#{$breakpoint}\:block { display: block; }
-      .#{$breakpoint}\:inline-block { display: inline-block; }
-      .#{$breakpoint}\:inline { display: inline; }
-      .#{$breakpoint}\:flex { display: flex; }
-      .#{$breakpoint}\:inline-flex { display: inline-flex; }
-      .#{$breakpoint}\:grid { display: grid; }
-      .#{$breakpoint}\:inline-grid { display: inline-grid; }
-      .#{$breakpoint}\:hidden { display: none; }
+      .#{escape-class-name($breakpoint)}\:block { display: block; }
+      .#{escape-class-name($breakpoint)}\:inline-block { display: inline-block; }
+      .#{escape-class-name($breakpoint)}\:inline { display: inline; }
+      .#{escape-class-name($breakpoint)}\:flex { display: flex; }
+      .#{escape-class-name($breakpoint)}\:inline-flex { display: inline-flex; }
+      .#{escape-class-name($breakpoint)}\:grid { display: grid; }
+      .#{escape-class-name($breakpoint)}\:inline-grid { display: inline-grid; }
+      .#{escape-class-name($breakpoint)}\:hidden { display: none; }
     }
   }
 }

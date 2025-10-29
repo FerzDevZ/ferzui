@@ -32,21 +32,21 @@
   @if $breakpoint != xs {
     @include media-breakpoint-up($breakpoint) {
       @each $key, $spacing in $spacings {
-        .#{$breakpoint}\:m-#{$key} { margin: $spacing; }
-        .#{$breakpoint}\:mt-#{$key} { margin-top: $spacing; }
-        .#{$breakpoint}\:mr-#{$key} { margin-right: $spacing; }
-        .#{$breakpoint}\:mb-#{$key} { margin-bottom: $spacing; }
-        .#{$breakpoint}\:ml-#{$key} { margin-left: $spacing; }
-        .#{$breakpoint}\:mx-#{$key} { margin-left: $spacing; margin-right: $spacing; }
-        .#{$breakpoint}\:my-#{$key} { margin-top: $spacing; margin-bottom: $spacing; }
+        .#{escape-class-name($breakpoint)}\:m-#{$key} { margin: $spacing; }
+        .#{escape-class-name($breakpoint)}\:mt-#{$key} { margin-top: $spacing; }
+        .#{escape-class-name($breakpoint)}\:mr-#{$key} { margin-right: $spacing; }
+        .#{escape-class-name($breakpoint)}\:mb-#{$key} { margin-bottom: $spacing; }
+        .#{escape-class-name($breakpoint)}\:ml-#{$key} { margin-left: $spacing; }
+        .#{escape-class-name($breakpoint)}\:mx-#{$key} { margin-left: $spacing; margin-right: $spacing; }
+        .#{escape-class-name($breakpoint)}\:my-#{$key} { margin-top: $spacing; margin-bottom: $spacing; }
         
-        .#{$breakpoint}\:p-#{$key} { padding: $spacing; }
-        .#{$breakpoint}\:pt-#{$key} { padding-top: $spacing; }
-        .#{$breakpoint}\:pr-#{$key} { padding-right: $spacing; }
-        .#{$breakpoint}\:pb-#{$key} { padding-bottom: $spacing; }
-        .#{$breakpoint}\:pl-#{$key} { padding-left: $spacing; }
-        .#{$breakpoint}\:px-#{$key} { padding-left: $spacing; padding-right: $spacing; }
-        .#{$breakpoint}\:py-#{$key} { padding-top: $spacing; padding-bottom: $spacing; }
+        .#{escape-class-name($breakpoint)}\:p-#{$key} { padding: $spacing; }
+        .#{escape-class-name($breakpoint)}\:pt-#{$key} { padding-top: $spacing; }
+        .#{escape-class-name($breakpoint)}\:pr-#{$key} { padding-right: $spacing; }
+        .#{escape-class-name($breakpoint)}\:pb-#{$key} { padding-bottom: $spacing; }
+        .#{escape-class-name($breakpoint)}\:pl-#{$key} { padding-left: $spacing; }
+        .#{escape-class-name($breakpoint)}\:px-#{$key} { padding-left: $spacing; padding-right: $spacing; }
+        .#{escape-class-name($breakpoint)}\:py-#{$key} { padding-top: $spacing; padding-bottom: $spacing; }
       }
     }
   }
@@ -67,9 +67,9 @@
   @if $breakpoint != xs {
     @include media-breakpoint-up($breakpoint) {
       @each $key, $spacing in $spacings {
-        .#{$breakpoint}\:gap-#{$key} { gap: $spacing; }
-        .#{$breakpoint}\:gap-x-#{$key} { column-gap: $spacing; }
-        .#{$breakpoint}\:gap-y-#{$key} { row-gap: $spacing; }
+        .#{escape-class-name($breakpoint)}\:gap-#{$key} { gap: $spacing; }
+        .#{escape-class-name($breakpoint)}\:gap-x-#{$key} { column-gap: $spacing; }
+        .#{escape-class-name($breakpoint)}\:gap-y-#{$key} { row-gap: $spacing; }
       }
     }
   }

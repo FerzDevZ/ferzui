@@ -795,15 +795,15 @@
 @each $breakpoint, $value in $breakpoints {
   @if $breakpoint != xs {
     @include media-breakpoint-up($breakpoint) {
-      .#{$breakpoint}\:d-none { display: none !important; }
-      .#{$breakpoint}\:d-block { display: block !important; }
-      .#{$breakpoint}\:d-flex { display: flex !important; }
-      .#{$breakpoint}\:d-grid { display: grid !important; }
-      .#{$breakpoint}\:text-center { text-align: center !important; }
-      .#{$breakpoint}\:text-left { text-align: left !important; }
-      .#{$breakpoint}\:text-right { text-align: right !important; }
-      .#{$breakpoint}\:justify-between { justify-content: space-between !important; }
-      .#{$breakpoint}\:items-center { align-items: center !important; }
+      .#{escape-class-name($breakpoint)}\:d-none { display: none !important; }
+      .#{escape-class-name($breakpoint)}\:d-block { display: block !important; }
+      .#{escape-class-name($breakpoint)}\:d-flex { display: flex !important; }
+      .#{escape-class-name($breakpoint)}\:d-grid { display: grid !important; }
+      .#{escape-class-name($breakpoint)}\:text-center { text-align: center !important; }
+      .#{escape-class-name($breakpoint)}\:text-left { text-align: left !important; }
+      .#{escape-class-name($breakpoint)}\:text-right { text-align: right !important; }
+      .#{escape-class-name($breakpoint)}\:justify-between { justify-content: space-between !important; }
+      .#{escape-class-name($breakpoint)}\:items-center { align-items: center !important; }
     }
   }
 }

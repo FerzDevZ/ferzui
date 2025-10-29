@@ -495,7 +495,7 @@
 @each $breakpoint, $value in $breakpoints {
   @if $breakpoint != xs {
     @include media-breakpoint-up($breakpoint) {
-      .#{$breakpoint}\:table-responsive-stack {
+      .#{escape-class-name($breakpoint)}\:table-responsive-stack {
         .table-advanced {
           display: table;
           

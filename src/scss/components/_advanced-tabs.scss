@@ -521,16 +521,16 @@
 @each $breakpoint, $value in $breakpoints {
   @if $breakpoint != xs {
     @include media-breakpoint-up($breakpoint) {
-      .#{$breakpoint}\:tabs-underline .tab {
+      .#{escape-class-name($breakpoint)}\:tabs-underline .tab {
         padding: spacing(3) spacing(4);
       }
       
-      .#{$breakpoint}\:tabs-pilled {
+      .#{escape-class-name($breakpoint)}\:tabs-pilled {
         padding: spacing(1);
         gap: spacing(1);
       }
       
-      .#{$breakpoint}\:tabs-card {
+      .#{escape-class-name($breakpoint)}\:tabs-card {
         gap: spacing(2);
         
         .tab {
@@ -538,7 +538,7 @@
         }
       }
       
-      .#{$breakpoint}\:segmented-control {
+      .#{escape-class-name($breakpoint)}\:segmented-control {
         padding: spacing(1);
         gap: spacing(1);
         
@@ -547,7 +547,7 @@
         }
       }
       
-      .#{$breakpoint}\:command-palette {
+      .#{escape-class-name($breakpoint)}\:command-palette {
         padding: spacing(20) spacing(4) spacing(4);
         
         .command-dialog {
@@ -555,15 +555,15 @@
         }
       }
       
-      .#{$breakpoint}\:drawer .drawer-panel {
+      .#{escape-class-name($breakpoint)}\:drawer .drawer-panel {
         width: 20rem;
       }
       
-      .#{$breakpoint}\:sidebar {
+      .#{escape-class-name($breakpoint)}\:sidebar {
         width: 16rem;
       }
       
-      .#{$breakpoint}\:main-with-sidebar {
+      .#{escape-class-name($breakpoint)}\:main-with-sidebar {
         margin-left: 16rem;
       }
     }
