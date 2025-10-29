@@ -188,6 +188,7 @@ body.docs-layout {
 .docs-main {
   max-width: 1100px;
   padding: var(--fz-space-8) var(--fz-space-6);
+  margin: 0 auto;
 }
 
 .docs-main h1 {
@@ -223,6 +224,8 @@ body.docs-layout {
   font-size: .875rem;
   padding: var(--fz-space-4);
   overflow: auto;
+  border-bottom-left-radius: var(--fz-radius-lg);
+  border-bottom-right-radius: var(--fz-radius-lg);
 }
 
 .docs-toc {
