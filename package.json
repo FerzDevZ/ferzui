@@ -1,6 +1,6 @@
 {
   "name": "ferzui",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "Modern UI framework yang lebih baik dari Bootstrap dengan 120+ komponen, dark mode, dan performa tinggi untuk aplikasi web masa depan",
   "main": "dist/ferzui.js",
   "module": "dist/ferzui.esm.js",

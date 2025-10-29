@@ -1,4 +1,19 @@
 # Changelog
+## [1.3.2] - 2025-01-29
+
+### Added
+- ⭐ **Interactive Components**: Rating component now fully interactive (click to rate)
+- 🎯 **Stepper Navigation**: Added Prev/Next controls for horizontal stepper demo
+- 🎨 **Demo Polish**: Improved UI/UX for demo page with better spacing and alignment
+
+### Fixed
+- 📐 **Docs Layout**: Center-aligned main content across all documentation pages
+- 💻 **Code Block Styling**: Improved code block visuals with better borders and radius
+- 🎪 **Demo Sidebar**: Removed problematic collapsible sidebar demo that was leaking to viewport
+- 🔗 **Skip Link**: Properly hidden skip-link (only visible on keyboard focus)
+
+---
+
 ## [1.3.1] - 2025-01-29
 
 ### Fixed
