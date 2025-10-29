@@ -1103,7 +1103,7 @@
           <h3>Modal</h3>
           <div class="demo-preview">
             <button class="btn btn-primary" onclick="openModal('demo-modal')">Open Modal</button>
-            <div id="demo-modal" class="d-none" style="position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:1050;">
+            <div id="demo-modal" class="d-none" style="position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;align-items:center;justify-content:center;z-index:1050;">
               <div class="card" style="max-width:520px;width:90%">
                 <div class="card-header d-flex justify-between align-center">
                   <strong>Modal Title</strong>
@@ -1125,7 +1125,7 @@
           <h3>Offcanvas</h3>
           <div class="demo-preview">
             <button class="btn btn-primary" onclick="openOffcanvas('demo-offcanvas')">Open Offcanvas</button>
-            <div id="demo-offcanvas" class="d-none" style="position:fixed;inset:0;display:flex;z-index:1050;">
+            <div id="demo-offcanvas" class="d-none" style="position:fixed;inset:0;display:none;z-index:1050;">
               <div onclick="closeOffcanvas('demo-offcanvas')" style="flex:1;background:rgba(0,0,0,.4)"></div>
               <div class="card" style="width:min(90%,360px);height:100%;border-radius:0">
                 <div class="card-header d-flex justify-between align-center">
@@ -1564,21 +1564,29 @@
     // Modal
     function openModal(id) {
       const el = document.getElementById(id);
-      if (el) el.classList.remove('d-none');
+      if (!el) return;
+      el.style.display = 'flex';
+      el.classList.remove('d-none');
     }
     function closeModal(id) {
       const el = document.getElementById(id);
-      if (el) el.classList.add('d-none');
+      if (!el) return;
+      el.style.display = 'none';
+      el.classList.add('d-none');
     }
 
     // Offcanvas
     function openOffcanvas(id) {
       const el = document.getElementById(id);
-      if (el) el.classList.remove('d-none');
+      if (!el) return;
+      el.style.display = 'flex';
+      el.classList.remove('d-none');
     }
     function closeOffcanvas(id) {
       const el = document.getElementById(id);
-      if (el) el.classList.add('d-none');
+      if (!el) return;
+      el.style.display = 'none';
+      el.classList.add('d-none');
     }
 
     // Toasts
