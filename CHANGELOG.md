@@ -1,4 +1,23 @@
 # Changelog
+## [1.3.0] - 2025-01-28
+
+### Fixed
+- 🔧 **Critical SCSS Compilation Fixes**: Fixed "expected ':'" error in `$shadows` map by properly wrapping multi-value shadow definitions
+- 🎯 **Responsive Class Name Escaping**: Added `escape-class-name()` function to correctly escape numeric breakpoint names (e.g., `2xl`) in CSS selectors
+- 🏗️ **Build System Improvements**: Ensured all SCSS files compile successfully without syntax errors
+- 📦 **CSS Output**: Fixed broken CSS compilation that was preventing styles from loading on documentation and demo pages
+
+### Technical Improvements
+- ✅ Fixed shadow map syntax in `src/scss/core/_variables.scss` for `sm`, `base`, `md`, `lg`, and `glow` values
+- ✅ Added responsive class name escaping for all breakpoint utilities across all SCSS modules
+- ✅ Updated all responsive utility classes to use proper escaping for numeric breakpoints
+- ✅ Verified successful CSS compilation to `dist/ferzui.css` without errors
+
+### Breaking Changes
+- None
+
+---
+
 ## [1.2.0] - 2025-10-29
 
 ### Added
