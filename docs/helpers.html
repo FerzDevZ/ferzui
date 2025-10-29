@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Helpers - ferzui</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ferzui@latest/dist/ferzui.min.css">
+  <link rel="stylesheet" href="./assets/docs.css">
+</head>
+<body>
+  <h1>Helpers</h1>
+
+  <h2 id="ratio">Ratio</h2>
+  <div class="docs-example">
+    <div class="preview">
+      <div class="ratio ratio-4x3" style="max-width:360px">
+        <img src="https://picsum.photos/640/480" class="object-cover" alt="">
+      </div>
+    </div>
+  </div>
+
+  <h2 id="position">Position & Z-index</h2>
+  <div class="docs-example">
+    <div class="preview" style="height:140px; position:relative">
+      <div class="card position-absolute top-0 end-0 z-100" style="padding:.5rem">Top Right</div>
+    </div>
+  </div>
+
+  <h2 id="truncate">Text Truncation</h2>
+  <div class="docs-example">
+    <div class="preview" style="max-width:220px">
+      <div class="text-truncate">This is a very long text that will be truncated with ellipsis</div>
+    </div>
+  </div>
+
+  <h2 id="focus">Focus Ring</h2>
+  <div class="docs-example">
+    <div class="preview">
+      <button class="btn focus-ring">Focusable Button</button>
+    </div>
+  </div>
+
+  <h2 id="masonry">Masonry</h2>
+  <div class="docs-example">
+    <div class="preview">
+      <div class="masonry" style="--masonry-cols:3; --masonry-gap:12px; max-width:900px">
+        <div class="masonry-item"><img src="https://picsum.photos/300/200" alt="" class="w-100 rounded"></div>
+        <div class="masonry-item"><img src="https://picsum.photos/300/340" alt="" class="w-100 rounded"></div>
+        <div class="masonry-item"><img src="https://picsum.photos/300/260" alt="" class="w-100 rounded"></div>
+        <div class="masonry-item"><img src="https://picsum.photos/300/180" alt="" class="w-100 rounded"></div>
+        <div class="masonry-item"><img src="https://picsum.photos/300/280" alt="" class="w-100 rounded"></div>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="split-view">Split View</h2>
+  <div class="docs-example">
+    <div class="preview">
+      <div class="split-view" style="height:220px">
+        <div class="split-pane">Pane A</div>
+        <div class="split-gutter" role="separator" aria-orientation="vertical"></div>
+        <div class="split-pane">Pane B</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="skip-link">Skip Link</h2>
+  <div class="docs-example">
+    <div class="preview">
+      <a href="#main-content" class="skip-link">Skip to content</a>
+      <div class="p-3">Tekan Tab untuk melihat skip link muncul.</div>
+    </div>
+  </div>
+
+  <h2 id="reduced-motion">Reduced Motion</h2>
+  <div class="docs-example">
+    <div class="preview">
+      <div class="d-flex gap-3">
+        <button class="btn" style="transition:transform .3s" >Animasi on</button>
+        <button class="btn" style="transition:transform .3s" >Hormati prefers-reduced-motion</button>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="focus-trap">Focus Trap</h2>
+  <div class="docs-example">
+    <div class="preview">
+      <div class="card p-3" id="trap-area">
+        <div class="d-flex gap-2">
+          <button class="btn">1</button>
+          <button class="btn">2</button>
+          <a class="btn" href="#">Link</a>
+        </div>
+      </div>
+      <p class="text-sm text-muted mt-2">Contoh fokus terjaga dalam modal/area interaktif.</p>
+    </div>
+  </div>
+
+  <script src="./assets/docs.js"></script>
+</body>
+</html>
+

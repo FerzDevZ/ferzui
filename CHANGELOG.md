@@ -1,4 +1,21 @@
 # Changelog
+## [1.2.0] - 2025-10-29
+
+### Added
+- 📚 Comprehensive docs overhaul: Forms, Content, Utilities API, Layout with copyable code blocks
+- 🧩 Batch 1 components fully showcased in demo: Segmented, Toggle, Rating, Stepper, Drawer, Sortable Table, Collapsible Sidebar
+- 🧰 Batch 2 helpers in demo/docs: Masonry, Split View, Skip Link, Reduced Motion, Focus Trap
+- ✨ Lightweight docs JS for Popover, Carousel, and Collapse examples
+
+### Improved
+- 🎨 Unified, responsive documentation layout injected via `docs/assets/docs.js`
+- 🔗 Sidebar navigation, TOC, and Lunr-powered search improvements
+- ⚡ CDN-first CSS/JS with robust local fallbacks across site, demo, and docs
+
+### Fixed
+- 🧱 Inconsistent examples and missing styles on GitHub Pages by switching to CDN-first includes
+- 🧩 Ensured all demo interactions function on mobile devices
+
 
 All notable changes to ferzui will be documented in this file.
 

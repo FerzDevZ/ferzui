@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Content - ferzui</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ferzui@latest/dist/ferzui.min.css">
+  <link rel="stylesheet" href="./assets/docs.css">
+</head>
+<body>
+  <h1>Content</h1>
+
+  <h2 id="typography">Typography</h2>
+  <p>Kelas utilitas untuk tipografi.</p>
+  <div class="docs-example">
+    <div class="preview">
+      <h1 class="text-4xl">Heading 1</h1>
+      <h2 class="text-3xl">Heading 2</h2>
+      <p class="text-base">Body text base.</p>
+      <p class="text-muted">Muted text</p>
+      <a class="link-primary" href="#">Colored link</a>
+    </div>
+    <div class="code"><code>&lt;h1 class="text-4xl"&gt;Heading 1&lt;/h1&gt;
+&lt;p class="text-muted"&gt;Muted text&lt;/p&gt;
+&lt;a class="link-primary" href="#"&gt;Link&lt;/a&gt;</code></div>
+  </div>
+
+  <h2 id="images">Images</h2>
+  <div class="docs-example">
+    <div class="preview">
+      <img src="https://picsum.photos/600/300" alt="" class="w-100 object-cover rounded">
+    </div>
+    <div class="code"><code>&lt;img src="..." class="w-100 object-cover rounded" alt=""&gt;</code></div>
+  </div>
+
+  <h2 id="tables">Tables</h2>
+  <div class="docs-example">
+    <div class="preview">
+      <table class="table table-striped">
+        <thead><tr><th>Name</th><th>Role</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Alice</td><td>Designer</td><td><span class="badge badge-success">Active</span></td></tr>
+          <tr><td>Bob</td><td>Developer</td><td><span class="badge badge-warning">Pending</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="code"><code>&lt;table class="table table-striped"&gt;...&lt;/table&gt;</code></div>
+  </div>
+
+  <h2 id="figures">Figures</h2>
+  <div class="docs-example">
+    <div class="preview">
+      <div class="ratio ratio-16x9" style="max-width:480px">
+        <img src="https://picsum.photos/800/450" alt="" class="object-cover rounded">
+      </div>
+    </div>
+    <div class="code"><code>&lt;div class="ratio ratio-16x9"&gt;
+  &lt;img class="object-cover"&gt;
+&lt;/div&gt;</code></div>
+  </div>
+
+  <h2 id="lists">Lists & Blockquote</h2>
+  <div class="docs-example">
+    <div class="preview">
+      <ul class="mb-3">
+        <li>Item A</li>
+        <li>Item B</li>
+        <li>Item C</li>
+      </ul>
+      <blockquote class="p-3 bg-muted rounded">Design is not just what it looks like and feels like. Design is how it works.</blockquote>
+    </div>
+    <div class="code"><code>&lt;ul&gt;&lt;li&gt;...&lt;/li&gt;&lt;/ul&gt;
+&lt;blockquote class="p-3 bg-muted rounded"&gt;...&lt;/blockquote&gt;</code></div>
+  </div>
+
+  <script src="./assets/docs.js"></script>
+</body>
+</html>
+

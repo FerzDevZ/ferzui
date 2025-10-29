@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forms - ferzui</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ferzui@latest/dist/ferzui.min.css">
+  <link rel="stylesheet" href="./assets/docs.css">
+</head>
+<body>
+  <h1>Forms</h1>
+
+  <h2 id="overview">Overview</h2>
+  <p>Form controls yang konsisten dan mudah disesuaikan.</p>
+
+  <h2 id="controls">Form Controls</h2>
+  <div class="docs-example">
+    <div class="preview" style="max-width:520px">
+      <div class="form-group">
+        <label class="form-label" for="f-email">Email</label>
+        <input class="form-control" id="f-email" type="email" placeholder="name@example.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="f-pass">Password</label>
+        <input class="form-control" id="f-pass" type="password" placeholder="•••••••">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="f-text">Textarea</label>
+        <textarea class="form-control" id="f-text" rows="3" placeholder="Tuliskan sesuatu..."></textarea>
+      </div>
+    </div>
+    <div class="code"><code>&lt;div class="form-group"&gt;
+  &lt;label class="form-label" for="f-email"&gt;Email&lt;/label&gt;
+  &lt;input class="form-control" id="f-email" type="email" placeholder="name@example.com"&gt;
+&lt;/div&gt;</code></div>
+  </div>
+
+  <h2 id="select">Select</h2>
+  <div class="docs-example">
+    <div class="preview" style="max-width:520px">
+      <select class="form-control">
+        <option>Choose</option>
+        <option>Option A</option>
+        <option>Option B</option>
+      </select>
+    </div>
+    <div class="code"><code>&lt;select class="form-control"&gt;
+  &lt;option&gt;Choose&lt;/option&gt;
+&lt;/select&gt;</code></div>
+  </div>
+
+  <h2 id="checks-radios">Checks & Radios</h2>
+  <div class="docs-example">
+    <div class="preview" style="max-width:520px">
+      <label><input type="checkbox"> Remember me</label>
+      <div class="mt-2">
+        <label><input type="radio" name="r1"> Option 1</label>
+        <label class="ml-3"><input type="radio" name="r1"> Option 2</label>
+      </div>
+    </div>
+    <div class="code"><code>&lt;label&gt;&lt;input type="checkbox"&gt; Remember me&lt;/label&gt;
+&lt;label&gt;&lt;input type="radio" name="r1"&gt; Option 1&lt;/label&gt;</code></div>
+  </div>
+
+  <h2 id="input-group">Input Group</h2>
+  <div class="docs-example">
+    <div class="preview" style="max-width:520px; display:flex; gap:.5rem">
+      <span class="btn btn-outline">@</span>
+      <input class="form-control" placeholder="username">
+      <button class="btn btn-primary">Submit</button>
+    </div>
+    <div class="code"><code>&lt;div class="input-group"&gt;
+  &lt;span class="btn btn-outline"&gt;@&lt;/span&gt;
+  &lt;input class="form-control" placeholder="username"&gt;
+  &lt;button class="btn btn-primary"&gt;Submit&lt;/button&gt;
+&lt;/div&gt;</code></div>
+  </div>
+
+  <h2 id="floating-labels">Floating Labels</h2>
+  <div class="docs-example">
+    <div class="preview" style="max-width:520px; position:relative">
+      <input class="form-control" placeholder=" ">
+      <label class="form-label" style="position:absolute;left:12px;top:-10px;background:var(--fz-c-surface);padding:0 .25rem">Your name</label>
+    </div>
+    <div class="code"><code>&lt;div class="form-floating"&gt;
+  &lt;input class="form-control" placeholder=" "&gt;
+  &lt;label class="form-label"&gt;Your name&lt;/label&gt;
+&lt;/div&gt;</code></div>
+  </div>
+
+  <h2 id="layout">Layout</h2>
+  <div class="docs-example">
+    <div class="preview row g-3">
+      <div class="col-md-6">
+        <input class="form-control" placeholder="First name">
+      </div>
+      <div class="col-md-6">
+        <input class="form-control" placeholder="Last name">
+      </div>
+    </div>
+    <div class="code"><code>&lt;div class="row g-3"&gt;
+  &lt;div class="col-md-6"&gt;...&lt;/div&gt;
+  &lt;div class="col-md-6"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></div>
+  </div>
+
+  <h2 id="validation">Validation</h2>
+  <div class="docs-example">
+    <div class="preview" style="max-width:520px">
+      <input class="form-control" placeholder="Invalid example" style="border-color: var(--fz-c-danger-500)">
+      <div class="text-danger mt-1">Please provide a valid input.</div>
+    </div>
+    <div class="code"><code>&lt;input class="form-control is-invalid" placeholder="Invalid"&gt;
+&lt;div class="invalid-feedback"&gt;Please provide a valid input.&lt;/div&gt;</code></div>
+  </div>
+
+  <h2 id="range">Range</h2>
+  <div class="docs-example">
+    <div class="preview" style="max-width:520px">
+      <input type="range" class="form-control" min="0" max="100" value="40">
+    </div>
+    <div class="code"><code>&lt;input type="range" class="form-control" min="0" max="100" value="40"&gt;</code></div>
+  </div>
+
+  <script src="./assets/docs.js"></script>
+</body>
+</html>
+

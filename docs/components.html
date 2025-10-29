@@ -446,6 +446,95 @@
           </div>
           <div class="code-block"><code>&lt;div class="steps"&gt;<br/>&nbsp;&nbsp;&lt;div class="step active"&gt;Step 1&lt;/div&gt;<br/>&nbsp;&nbsp;&lt;div class="step"&gt;Step 2&lt;/div&gt;<br/>&lt;/div&gt;</code></div>
         </div>
+
+        <div class="docs-section" id="segmented">
+          <h2>Segmented Control</h2>
+          <div class="segmented mb-2" role="tablist">
+            <button class="segment is-active" role="tab">Semua</button>
+            <button class="segment" role="tab">Aktif</button>
+            <button class="segment" role="tab">Arsip</button>
+          </div>
+          <div class="code-block"><code>&lt;div class="segmented"&gt;...&lt;/div&gt;</code></div>
+        </div>
+
+        <div class="docs-section" id="drawer">
+          <h2>Drawer</h2>
+          <button class="btn btn-outline" data-collapse-toggle data-collapse-target="#drawer-demo">Toggle Drawer</button>
+          <div id="drawer-demo" class="drawer" data-open="false" style="height:0; overflow:hidden">
+            <div class="p-4">Isi drawer</div>
+          </div>
+          <div class="code-block"><code>&lt;div class="drawer" id="drawer-demo"&gt;...&lt;/div&gt;</code></div>
+        </div>
+
+        <div class="docs-section" id="toggle">
+          <h2>Toggle Switch</h2>
+          <label class="toggle mb-2">
+            <input type="checkbox">
+            <span class="toggle-slider"></span>
+            <span class="ml-2">Aktifkan</span>
+          </label>
+          <div class="code-block"><code>&lt;label class="toggle"&gt;&lt;input type="checkbox"/&gt;&lt;span class="toggle-slider"&gt;&lt;/span&gt;&lt;/label&gt;</code></div>
+        </div>
+
+        <div class="docs-section" id="rating">
+          <h2>Rating</h2>
+          <div class="rating" data-value="3">
+            <button aria-label="1">★</button>
+            <button aria-label="2">★</button>
+            <button aria-label="3" class="active">★</button>
+            <button aria-label="4">★</button>
+            <button aria-label="5">★</button>
+          </div>
+          <div class="code-block"><code>&lt;div class="rating"&gt;★★★★★&lt;/div&gt;</code></div>
+        </div>
+
+        <div class="docs-section" id="stepper">
+          <h2>Stepper</h2>
+          <div class="stepper">
+            <button class="btn" data-stepper-prev>Prev</button>
+            <div class="steps">
+              <div class="step active">1</div>
+              <div class="step">2</div>
+              <div class="step">3</div>
+            </div>
+            <button class="btn" data-stepper-next>Next</button>
+          </div>
+          <div class="code-block"><code>&lt;div class="stepper"&gt;...&lt;/div&gt;</code></div>
+        </div>
+
+        <div class="docs-section" id="sortable-table">
+          <h2>Sortable Table</h2>
+          <div class="table-responsive mb-2">
+            <table class="table table-sortable" id="sort-table">
+              <thead>
+                <tr>
+                  <th data-sort="string">Nama</th>
+                  <th data-sort="number">Nilai</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Charlie</td><td>75</td></tr>
+                <tr><td>Bravo</td><td>90</td></tr>
+                <tr><td>Alpha</td><td>80</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="code-block"><code>&lt;table class="table table-sortable"&gt;...&lt;/table&gt;</code></div>
+        </div>
+
+        <div class="docs-section" id="collapsible-sidebar">
+          <h2>Collapsible Sidebar</h2>
+          <div class="d-flex" style="min-height:160px">
+            <aside class="sidebar-collapsible show" id="side-demo">
+              <div class="p-3">Menu</div>
+            </aside>
+            <div class="flex-1 p-3">
+              <button class="btn btn-outline" data-collapse-toggle data-collapse-target="#side-demo">Toggle Sidebar</button>
+              <p class="mt-2 text-sm text-muted">Konten utama</p>
+            </div>
+          </div>
+          <div class="code-block"><code>&lt;aside class="sidebar-collapsible" id="side-demo"&gt;...&lt;/aside&gt;</code></div>
+        </div>
       </main>
     </div>
   </div>

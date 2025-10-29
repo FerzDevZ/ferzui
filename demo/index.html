@@ -826,6 +826,198 @@
       </div>
     </section>
 
+    <!-- Tabs Underline & Dropdown Showcase -->
+    <section class="demo-section">
+      <h2>Tabs Underline & Dropdown</h2>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>Tabs (Underline)</h3>
+          <div class="demo-preview">
+            <div class="tabs-underline" id="tabs-underline">
+              <div class="tab-nav">
+                <button class="tab-btn tab-active" data-target="#u-tab-1">Overview</button>
+                <button class="tab-btn" data-target="#u-tab-2">Details</button>
+                <button class="tab-btn" data-target="#u-tab-3">Reviews</button>
+              </div>
+              <div class="tab-content" style="margin-top:1rem">
+                <div class="tab-pane" id="u-tab-1">Ringkasan produk dan highlight fitur.</div>
+                <div class="tab-pane is-hidden" id="u-tab-2">Spesifikasi lengkap & informasi teknis.</div>
+                <div class="tab-pane is-hidden" id="u-tab-3">Ulasan pengguna dan rating.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>Dropdown (Navbar style)</h3>
+          <div class="demo-preview">
+            <div class="dropdown dropdown-end">
+              <button class="btn btn-outline dropdown-toggle" onclick="toggleDropdown('dd-nav')">Menu ▾</button>
+              <div class="dropdown-menu d-none" id="dd-nav">
+                <a href="#" class="dropdown-item">Profile</a>
+                <a href="#" class="dropdown-item">Settings</a>
+                <hr class="border-bottom" />
+                <a href="#" class="dropdown-item">Logout</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Steps & Chips -->
+    <section class="demo-section">
+      <h2>Steps & Chips</h2>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>Steps</h3>
+          <div class="demo-preview">
+            <div class="steps">
+              <div class="step is-completed"><span class="step-index">1</span> Account</div>
+              <div class="step is-current"><span class="step-index">2</span> Profile</div>
+              <div class="step"><span class="step-index">3</span> Confirm</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>Chips</h3>
+          <div class="demo-preview">
+            <span class="chip chip-primary">Primary <button class="chip-close" onclick="this.parentElement.remove()">✕</button></span>
+            <span class="chip chip-success">Success <button class="chip-close" onclick="this.parentElement.remove()">✕</button></span>
+            <span class="chip chip-warning">Warning <button class="chip-close" onclick="this.parentElement.remove()">✕</button></span>
+            <span class="chip chip-danger">Danger <button class="chip-close" onclick="this.parentElement.remove()">✕</button></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Avatars & Skeleton -->
+    <section class="demo-section">
+      <h2>Avatars & Skeleton</h2>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>Avatars</h3>
+          <div class="demo-preview" style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+            <span class="avatar"><img src="https://i.pravatar.cc/64?img=1" alt=""></span>
+            <span class="avatar avatar-lg"><img src="https://i.pravatar.cc/96?img=2" alt=""></span>
+            <span class="avatar avatar-xl avatar-initials">FD</span>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>Skeleton</h3>
+          <div class="demo-preview">
+            <div style="display:flex;gap:1rem;align-items:center">
+              <div class="skeleton skeleton-circle" style="width:48px;height:48px"></div>
+              <div style="flex:1">
+                <div class="skeleton skeleton-text" style="width:50%"></div>
+                <div class="skeleton skeleton-text" style="width:80%;margin-top:.5rem"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Spinners & Toast Advanced -->
+    <section class="demo-section">
+      <h2>Spinners & Toast Queue</h2>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>Spinners</h3>
+          <div class="demo-preview" style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap">
+            <span class="spinner"></span>
+            <span class="spinner spinner-sm"></span>
+            <span class="spinner spinner-lg"></span>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>Toast Queue</h3>
+          <div class="demo-preview">
+            <button class="btn btn-primary" onclick="enqueueToast('primary','Welcome to ferzui!')">Primary</button>
+            <button class="btn btn-success" onclick="enqueueToast('success','Action completed!')">Success</button>
+            <button class="btn btn-warning" onclick="enqueueToast('warning','Check your inputs.')">Warning</button>
+            <button class="btn btn-danger" onclick="enqueueToast('danger','Something went wrong!')">Danger</button>
+            <div class="toast-container" id="toast-queue"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ratio / Stacks / Grid helpers -->
+    <section class="demo-section">
+      <h2>Ratio, Stacks, CSS Grid</h2>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>Ratio</h3>
+          <div class="demo-preview">
+            <div class="ratio ratio-16x9" style="max-width:480px">
+              <img src="https://picsum.photos/800/450" alt="" class="object-cover">
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>Stacks</h3>
+          <div class="demo-preview d-flex flex-column gap-2" style="max-width:360px">
+            <div class="card"><div class="card-body">Item A</div></div>
+            <div class="card"><div class="card-body">Item B</div></div>
+            <div class="card"><div class="card-body">Item C</div></div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>CSS Grid</h3>
+          <div class="demo-preview grid grid-cols-4 gap-2">
+            <div class="card"><div class="card-body">1</div></div>
+            <div class="card col-span-2"><div class="card-body">2 (span 2)</div></div>
+            <div class="card"><div class="card-body">3</div></div>
+            <div class="card col-span-4"><div class="card-body">4 (span 4)</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Masonry / Split View / Skip Link / Reduced Motion -->
+    <section class="demo-section">
+      <h2>Masonry, Split View, A11y</h2>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>Masonry</h3>
+          <div class="demo-preview">
+            <div class="masonry" style="max-width:900px">
+              <div class="masonry-item"><div class="card"><div class="card-body">A</div></div></div>
+              <div class="masonry-item"><div class="card"><div class="card-body">B<br/>B</div></div></div>
+              <div class="masonry-item"><div class="card"><div class="card-body">C<br/>C<br/>C</div></div></div>
+              <div class="masonry-item"><div class="card"><div class="card-body">D</div></div></div>
+              <div class="masonry-item"><div class="card"><div class="card-body">E<br/>E</div></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>Split View (Resizable)</h3>
+          <div class="demo-preview">
+            <div class="split" id="split-demo" style="height:200px">
+              <div class="card"><div class="card-body">Left</div></div>
+              <div class="gutter" id="split-gutter"></div>
+              <div class="card"><div class="card-body">Right</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>Skip Link & Reduced Motion</h3>
+          <div class="demo-preview">
+            <a href="#main-content" class="skip-link">Skip to content</a>
+            <div class="animate-pulse motion-safe" style="display:inline-block;padding:.5rem 1rem;border:1px solid var(--fz-c-border);border-radius:.5rem">Animated (disabled if reduced motion)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Tabs & Accordion Demo -->
     <section class="demo-section">
       <h2>Tabs & Accordion</h2>
@@ -1012,6 +1204,113 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Segmented, Toggle, Rating, Stepper, Drawer, Sortable Table, Sidebar -->
+    <section class="demo-section">
+      <h2>New Components (Batch 1)</h2>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h3>Segmented Control</h3>
+          <div class="demo-preview">
+            <div class="segmented">
+              <button class="seg-btn active" onclick="activateSegment(this)">Day</button>
+              <button class="seg-btn" onclick="activateSegment(this)">Week</button>
+              <button class="seg-btn" onclick="activateSegment(this)">Month</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>Toggle Switch</h3>
+          <div class="demo-preview">
+            <label class="form-switch">
+              <input type="checkbox" checked>
+              <span class="switch"></span>
+              <span>Notifications</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>Rating</h3>
+          <div class="demo-preview">
+            <div class="rating" id="demo-rating">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>Stepper (Horizontal)</h3>
+          <div class="demo-preview">
+            <div class="stepper stepper-horizontal">
+              <div class="step is-completed"><span class="step-index">1</span> Shipping</div>
+              <div class="step is-current"><span class="step-index">2</span> Payment</div>
+              <div class="step"><span class="step-index">3</span> Review</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>Drawer</h3>
+          <div class="demo-preview">
+            <button class="btn btn-primary" onclick="openDrawer('demo-drawer')">Open Drawer</button>
+            <div class="drawer" id="demo-drawer">
+              <div class="drawer-backdrop" onclick="closeDrawer('demo-drawer')"></div>
+              <div class="drawer-panel">
+                <div class="card">
+                  <div class="card-header d-flex justify-between align-center">
+                    <strong>Drawer Panel</strong>
+                    <button class="btn btn-outline btn-sm" onclick="closeDrawer('demo-drawer')">✕</button>
+                  </div>
+                  <div class="card-body">
+                    Content inside drawer.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>Sortable Table</h3>
+          <div class="demo-preview" style="overflow:auto">
+            <table class="table table-sort" id="table-sort-demo">
+              <thead>
+                <tr>
+                  <th data-key="name">Name</th>
+                  <th data-key="role">Role</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Alice</td><td>Designer</td></tr>
+                <tr><td>Bob</td><td>Developer</td></tr>
+                <tr><td>Carol</td><td>PM</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3>Collapsible Sidebar</h3>
+          <div class="demo-preview d-flex" style="min-height:160px">
+            <div class="sidebar" id="demo-sidebar">
+              <a class="item" href="#">Dashboard</a>
+              <a class="item" href="#">Projects</a>
+              <a class="item" href="#">Settings</a>
+            </div>
+            <div style="flex:1; padding:1rem">
+              <button class="btn btn-outline" onclick="toggleSidebar()">Toggle Sidebar</button>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -1212,6 +1511,19 @@
       if (el) el.classList.remove('d-none');
     }
 
+    // Tabs underline (delegation)
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.tabs-underline .tab-btn');
+      if (!btn) return;
+      const wrapper = btn.closest('.tabs-underline');
+      wrapper.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('tab-active'));
+      btn.classList.add('tab-active');
+      const target = btn.getAttribute('data-target');
+      wrapper.querySelectorAll('.tab-pane').forEach(p => p.classList.add('is-hidden'));
+      const pane = wrapper.querySelector(target);
+      if (pane) pane.classList.remove('is-hidden');
+    });
+
     // Accordion
     function toggleAccordion(id) {
       const el = document.getElementById(id);
@@ -1285,6 +1597,124 @@
       const el = document.getElementById(id);
       if (el) el.remove();
     }
+
+    // Toast queue advanced
+    function enqueueToast(type, message) {
+      const container = document.getElementById('toast-queue');
+      if (!container) return;
+      const el = document.createElement('div');
+      el.className = `toast toast-${type}`;
+      el.innerHTML = `<strong>${type.toUpperCase()}</strong> ${message}
+        <button class="btn btn-outline btn-sm" onclick="this.parentElement.remove()">Close</button>`;
+      container.appendChild(el);
+      setTimeout(() => el.remove(), 4500);
+    }
+
+    // Simple collapse
+    function toggleCollapse(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.classList.toggle('d-none');
+    }
+
+    // Simple popover
+    function popover(target, content) {
+      let tip = document.getElementById('demo-popover');
+      if (!tip) {
+        tip = document.createElement('div');
+        tip.id = 'demo-popover';
+        tip.style.position = 'absolute';
+        tip.style.background = 'var(--fz-c-gray-900)';
+        tip.style.color = '#fff';
+        tip.style.padding = '.5rem .75rem';
+        tip.style.borderRadius = '.5rem';
+        tip.style.zIndex = 2000;
+        document.body.appendChild(tip);
+      }
+      tip.textContent = content;
+      const rect = target.getBoundingClientRect();
+      tip.style.left = `${rect.left + window.scrollX}px`;
+      tip.style.top = `${rect.bottom + window.scrollY + 6}px`;
+      tip.classList.remove('d-none');
+      const hide = () => { tip.classList.add('d-none'); document.removeEventListener('click', hide); };
+      setTimeout(() => document.addEventListener('click', hide), 0);
+    }
+
+    // Minimal carousel
+    function initCarousel(id) {
+      const root = document.getElementById(id);
+      if (!root) return;
+      const slides = root.querySelectorAll('.carousel-slide');
+      if (!slides.length) return;
+      let idx = 0;
+      setInterval(() => {
+        slides[idx].classList.add('d-none');
+        idx = (idx + 1) % slides.length;
+        slides[idx].classList.remove('d-none');
+      }, 2500);
+    }
+
+    // Segmented
+    function activateSegment(btn){
+      const root = btn.parentElement; root.querySelectorAll('.seg-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active');
+    }
+
+    // Drawer
+    function openDrawer(id){ const el=document.getElementById(id); if(el) el.classList.add('show'); }
+    function closeDrawer(id){ const el=document.getElementById(id); if(el) el.classList.remove('show'); }
+
+    // Rating
+    document.getElementById('demo-rating').addEventListener('click', (e)=>{
+      const star = e.target.closest('.star'); if(!star) return; const stars=[...e.currentTarget.querySelectorAll('.star')];
+      const idx = stars.indexOf(star); stars.forEach((s,i)=> s.classList.toggle('active', i<=idx));
+    });
+
+    // Sortable table
+    (function(){
+      const table = document.getElementById('table-sort-demo'); if(!table) return; const ths = table.querySelectorAll('thead th');
+      ths.forEach(th => th.addEventListener('click', ()=>{
+        const key = th.dataset.key; const tbody = table.querySelector('tbody'); const rows = [...tbody.querySelectorAll('tr')];
+        const currentAsc = th.classList.contains('sort-asc'); ths.forEach(t=>t.classList.remove('sort-asc','sort-desc'));
+        th.classList.add(currentAsc ? 'sort-desc' : 'sort-asc');
+        const asc = !currentAsc;
+        rows.sort((a,b)=>{
+          const av = a.children[th.cellIndex].textContent.trim().toLowerCase();
+          const bv = b.children[th.cellIndex].textContent.trim().toLowerCase();
+          return asc ? av.localeCompare(bv) : bv.localeCompare(av);
+        }).forEach(r=>tbody.appendChild(r));
+      }));
+    })();
+
+    // Collapsible sidebar
+    function toggleSidebar(){ const el=document.getElementById('demo-sidebar'); if(el) el.classList.toggle('sidebar-collapsed'); }
+
+    // Split view drag
+    (function(){
+      const root = document.getElementById('split-demo'); const gutter = document.getElementById('split-gutter'); if(!root||!gutter) return;
+      let dragging = false;
+      gutter.addEventListener('mousedown', ()=> dragging = true);
+      document.addEventListener('mouseup', ()=> dragging = false);
+      document.addEventListener('mousemove', (e)=>{
+        if(!dragging) return; const rect = root.getBoundingClientRect();
+        const x = Math.min(Math.max(e.clientX - rect.left, 80), rect.width - 80);
+        root.style.gridTemplateColumns = `${x}px 6px 1fr`;
+      });
+    })();
+
+    // Focus trap (drawer)
+    (function(){
+      const trapIds = ['demo-drawer'];
+      function trapFocus(container){
+        const focusables = container.querySelectorAll('a,button,input,select,textarea,[tabindex]:not([tabindex="-1"])');
+        if(!focusables.length) return; const first = focusables[0]; const last = focusables[focusables.length-1];
+        container.addEventListener('keydown', (e)=>{
+          if(e.key !== 'Tab') return;
+          if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+          else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+        });
+      }
+      trapIds.forEach(id=>{ const el=document.getElementById(id); if(el) trapFocus(el); });
+    })();
   </script>
 </body>
 </html>

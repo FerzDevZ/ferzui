@@ -12,6 +12,10 @@
     { title: 'Entertainment Components', url: 'entertainment.html', category: 'Components' },
     { title: 'Business Components', url: 'business.html', category: 'Components' },
     { title: 'Utilities', url: 'utilities.html', category: 'Utilities' },
+    { title: 'Utilities API', url: 'utilities-api.html', category: 'Utilities' },
+    { title: 'Helpers', url: 'helpers.html', category: 'Utilities' },
+    { title: 'Content', url: 'content.html', category: 'Guide' },
+    { title: 'Forms', url: 'forms.html', category: 'Components' },
     { title: 'Customize', url: 'customize.html', category: 'Customization' },
     { title: 'Theme Editor', url: 'theme.html', category: 'Customization' },
     { title: 'JavaScript', url: 'javascript.html', category: 'JavaScript' },
@@ -166,6 +170,26 @@
         <a class="docs-link" href="utilities.html#opacity">Opacity</a>
         <a class="docs-link" href="utilities.html#z-index">Z-Index</a>
         <a class="docs-link" href="utilities.html#animations">Animations</a>
+        <a class="docs-link" href="utilities-api.html">Utilities API</a>
+        <a class="docs-link" href="helpers.html">Helpers</a>
+      </div>
+      <div>
+        <div class="docs-section-title">Content</div>
+        <a class="docs-link" href="content.html#typography">Typography</a>
+        <a class="docs-link" href="content.html#images">Images</a>
+        <a class="docs-link" href="content.html#tables">Tables</a>
+        <a class="docs-link" href="content.html#figures">Figures</a>
+      </div>
+      <div>
+        <div class="docs-section-title">Forms</div>
+        <a class="docs-link" href="forms.html#overview">Overview</a>
+        <a class="docs-link" href="forms.html#controls">Form Controls</a>
+        <a class="docs-link" href="forms.html#select">Select</a>
+        <a class="docs-link" href="forms.html#checks-radios">Checks & Radios</a>
+        <a class="docs-link" href="forms.html#input-group">Input Group</a>
+        <a class="docs-link" href="forms.html#floating-labels">Floating Labels</a>
+        <a class="docs-link" href="forms.html#layout">Layout</a>
+        <a class="docs-link" href="forms.html#validation">Validation</a>
       </div>
       <div>
         <div class="docs-section-title">JavaScript</div>
@@ -347,6 +371,116 @@
     if (btn && sidebar) btn.addEventListener('click', () => sidebar.classList.toggle('show'));
   }
 
+  // Batch 3: Lightweight JS for popovers, carousels, and collapses used in docs examples
+  function initPopovers() {
+    const ACTIVE_CLASS = 'show';
+    const popovers = new Set();
+
+    const createPopover = (trigger) => {
+      const content = trigger.getAttribute('data-popover-content') || trigger.getAttribute('title') || trigger.textContent || '';
+      const placement = trigger.getAttribute('data-popover-placement') || 'top';
+      const pop = document.createElement('div');
+      pop.className = `popover popover-${placement}`;
+      pop.textContent = content;
+      document.body.appendChild(pop);
+      positionPopover(trigger, pop, placement);
+      requestAnimationFrame(() => pop.classList.add(ACTIVE_CLASS));
+      return pop;
+    };
+
+    const positionPopover = (trigger, pop, placement) => {
+      const r = trigger.getBoundingClientRect();
+      const pr = pop.getBoundingClientRect();
+      let top = 0, left = 0, gap = 8;
+      switch (placement) {
+        case 'bottom': top = r.bottom + gap; left = r.left + (r.width - pr.width) / 2; break;
+        case 'left': top = r.top + (r.height - pr.height) / 2; left = r.left - pr.width - gap; break;
+        case 'right': top = r.top + (r.height - pr.height) / 2; left = r.right + gap; break;
+        default: top = r.top - pr.height - gap; left = r.left + (r.width - pr.width) / 2; break;
+      }
+      left = Math.max(8, Math.min(left, window.innerWidth - pr.width - 8));
+      top = Math.max(8, Math.min(top, window.innerHeight - pr.height - 8));
+      pop.style.position = 'absolute';
+      pop.style.top = `${top + window.scrollY}px`;
+      pop.style.left = `${left + window.scrollX}px`;
+    };
+
+    const togglePopover = (e) => {
+      const t = e.currentTarget;
+      const existing = t._popoverEl;
+      closeAllPopovers();
+      if (!existing) {
+        t._popoverEl = createPopover(t);
+        popovers.add(t._popoverEl);
+      }
+    };
+
+    const closeAllPopovers = () => {
+      popovers.forEach(p => { p.classList.remove('show'); p.remove(); });
+      popovers.clear();
+      document.querySelectorAll('[data-popover][aria-expanded="true"]').forEach(t => t.setAttribute('aria-expanded', 'false'));
+    };
+
+    document.addEventListener('click', (e) => {
+      if (![...popovers].some(p => p.contains(e.target)) && !e.target.closest('[data-popover]')) {
+        closeAllPopovers();
+      }
+    });
+
+    document.querySelectorAll('[data-popover]').forEach(t => {
+      t.setAttribute('aria-expanded', 'false');
+      t.addEventListener('click', (e) => {
+        e.preventDefault(); e.stopPropagation();
+        togglePopover(e);
+        t.setAttribute('aria-expanded', t.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
+      });
+    });
+  }
+
+  function initCarousels() {
+    document.querySelectorAll('[data-carousel]').forEach(root => {
+      const track = root.querySelector('[data-carousel-track]');
+      const items = Array.from(root.querySelectorAll('[data-carousel-item]'));
+      const prev = root.querySelector('[data-carousel-prev]');
+      const next = root.querySelector('[data-carousel-next]');
+      let index = 0;
+
+      const update = () => {
+        const x = -index * 100;
+        if (track) track.style.transform = `translateX(${x}%)`;
+        items.forEach((el, i) => el.classList.toggle('is-active', i === index));
+      };
+      const go = (dir) => { index = (index + dir + items.length) % items.length; update(); };
+      prev && prev.addEventListener('click', () => go(-1));
+      next && next.addEventListener('click', () => go(1));
+      update();
+    });
+  }
+
+  function initCollapses() {
+    document.querySelectorAll('[data-collapse-toggle]').forEach(btn => {
+      const sel = btn.getAttribute('data-collapse-target');
+      if (!sel) return;
+      const target = document.querySelector(sel);
+      if (!target) return;
+      const toggle = () => {
+        const open = target.getAttribute('data-open') === 'true';
+        if (open) {
+          target.style.height = target.scrollHeight + 'px';
+          requestAnimationFrame(() => {
+            target.style.height = '0px';
+            target.setAttribute('data-open', 'false');
+          });
+        } else {
+          target.style.height = target.scrollHeight + 'px';
+          target.setAttribute('data-open', 'true');
+        }
+        target.classList.toggle('show');
+      };
+      btn.addEventListener('click', (e) => { e.preventDefault(); toggle(); });
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', async () => {
     ensureAssets();
     await ensureFerzuiJS();
@@ -357,5 +491,8 @@
     initSearch();
     initThemeToggle();
     initMobileSidebar();
+    initPopovers();
+    initCarousels();
+    initCollapses();
   });
 })();

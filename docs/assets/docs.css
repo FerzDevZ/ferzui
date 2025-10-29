@@ -645,3 +645,29 @@ html {
   }
   .docs-mobilebar { display: block; }
 }
+
+/* Batch 3 helpers for docs examples */
+.popover {
+  position: absolute;
+  background: var(--fz-c-surface-elevated);
+  color: var(--fz-c-text);
+  border: 1px solid var(--fz-c-border);
+  border-radius: var(--fz-radius-md);
+  padding: .5rem .75rem;
+  box-shadow: var(--fz-shadow-md);
+  opacity: 0;
+  transform: scale(.98);
+  transition: opacity .15s ease, transform .15s ease;
+  z-index: 1080;
+}
+.popover.show { opacity: 1; transform: scale(1); }
+
+[data-carousel] { position: relative; overflow: hidden; border-radius: var(--fz-radius-lg); border: 1px solid var(--fz-c-border); }
+[data-carousel-track] { display: flex; width: 100%; transition: transform .3s ease; }
+[data-carousel-item] { min-width: 100%; }
+[data-carousel-prev], [data-carousel-next] {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba(0,0,0,.5); color: #fff; border: 0; border-radius: 9999px; width: 36px; height: 36px;
+}
+[data-carousel-prev] { left: 8px; }
+[data-carousel-next] { right: 8px; }
