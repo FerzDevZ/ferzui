@@ -1009,7 +1009,16 @@ window.fz = fz;
     };
     on(toggle,'click',function(e){ e.preventDefault(); self.toggle(); });
   }
-  function initModals(){ qsa('[data-modal]').forEach(function(el){ var m=new Modal(el); qsa('[data-modal-open=#+el.id+]').forEach(function(btn){ on(btn,'click',function(){ m.show(); }); }); qsa('[data-modal-close]',el).forEach(function(btn){ on(btn,'click',function(){ m.hide(); }); }); }); }
+  function initModals(){
+    qsa('[data-modal]').forEach(function(el){
+      var m = new Modal(el);
+      // bind openers that reference this modal by id
+      var sel = '[data-modal-open=" #' + el.id + '"] , [data-modal-open="#' + el.id + '"]';
+      qsa(sel.replace('  ', ' ')).forEach(function(btn){ on(btn,'click',function(){ m.show(); }); });
+      // close buttons inside the modal
+      qsa('[data-modal-close]', el).forEach(function(btn){ on(btn,'click',function(){ m.hide(); }); });
+    });
+  }
   function initDropdowns(){ qsa('[data-dropdown]').forEach(function(t){ new Dropdown(t); }); }
   function initCollapses(){ qsa('[data-collapse]').forEach(function(t){ new Collapse(t); }); }
   function initAll(){ initModals(); initDropdowns(); initCollapses(); }

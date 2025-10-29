@@ -55,11 +55,12 @@
   }
 
   async function ensureFerzuiJS() {
-    // Ensure ferzui JS exists for interactive examples
+    // Ensure ferzui JS exists for interactive examples (prefer local, fallback to CDN)
     const hasFerzuiJs = !![...document.scripts].find(s => /ferzui(\.min)?\.js/.test(s.src));
-    if (!hasFerzuiJs) {
-      try { await loadScript('https://cdn.jsdelivr.net/npm/ferzui@latest/dist/ferzui.min.js'); } catch (_) {}
-    }
+    if (hasFerzuiJs) return;
+    // try local build first
+    try { await loadScript('../dist/ferzui.min.js'); return; } catch (_) {}
+    try { await loadScript('https://cdn.jsdelivr.net/npm/ferzui@latest/dist/ferzui.min.js'); } catch (_) {}
   }
 
   function wrapAsDocsLayout() {
