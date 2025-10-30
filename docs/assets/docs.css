@@ -2,6 +2,7 @@
 
 :root {
   --docs-sidebar-width: 280px;
+  --fz-transition: .25s ease;
 }
 
 body.docs-layout {
@@ -65,6 +66,9 @@ body.docs-layout {
   background: var(--fz-c-surface);
   padding: var(--fz-space-4);
   overflow: auto;
+}
+@supports (height: 100dvh) {
+  .docs-sidebar { height: calc(100dvh - 57px); }
 }
 
 .docs-sidebar .search {
@@ -251,6 +255,27 @@ body.docs-layout {
   font-size: 0.875em;
 }
 
+/* Make arbitrary code/pre blocks inside content scroll instead of overflow page */
+.docs-main pre,
+.docs-main code {
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Responsive tables in docs content */
+.docs-main table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-collapse: collapse;
+}
+.docs-main th,
+.docs-main td {
+  padding: .5rem .75rem;
+}
+
 [data-theme="dark"] .docs-main code:not(.docs-example .code code) {
   background: var(--fz-c-gray-800);
   color: var(--fz-c-gray-100);
@@ -429,6 +454,9 @@ body.docs-layout {
   overflow: auto;
   border-left: 1px solid var(--fz-c-border);
   padding: var(--fz-space-6) var(--fz-space-4);
+}
+@supports (max-height: 100dvh) {
+  .docs-toc { max-height: calc(100dvh - 57px); }
 }
 
 .docs-toc a {
@@ -638,6 +666,18 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Global responsive safeguards */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img, svg, video, canvas, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
 /* Focus styles */
 *:focus {
   outline: 2px solid var(--fz-c-primary-500);
@@ -840,6 +880,56 @@ html {
     transform: translateY(0);
   }
   .docs-mobilebar { display: block; }
+}
+
+/* Additional mobile polish */
+@media (max-width: 768px) {
+  .docs-main {
+    padding: var(--fz-space-6) var(--fz-space-4);
+  }
+  .docs-toc { display: none; }
+}
+
+/* Template nav/layout helpers used inside docs pages */
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--fz-space-3);
+}
+.navbar .navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--fz-space-2);
+  flex-wrap: wrap;
+}
+@media (max-width: 768px) {
+  .navbar .navbar-nav {
+    width: 100%;
+    justify-content: center;
+    margin-top: var(--fz-space-2);
+  }
+}
+
+/* Minimal display utilities used by docs navbar in case core utilities absent */
+.d-none { display: none !important; }
+@media (min-width: 1024px) {
+  .d-lg-flex { display: flex !important; }
+}
+@media (max-width: 1023.98px) {
+  .d-lg-flex { display: none !important; }
+}
+
+/* Conservative fallback for grid columns inside docs content on small screens */
+@media (max-width: 1024px) {
+  .docs-main .row {
+    display: block;
+  }
+  .docs-main .row > [class^="col-"],
+  .docs-main .row > [class*=" col-"] {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
 }
 
 /* Batch 3 helpers for docs examples */

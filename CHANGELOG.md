@@ -1,4 +1,18 @@
 # Changelog
+## [1.3.3] - 2025-10-30
+
+### Fixed
+- 📱 Android/mobile responsiveness across all docs pages: prevent horizontal overflow, fix sticky heights with dynamic viewport units, ensure grids stack on small screens, and make tables/code/media contain within viewport.
+- 🧭 Mobile navbar and sidebar behavior: introduce minimal display utilities and fallback nav layout so docs topbar works even if some utilities are missing.
+- 🧾 Code blocks and tables: added safe overflow handling to avoid layout breaks on narrow screens.
+
+### Improved
+- 🎨 General UI/UX polish on docs: spacing and responsive padding tweaks; hide TOC on small screens to prioritize content.
+
+### Links
+- 📚 Documentation: https://ferzdevz.github.io/ferzui/docs/
+
+---
 ## [1.3.2] - 2025-01-29
 
 ### Added
